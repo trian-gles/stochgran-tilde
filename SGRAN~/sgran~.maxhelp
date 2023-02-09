@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 110.0, 144.0, 640.0, 480.0 ],
+		"rect" : [ 110.0, 144.0, 938.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,33 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 594.0, 29.0, 191.0, 34.0 ],
+					"text" : "Move this slider to change the \"tightness\" control"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"floatoutput" : 1,
+					"id" : "obj-11",
+					"maxclass" : "slider",
+					"min" : 0.01,
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 610.0, 77.0, 23.0, 67.0 ],
+					"size" : 2.0
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "newobj",
@@ -80,7 +107,7 @@
 							"domain_markers" : [  ],
 							"domain_labels" : [ 0.0, "0.001", 0.2, "0.005", 0.4, "0.009", 0.6, "0.012", 0.8, "0.016", 1.0, "0.02" ],
 							"range_start" : 0.0,
-							"range_end" : 0.987419092702882,
+							"range_end" : 0.864355030179921,
 							"range_style" : "linear",
 							"range_markers" : [  ],
 							"range_labels" : [  ],
@@ -256,8 +283,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 243.0, 42.0, 163.0, 22.0 ],
-					"text" : "grainrate 0.001 0.01 0.02 0.6"
+					"patching_rect" : [ 243.0, 42.0, 159.0, 22.0 ],
+					"text" : "grainrate 0.001 0.01 0.02 $1"
 				}
 
 			}
@@ -297,6 +324,13 @@
 					"destination" : [ "obj-6", 0 ],
 					"order" : 0,
 					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-11", 0 ]
 				}
 
 			}
@@ -442,7 +476,8 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "hanning.maxpat",
-				"bootpath" : "C74:/externals/msp/stochgran-tilde/SGRAN~",
+				"bootpath" : "~/OneDrive/Documents/projects/stochgran-tilde/SGRAN~",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -458,7 +493,8 @@
 			}
 , 			{
 				"name" : "sine.maxpat",
-				"bootpath" : "C74:/externals/msp/stochgran-tilde/SGRAN~",
+				"bootpath" : "~/OneDrive/Documents/projects/stochgran-tilde/SGRAN~",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
