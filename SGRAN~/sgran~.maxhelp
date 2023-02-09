@@ -40,6 +40,59 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 409.0, 118.0, 91.0, 22.0 ],
+					"saved_object_attributes" : 					{
+						"filename" : "prob-visual.js",
+						"parameter_enable" : 0
+					}
+,
+					"text" : "js prob-visual.js"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"domainlabel" : "grainrate",
+					"id" : "obj-19",
+					"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
+					"maxclass" : "plot~",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"numpoints" : 100,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 409.0, 169.898019671440125, 383.838734149932861, 196.793153405189514 ],
+					"rangelabel" : "likelihood",
+					"subplots" : [ 						{
+							"color" : [ 0.4, 0.4, 0.75, 1.0 ],
+							"thickness" : 3.0,
+							"point_style" : "none",
+							"line_style" : "origin",
+							"number_style" : "none",
+							"filter" : "none",
+							"domain_start" : 0.0,
+							"domain_end" : 1.0,
+							"domain_style" : "linear",
+							"domain_markers" : [  ],
+							"domain_labels" : [ 0.0, "0.001", 0.2, "0.005", 0.4, "0.009", 0.6, "0.012", 0.8, "0.016", 1.0, "0.02" ],
+							"range_start" : 0.0,
+							"range_end" : 0.987419092702882,
+							"range_style" : "linear",
+							"range_markers" : [  ],
+							"range_labels" : [  ],
+							"origin_x" : 0.0,
+							"origin_y" : 0.0
+						}
+ ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "newobj",
 					"numinlets" : 2,
@@ -203,8 +256,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 243.0, 42.0, 153.0, 22.0 ],
-					"text" : "grainrate 0.001 0.01 0.02 1"
+					"patching_rect" : [ 243.0, 42.0, 163.0, 22.0 ],
+					"text" : "grainrate 0.001 0.01 0.02 0.6"
 				}
 
 			}
@@ -234,6 +287,15 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
+					"order" : 1,
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"order" : 0,
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -317,6 +379,20 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-6", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-7", 0 ]
 				}
@@ -366,9 +442,14 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "hanning.maxpat",
-				"bootpath" : "~/OneDrive/Documents/projects/SGRAN~",
-				"patcherrelativepath" : ".",
+				"bootpath" : "C74:/externals/msp/stochgran-tilde/SGRAN~",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "prob-visual.js",
+				"bootpath" : "C74:/externals/msp/stochgran-tilde",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
@@ -377,13 +458,31 @@
 			}
 , 			{
 				"name" : "sine.maxpat",
-				"bootpath" : "~/OneDrive/Documents/projects/SGRAN~",
-				"patcherrelativepath" : ".",
+				"bootpath" : "C74:/externals/msp/stochgran-tilde/SGRAN~",
 				"type" : "JSON",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0
+		"autosave" : 0,
+		"styles" : [ 			{
+				"name" : "AudioStatus_Menu",
+				"default" : 				{
+					"bgfillcolor" : 					{
+						"type" : "color",
+						"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
+						"color1" : [ 0.454902, 0.462745, 0.482353, 0 ],
+						"color2" : [ 0.290196, 0.309804, 0.301961, 1 ],
+						"angle" : 270,
+						"proportion" : 0.39,
+						"autogradient" : 0
+					}
+
+				}
+,
+				"parentstyle" : "",
+				"multi" : 0
+			}
+ ]
 	}
 
 }
