@@ -40,6 +40,32 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 950.0, 41.0, 58.0, 22.0 ],
+					"text" : "loadbang"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "bang" ],
+					"patching_rect" : [ 945.0, 69.0, 32.0, 22.0 ],
+					"text" : "t b b"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-52",
 					"maxclass" : "newobj",
 					"numinlets" : 0,
@@ -323,7 +349,7 @@
 							"domain_markers" : [  ],
 							"domain_labels" : [ 0.0, "0.001", 0.2, "0.005", 0.4, "0.009", 0.6, "0.012", 0.8, "0.016", 1.0, "0.02" ],
 							"range_start" : 0.0,
-							"range_end" : 10.092191837915353,
+							"range_end" : 1.059306856593316,
 							"range_style" : "linear",
 							"range_markers" : [  ],
 							"range_labels" : [  ],
@@ -590,6 +616,32 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-27", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-36", 0 ],
+					"hidden" : 1,
+					"order" : 1,
+					"source" : [ "obj-4", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"hidden" : 1,
+					"order" : 0,
+					"source" : [ "obj-4", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-45", 0 ],
 					"source" : [ "obj-43", 0 ]
 				}
@@ -653,6 +705,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-10", 0 ],
 					"hidden" : 1,
 					"order" : 1,
@@ -699,21 +759,21 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "hanning.maxpat",
-				"bootpath" : "~/Documents/projects/stochgran-tilde/SGRAN~",
+				"bootpath" : "~/Documents/projects/stochgran-tilde/examples",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "prob-transition.js",
-				"bootpath" : "~/Documents/projects/stochgran-tilde/SGRAN~",
+				"bootpath" : "~/Documents/projects/stochgran-tilde/examples",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "prob-visual.js",
-				"bootpath" : "~/Documents/projects/stochgran-tilde/SGRAN~",
+				"bootpath" : "~/Documents/projects/stochgran-tilde/examples",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -724,7 +784,7 @@
 			}
 , 			{
 				"name" : "sine.maxpat",
-				"bootpath" : "~/Documents/projects/stochgran-tilde/SGRAN~",
+				"bootpath" : "~/Documents/projects/stochgran-tilde/examples",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
