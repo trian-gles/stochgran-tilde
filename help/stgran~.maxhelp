@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1036.0, 767.0 ],
+						"rect" : [ 0.0, 26.0, 1036.0, 793.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -285,12 +285,12 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"linecount" : 17,
+									"linecount" : 18,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 517.0, 141.0, 468.0, 234.0 ],
-									"text" : "stgran~ samples user defined distributions when sampling parameters for each grain.  It can work with a static or live buffer of source material. These parameters are:\n\ngrainrate - the time to wait before creating a new grain\ngraindur - the duration of this grain\ntrans - transposition of the material for this grain, up or down in linear octages\ngrainhead - start point of grain material in source buffer\npan - self explanatory, must between 0 and 1\n\nA distribution can be set by putting in the name of the parameter followed by four numbers:\n\nThe lowest possible value\nThe midpoint which the distribution will center around\nThe highest possible value\nA tightness value.  1 will be uniform, less than 1 will spread towards the low and high points, and more than 1 will cluster around the midpoint"
+									"patching_rect" : [ 517.0, 141.0, 468.0, 248.0 ],
+									"text" : "stgran~ samples user defined distributions when sampling parameters for each grain.  It can work with a static or live buffer of source material. These parameters are:\n\ngrainrate - the time to wait before creating a new grain\ngraindur - the duration of this grain\ntrans - transposition of the material for this grain, up or down in linear octages\ngrainhead - start point of grain material in source buffer.  Between 0(end of buffer material) and 1(start of buffer material)\npan - self explanatory, must between 0 and 1\n\nA distribution can be set by putting in the name of the parameter followed by four numbers:\n\nThe lowest possible value\nThe midpoint which the distribution will center around\nThe highest possible value\nA tightness value.  1 will be uniform, less than 1 will spread towards the low and high points, and more than 1 will cluster around the midpoint"
 								}
 
 							}
@@ -663,7 +663,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 152.0, 1036.0, 767.0 ],
+						"rect" : [ 100.0, 126.0, 1036.0, 793.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -756,12 +756,12 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-2",
-									"linecount" : 2,
+									"linecount" : 3,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 367.5, 395.0, 468.0, 33.0 ],
-									"text" : "By connecting the output of a looping record~ to the input of stgran~, we can use a live circular buffer as our source material"
+									"patching_rect" : [ 367.5, 395.0, 468.0, 47.0 ],
+									"text" : "By connecting the output of a looping record~ to the input of stgran~, we can use a live circular buffer as our source material.  `grainhead` now will all be relative to the current position in the circular buffer."
 								}
 
 							}
