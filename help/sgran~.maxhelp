@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 407.0, 512.0, 1656.0, 700.0 ],
+		"rect" : [ 368.0, 442.0, 1656.0, 700.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -397,7 +397,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0.001", 0.2, "0.005", 0.4, "0.009", 0.6, "0.012", 0.8, "0.016", 1.0, "0.02" ],
 											"range_start" : 0.0,
-											"range_end" : 16.764933315758668,
+											"range_end" : 1.059306856593316,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -431,9 +431,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.04", 0.2, "0.049", 0.4, "0.058", 0.6, "0.067", 0.8, "0.076", 1.0, "0.085" ],
+											"domain_labels" : [ 0.0, "0.001", 0.2, "0.007", 0.4, "0.013", 0.6, "0.018", 0.8, "0.024", 1.0, "0.03" ],
 											"range_start" : 0.0,
-											"range_end" : 1.0,
+											"range_end" : 10.5828004871674,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -824,7 +824,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 407.0, 564.0, 1656.0, 648.0 ],
+						"rect" : [ 368.0, 494.0, 1656.0, 648.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -854,6 +854,20 @@
 						"showontab" : 2,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"autofit" : 1,
+									"forceaspect" : 1,
+									"id" : "obj-1",
+									"maxclass" : "fpic",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "jit_matrix" ],
+									"patching_rect" : [ 925.0, 29.476202070713043, 381.0, 331.572972972972991 ],
+									"pic" : "sgran-algo.png"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-6",
 									"linecount" : 16,
@@ -1373,16 +1387,23 @@
 			}
 , 			{
 				"name" : "prob-transition.js",
-				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/kieran/stochgran-tilde/examples",
-				"patcherrelativepath" : "../examples",
+				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/scripts",
+				"patcherrelativepath" : "../scripts",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "prob-visual.js",
-				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/kieran/stochgran-tilde/examples",
-				"patcherrelativepath" : "../examples",
+				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/scripts",
+				"patcherrelativepath" : "../scripts",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "sgran-algo.png",
+				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/help",
+				"patcherrelativepath" : ".",
+				"type" : "PNG",
 				"implicit" : 1
 			}
  ],
