@@ -4,6 +4,7 @@ outlets = 1
 var param;
 var dist1;
 var dist2;
+var lastf;
 
 if (jsarguments.length>1)
 	param = jsarguments[1];
@@ -14,9 +15,11 @@ function list()
 	var a = arrayfromargs(arguments);
 	if (inlet == 1){
 		dist1 = a;
+		compute(lastf);
 	}
 	else if (inlet == 2){
-		dist2 = a;
+		dist2 = a
+		compute(lastf);
 	}
 	else {
 		error("Distributions must be sent to the 2nd and 3rd inlets");
@@ -43,16 +46,21 @@ function msg_float(f){
 		}
 		else 
 		{
-			output_dist = [param];
-			
-			for (i=0; i<4; i++){
-				var base = dist1[i];
-				var dist = dist2[i] - dist1[i];
-				output_dist.push(base + dist * f);
-			}
-			
-			outlet(0, output_dist);
+			lastf = f;
+			compute(f);
 		}
 	
 	
+}
+
+function compute(f){
+	output_dist = [param];
+			
+	for (i=0; i<4; i++){
+		var base = dist1[i];
+		var dist = dist2[i] - dist1[i];
+		output_dist.push(base + dist * f);
+	}
+			
+	outlet(0, output_dist);
 }
