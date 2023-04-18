@@ -269,23 +269,15 @@ void stgran_free(t_stgran *x)
 // This handles notifications when the buffer appears, disappears, or is modified.
 t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
 {
-	if (msg == ps_buffer_modified) {
-		// post("BUFFER CHANGED");
-		x->w_buffer_modified = true;
-		if (!x->running)
-			defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
-		if (s == x->w_name) {
-			return buffer_ref_notify(x->w_buf, s, msg, sender, data);
-		}
-		else if (s == x->w_envname)
-		{
-			return buffer_ref_notify(x->w_env, s, msg, sender, data);
-		}
-
-
+	if (!x->running)
+		defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
+	if (s == x->w_name) {
+		return buffer_ref_notify(x->w_buf, s, msg, sender, data);
 	}
-		
-	
+	else if (s == x->w_envname)
+	{
+		return buffer_ref_notify(x->w_env, s, msg, sender, data);
+	}
 }
 
 
@@ -294,11 +286,9 @@ t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, v
 ////
 
 void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av) {
-	object_free(x->w_buf);
-	object_free(x->w_env);
 
-	x->w_buf = buffer_ref_new((t_object*)x, x->w_name);
-	x->w_env = buffer_ref_new((t_object*)x, x->w_envname);
+	buffer_ref_set(x->w_buf, x->w_name);
+	buffer_ref_set(x->w_env, x->w_envname);
 
 	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
 	t_buffer_obj* e = buffer_ref_getobject(x->w_env);

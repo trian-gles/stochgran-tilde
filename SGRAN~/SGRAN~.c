@@ -39,7 +39,6 @@ typedef struct _sgran {
 	t_symbol *w_envname;
 	
 	t_bool running;
-	t_bool w_buffer_modified;
 	Grain grains[MAXGRAINS];
 	
 	long w_len;
@@ -144,7 +143,6 @@ double prob(double low,double mid,double high,double tight)
 	return(num);
 }
 
-static t_symbol *ps_buffer_modified;
 static t_class *s_sgran_class;
 
 
@@ -178,7 +176,6 @@ void ext_main(void *r)
 	class_register(CLASS_BOX, c);
 	s_sgran_class = c;
 
-	ps_buffer_modified = gensym("buffer_modified");
 }
 /*
 	Inlets:
@@ -204,7 +201,6 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 
 	x->w_name = buf;
 	x->w_envname = env;
-	x->w_buffer_modified = false;
 	
 	
 	//outlets
@@ -257,11 +253,9 @@ void sgran_free(t_sgran *x)
 ////
 
 void sgran_setbuffers(t_sgran* x, t_symbol* s, long ac, t_atom* av) {
-	object_free(x->w_buf);
-	object_free(x->w_env);
 
-	x->w_buf = buffer_ref_new((t_object*)x, x->w_name);
-	x->w_env = buffer_ref_new((t_object*)x, x->w_envname);
+	buffer_ref_set(x->w_buf, x->w_name);
+	buffer_ref_set(x->w_env, x->w_envname);
 
 	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
 	t_buffer_obj* e = buffer_ref_getobject(x->w_env);
@@ -280,18 +274,13 @@ void sgran_set(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
 // This handles notifications when the buffer appears, disappears, or is modified.
 t_max_err sgran_notify(t_sgran *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
 {
-	if (msg == ps_buffer_modified){
-		x->w_buffer_modified = true;
-		defer((t_object*)x, (method)sgran_setbuffers, NULL, 0, NULL);
-		if (s == x->w_name){
-			return buffer_ref_notify(x->w_buf, s, msg, sender, data);
-		}
-		else if (s == x->w_envname)
-		{
-			return buffer_ref_notify(x->w_env, s, msg, sender, data);
-		}
-
-		
+	defer((t_object*)x, (method)sgran_setbuffers, NULL, 0, NULL);
+	if (s == x->w_name){
+		return buffer_ref_notify(x->w_buf, s, msg, sender, data);
+	}
+	else if (s == x->w_envname)
+	{
+		return buffer_ref_notify(x->w_env, s, msg, sender, data);
 	}
 }
 		

@@ -15,11 +15,13 @@ function list()
 	var a = arrayfromargs(arguments);
 	if (inlet == 1){
 		dist1 = a;
-		compute(lastf);
+		if (dist2)
+			compute(lastf);
 	}
 	else if (inlet == 2){
 		dist2 = a
-		compute(lastf);
+		if (dist1)
+			compute(lastf);
 	}
 	else {
 		error("Distributions must be sent to the 2nd and 3rd inlets");
