@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 1183.0, 271.0, 1036.0, 819.0 ],
+		"rect" : [ 72.0, 222.0, 1036.0, 819.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1036.0, 767.0 ],
+						"rect" : [ 72.0, 248.0, 1036.0, 793.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -93,7 +93,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 356.0, 678.0, 150.0, 20.0 ],
-									"text" : "^ press for hacky FM fun "
+									"text" : "^ press for hacky RM fun "
 								}
 
 							}
@@ -690,7 +690,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 1183.0, 323.0, 1036.0, 767.0 ],
+						"rect" : [ 0.0, 26.0, 1036.0, 793.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,

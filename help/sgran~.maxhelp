@@ -884,7 +884,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 1214.0, 537.0, 150.0, 20.0 ],
-									"text" : "<- press for hacky FM fun "
+									"text" : "<- press for hacky RM fun "
 								}
 
 							}
