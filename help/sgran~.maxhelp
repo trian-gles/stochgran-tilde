@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 1656.0, 700.0 ],
+		"rect" : [ 40.0, 82.0, 926.0, 763.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1656.0, 674.0 ],
+						"rect" : [ 40.0, 108.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -164,7 +164,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 904.0, 103.5, 329.0, 33.0 ],
+									"patching_rect" : [ 904.0, 103.5, 329.0, 34.0 ],
 									"text" : "prob-transition can allow us to linearly interpolate between distribution parameters for a given granular parameter"
 								}
 
@@ -215,8 +215,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 529.25, 136.0, 191.0, 33.0 ],
-									"text" : "Move this slider to update the \"tightness\" control for grainrate"
+									"patching_rect" : [ 529.25, 136.0, 191.0, 34.0 ],
+									"text" : "Move this slider to update the \"mid\" control for grainrate"
 								}
 
 							}
@@ -240,7 +240,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 674.838734149932861, 242.0, 219.0, 33.0 ],
+									"patching_rect" : [ 674.838734149932861, 242.0, 219.0, 34.0 ],
 									"text" : "prob-visual connected to a plot~ as shown can visualize the distribution"
 								}
 
@@ -252,8 +252,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 476.0, 218.0, 159.0, 22.0 ],
-									"text" : "grainrate 0.001 0.01 0.02 $1"
+									"patching_rect" : [ 476.0, 218.0, 156.0, 22.0 ],
+									"text" : "grainrate 0.00002 $1 0.01 5"
 								}
 
 							}
@@ -309,12 +309,12 @@
 									"floatoutput" : 1,
 									"id" : "obj-11",
 									"maxclass" : "slider",
-									"min" : 0.01,
+									"mult" : 0.01,
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 476.0, 136.0, 23.0, 67.0 ],
+									"patching_rect" : [ 476.0, 89.0, 23.0, 67.0 ],
 									"size" : 2.0
 								}
 
@@ -395,9 +395,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.001", 0.2, "0.005", 0.4, "0.009", 0.6, "0.012", 0.8, "0.016", 1.0, "0.02" ],
+											"domain_labels" : [ 0.0, "0", 0.2, "0.002", 0.4, "0.004", 0.6, "0.006", 0.8, "0.008", 1.0, "0.01" ],
 											"range_start" : 0.0,
-											"range_end" : 1.059306856593316,
+											"range_end" : 40.128885573039319,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -824,7 +824,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 1656.0, 674.0 ],
+						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -860,7 +860,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1485.894791841506958, 171.762688557199567, 153.0, 47.0 ],
+									"patching_rect" : [ 1246.832291841506958, 171.262688557199567, 153.0, 48.0 ],
 									"text" : "<- see the sampling based version of this same algorithm"
 								}
 
@@ -872,7 +872,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 1426.315840482711792, 174.0, 49.0, 22.0 ],
+									"patching_rect" : [ 1187.253340482711792, 173.5, 49.0, 22.0 ],
 									"text" : "stgran~"
 								}
 
@@ -883,7 +883,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1214.0, 537.0, 150.0, 20.0 ],
+									"patching_rect" : [ 884.5, 537.0, 150.0, 20.0 ],
 									"text" : "<- press for hacky RM fun "
 								}
 
@@ -897,7 +897,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1042.0, 537.0, 147.0, 23.0 ],
+									"patching_rect" : [ 712.5, 537.0, 147.0, 23.0 ],
 									"text" : "fill sin 90, apply hanning"
 								}
 
@@ -911,7 +911,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 37.0, 29.476202070713043, 182.0, 74.0 ],
+									"patching_rect" : [ 37.0, 29.476202070713043, 182.0, 75.0 ],
 									"text" : "sgran~\nKieran McAuliffe\nDr. Mara Helmuth"
 								}
 
@@ -923,7 +923,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 718.5, 572.0, 150.0, 33.0 ],
+									"patching_rect" : [ 389.0, 572.0, 150.0, 34.0 ],
 									"text" : "<- click here to switch to a saw wave"
 								}
 
@@ -936,7 +936,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "bang", "bang" ],
-									"patching_rect" : [ 767.0, 437.0, 32.0, 22.0 ],
+									"patching_rect" : [ 437.5, 437.0, 32.0, 22.0 ],
 									"text" : "t b b"
 								}
 
@@ -948,8 +948,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 741.0, 515.0, 105.0, 22.0 ],
-									"text" : "bang"
+									"patching_rect" : [ 411.5, 515.0, 105.0, 22.0 ],
+									"text" : "sizeinsamps 1000"
 								}
 
 							}
@@ -961,7 +961,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 767.0, 395.0, 58.0, 22.0 ],
+									"patching_rect" : [ 437.5, 395.0, 58.0, 22.0 ],
 									"text" : "loadbang"
 								}
 
@@ -975,7 +975,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 879.0, 537.0, 120.0, 23.0 ],
+									"patching_rect" : [ 549.5, 537.0, 120.0, 23.0 ],
 									"text" : "fill 1, apply hanning"
 								}
 
@@ -987,7 +987,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 879.0, 587.0, 118.0, 22.0 ],
+									"patching_rect" : [ 549.5, 587.0, 118.0, 22.0 ],
 									"text" : "buffer~ hanningtable"
 								}
 
@@ -1002,7 +1002,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 616.0, 542.0, 93.0, 67.0 ],
+									"patching_rect" : [ 286.5, 542.0, 93.0, 68.0 ],
 									"text" : "fill 1, apply triangle half, apply gain -2, apply offset 1"
 								}
 
@@ -1016,7 +1016,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 496.0, 534.0, 41.0, 23.0 ],
+									"patching_rect" : [ 166.5, 534.0, 41.0, 23.0 ],
 									"text" : "fill sin"
 								}
 
@@ -1028,7 +1028,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 496.0, 587.0, 97.0, 22.0 ],
+									"patching_rect" : [ 166.5, 587.0, 97.0, 22.0 ],
 									"text" : "buffer~ sinetable"
 								}
 
@@ -1042,7 +1042,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "jit_matrix" ],
-									"patching_rect" : [ 925.0, 29.476202070713043, 381.0, 331.572972972972991 ],
+									"patching_rect" : [ 762.5, 29.476202070713043, 381.0, 331.572972972972991 ],
 									"pic" : "sgran-algo.png"
 								}
 
@@ -1054,7 +1054,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 396.0, 29.476202070713043, 468.0, 221.0 ],
+									"patching_rect" : [ 282.5, 58.476202070713043, 468.0, 227.0 ],
 									"text" : "sgran~ samples user defined distributions when sampling parameters for each grain.  These parameters are:\n\ngrainrate - the time to wait before creating a new grain (seconds)\ngraindur - the duration of this grain (seconds)\nfreq - self explanatory\npan - self explanatory, must between 0 and 1\n\nA distribution can be set by putting in the name of the parameter followed by four numbers:\n\nThe lowest possible value\nThe midpoint which the distribution will center around\nThe highest possible value\nA tightness value.  1 will be uniform, less than 1 will spread towards the low and high points, and more than 1 will cluster around the midpoint"
 								}
 
@@ -1066,7 +1066,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 426.0, 296.5, 261.0, 33.0 ],
+									"patching_rect" : [ 295.881578683853149, 303.976202070713043, 261.0, 34.0 ],
 									"text" : "two positional arguments specify buffer names containing the source wave and envelope"
 								}
 
@@ -1078,7 +1078,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 230.0, 117.0, 153.0, 22.0 ],
+									"patching_rect" : [ 111.25, 131.976202070713043, 153.0, 22.0 ],
 									"text" : "graindur 0.001 0.01 0.3 1.8"
 								}
 
@@ -1090,7 +1090,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 230.0, 146.0, 173.0, 22.0 ],
+									"patching_rect" : [ 111.25, 160.976202070713043, 173.0, 22.0 ],
 									"text" : "grainrate 0.0001 0.001 0.002 3"
 								}
 
@@ -1115,7 +1115,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 230.0, 174.0, 109.0, 22.0 ],
+									"patching_rect" : [ 111.25, 188.976202070713043, 109.0, 22.0 ],
 									"text" : "freq 220 440 880 4"
 								}
 
@@ -1127,7 +1127,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 230.0, 203.0, 79.0, 22.0 ],
+									"patching_rect" : [ 111.25, 217.976202070713043, 79.0, 22.0 ],
 									"text" : "pan 0 0.5 1 1"
 								}
 
@@ -1139,7 +1139,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 230.0, 295.0, 169.0, 22.0 ],
+									"patching_rect" : [ 111.25, 309.976202070713043, 169.0, 22.0 ],
 									"text" : "sgran~ sinetable hanningtable"
 								}
 
@@ -1151,7 +1151,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 372.631578683853149, 331.5, 40.0, 22.0 ],
+									"patching_rect" : [ 253.881578683853149, 346.476202070713043, 40.0, 22.0 ],
 									"text" : "*~ 0.1"
 								}
 
@@ -1163,7 +1163,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 230.0, 331.5, 40.0, 22.0 ],
+									"patching_rect" : [ 111.25, 346.476202070713043, 40.0, 22.0 ],
 									"text" : "*~ 0.1"
 								}
 
@@ -1177,7 +1177,7 @@
 									"numoutlets" : 5,
 									"outlettype" : [ "signal", "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 230.0, 395.0, 48.0, 136.0 ],
+									"patching_rect" : [ 111.25, 409.976202070713043, 48.0, 136.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
 											"parameter_longname" : "live.gain~[1]",
@@ -1200,7 +1200,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 230.0, 551.0, 35.0, 22.0 ],
+									"patching_rect" : [ 111.25, 565.976202070713043, 35.0, 22.0 ],
 									"text" : "dac~"
 								}
 
@@ -1212,7 +1212,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 166.0, 264.0, 31.0, 22.0 ],
+									"patching_rect" : [ 47.25, 278.976202070713043, 31.0, 22.0 ],
 									"text" : "stop"
 								}
 
@@ -1224,7 +1224,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 125.0, 264.0, 32.0, 22.0 ],
+									"patching_rect" : [ 6.25, 278.976202070713043, 32.0, 22.0 ],
 									"text" : "start"
 								}
 
@@ -1246,18 +1246,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-18", 1 ],
-									"hidden" : 1,
-									"order" : 0,
-									"source" : [ "obj-15", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-19", 0 ],
 									"hidden" : 1,
-									"order" : 1,
 									"source" : [ "obj-15", 0 ]
 								}
 
@@ -1272,7 +1262,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"midpoints" : [ 750.5, 540.0, 720.0, 540.0, 720.0, 528.0, 549.0, 528.0, 549.0, 573.0, 505.5, 573.0 ],
+									"midpoints" : [ 421.0, 540.0, 390.5, 540.0, 390.5, 528.0, 219.5, 528.0, 219.5, 573.0, 176.0, 573.0 ],
 									"order" : 1,
 									"source" : [ "obj-18", 0 ]
 								}
@@ -1281,7 +1271,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
-									"midpoints" : [ 750.5, 558.0, 876.0, 558.0, 876.0, 570.0, 888.5, 570.0 ],
+									"midpoints" : [ 421.0, 558.0, 546.5, 558.0, 546.5, 570.0, 559.0, 570.0 ],
 									"order" : 0,
 									"source" : [ "obj-18", 0 ]
 								}
@@ -1316,7 +1306,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
-									"midpoints" : [ 888.5, 561.0, 888.5, 561.0 ],
+									"midpoints" : [ 559.0, 561.0, 559.0, 561.0 ],
 									"source" : [ "obj-22", 0 ]
 								}
 
@@ -1324,7 +1314,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
-									"midpoints" : [ 1051.5, 573.0, 888.5, 573.0 ],
+									"midpoints" : [ 722.0, 573.0, 559.0, 573.0 ],
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -1353,7 +1343,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"midpoints" : [ 625.5, 612.0, 603.0, 612.0, 603.0, 573.0, 505.5, 573.0 ],
+									"midpoints" : [ 296.0, 612.0, 273.5, 612.0, 273.5, 573.0, 176.0, 573.0 ],
 									"source" : [ "obj-4", 0 ]
 								}
 
@@ -1403,7 +1393,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"midpoints" : [ 505.5, 558.0, 505.5, 558.0 ],
+									"midpoints" : [ 176.0, 558.0, 176.0, 558.0 ],
 									"source" : [ "obj-8", 0 ]
 								}
 
@@ -1491,30 +1481,30 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "SGRAN~.mxo",
-				"type" : "iLaX"
+				"name" : "SGRAN~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
-				"name" : "STGRAN~.mxo",
-				"type" : "iLaX"
+				"name" : "STGRAN~.mxe64",
+				"type" : "mx64"
 			}
 , 			{
 				"name" : "prob-transition.js",
-				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/scripts",
+				"bootpath" : "~/OneDrive/Documents/Max 8/Library/stochgran-tilde/scripts",
 				"patcherrelativepath" : "../scripts",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "prob-visual.js",
-				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/scripts",
+				"bootpath" : "~/OneDrive/Documents/Max 8/Library/stochgran-tilde/scripts",
 				"patcherrelativepath" : "../scripts",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "sgran-algo.png",
-				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/help",
+				"bootpath" : "~/OneDrive/Documents/Max 8/Library/stochgran-tilde/help",
 				"patcherrelativepath" : ".",
 				"type" : "PNG",
 				"implicit" : 1
