@@ -88,6 +88,8 @@ void sgran_stop(t_sgran *x);
 void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
 void sgran_dsp64(t_sgran *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
 
+void sgran_usesine(t_sgran* x);
+void sgran_usehanning(t_sgran* x);
 void sgran_set(t_sgran* x, t_symbol* s, long argc, t_atom* argv);
 void sgran_grainrate(t_sgran *x, double rl, double rm, double rh, double rt);
 void sgran_graindur(t_sgran *x, double dl, double dm, double dh, double dt);
@@ -204,38 +206,34 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 	dsp_setup((t_pxobject *)x,0);
 	if (argc > 0){
 		buf = atom_getsymarg(0,argc,argv);
-		extern_wave = true;
+		x->w_name = buf;
+		x->extern_wave = true;
 		x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
 		t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
 		x->w_len = buffer_getframecount(b);
+		if (!buffer_ref_exists(x->w_buf))
+			sgran_usesine(x);
 	}
 	else {
-		extern_wave = false;
-		for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
-			sineTable[i] = sin(3.141596 * 2 * ((float) i / tablelen));
-		}
-		x->w_len = DEFAULT_TABLE_SIZE;
+		sgran_usesine(x);
 	}
 	
 	if (argc > 1){
-		buf = atom_getsymarg(0,argc,argv);
-		extern_env = true;
+		env = atom_getsymarg(1,argc,argv);
+		x->w_envname = env;
+		x->extern_env = true;
 		x->w_env = buffer_ref_new((t_object *)x, x->w_envname);
 		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
 		x->w_envlen = buffer_getframecount(e);
+		if (!buffer_ref_exists(x->w_env))
+			sgran_usehanning(x);
 	}
 	else {
-		extern_env = false;
-		for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
-			hanningTable[i] = 0.5 * (1 - cos(3.141596 * 2 * ((float) i / tablelen)));
-		}
-		x->w_envlen = DEFAULT_TABLE_SIZE;
+		sgran_usehanning(x);
 	}
 	
-	env = atom_getsymarg(1,argc,argv);
+	
 
-	x->w_name = buf;
-	x->w_envname = env;
 	
 	
 	//outlets
@@ -274,14 +272,32 @@ void sgran_free(t_sgran *x)
 	dsp_free((t_pxobject *)x);
 
 	// must free our buffer reference when we will no longer use it
-	object_free(x->w_buf);
-	object_free(x->w_env);
+	if (x->extern_wave)
+		object_free(x->w_buf);
+	if (x->extern_env)
+		object_free(x->w_env);
 }
 
 
 ////
 // SET BUFFER
 ////
+
+void sgran_usesine(t_sgran* x){
+	x->extern_wave = false;
+	for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
+		x->sineTable[i] = sin(3.141596 * 2 * ((float) i / DEFAULT_TABLE_SIZE));
+	}
+	x->w_len = DEFAULT_TABLE_SIZE;
+}
+
+void sgran_usehanning(t_sgran* x){
+	x->extern_env = false;
+	for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
+		x->hanningTable[i] = 0.5 * (1 - cos(3.141596 * 2 * ((float) i / DEFAULT_TABLE_SIZE)));
+		}
+	x->w_envlen = DEFAULT_TABLE_SIZE;
+}
 
 void sgran_setbuffers(t_sgran* x, t_symbol* s, long ac, t_atom* av) {
 
@@ -425,12 +441,12 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 	if (extern_wave)
 		b = buffer_locksamples(buffer);
 	else
-		b = sineTable;
+		b = x->sineTable;
 	
 	if (extern_env)
 		e = buffer_locksamples(env);
 	else
-		b = hanningTable;
+		b = x->hanningTable;
 	
 	if (!b ||!e|| !x->running)
 	{
@@ -482,9 +498,10 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 	
 	
 	
-
-	buffer_unlocksamples(buffer);
-	buffer_unlocksamples(env);
+	if (extern_wave)
+		buffer_unlocksamples(buffer);
+	if (extern_env)
+		buffer_unlocksamples(env);
 	return;
 zero:
 	while (n--) {
