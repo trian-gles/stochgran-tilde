@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 40.0, 82.0, 1301.0, 763.0 ],
+		"rect" : [ 40.0, 82.0, 926.0, 763.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 585.0, 264.0, 640.0, 480.0 ],
+						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -86,7 +86,6 @@
 						"subpatcher_template" : "",
 						"showontab" : 2,
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-17",
@@ -229,7 +228,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 496.25, 161.0, 191.0, 34.0 ],
-									"text" : "Move this slider to update the \"mid\" control for grainrate"
+									"text" : "Move this slider to update the \"mid\" control for grainhead"
 								}
 
 							}
@@ -409,7 +408,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0", 0.2, "0.2", 0.4, "0.4", 0.6, "0.6", 0.8, "0.8", 1.0, "1" ],
 											"range_start" : 0.0,
-											"range_end" : 87.382727450837407,
+											"range_end" : 544.372041729477019,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -443,9 +442,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.014", 0.2, "0.021", 0.4, "0.028", 0.6, "0.034", 0.8, "0.041", 1.0, "0.048" ],
+											"domain_labels" : [ 0.0, "0.001", 0.2, "0.007", 0.4, "0.013", 0.6, "0.018", 0.8, "0.024", 1.0, "0.03" ],
 											"range_start" : 0.0,
-											"range_end" : 5.05991701184655,
+											"range_end" : 10.5828004871674,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -834,7 +833,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 40.0, 108.0, 1301.0, 737.0 ],
+						"rect" : [ 40.0, 108.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -883,21 +882,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 356.0, 646.0, 154.0, 23.0 ],
+									"patching_rect" : [ 312.0, 650.763779527559109, 154.0, 23.0 ],
 									"text" : "fill sin 150, apply hanning"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"hidden" : 1,
-									"id" : "obj-24",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "bang", "bang" ],
-									"patching_rect" : [ 239.5, 558.263779527559109, 32.0, 22.0 ],
-									"text" : "t b b"
 								}
 
 							}
@@ -908,7 +894,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 315.5, 594.263779527559109, 111.0, 22.0 ],
+									"patching_rect" : [ 254.0, 593.0, 111.0, 22.0 ],
 									"text" : "fill 1, apply hanning"
 								}
 
@@ -928,27 +914,13 @@
 							}
 , 							{
 								"box" : 								{
-									"fontname" : "Arial",
-									"fontsize" : 13.0,
-									"id" : "obj-22",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 190.5, 594.263779527559109, 113.0, 23.0 ],
-									"text" : "sizeinsamps 1024"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-21",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "float", "bang" ],
-									"patching_rect" : [ 220.5, 624.0, 118.0, 22.0 ],
-									"text" : "buffer~ hanningtable"
+									"patching_rect" : [ 254.0, 624.0, 199.0, 22.0 ],
+									"text" : "buffer~ hanningtable @samps 1024"
 								}
 
 							}
@@ -1055,12 +1027,12 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-1",
-									"linecount" : 2,
+									"linecount" : 4,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 177.0, 289.5, 261.0, 34.0 ],
-									"text" : "two positional arguments specify buffer names containing the source material and envelope"
+									"patching_rect" : [ 177.0, 290.5, 261.0, 62.0 ],
+									"text" : "two positional arguments specify buffer names containing the source material and envelope, and an optional argument sets a hard limit on simultaneous grains (default: 1000)"
 								}
 
 							}
@@ -1146,8 +1118,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 48.0, 252.0, 169.0, 22.0 ],
-									"text" : "stgran~ staticbuf hanningtable"
+									"patching_rect" : [ 48.0, 252.0, 192.0, 22.0 ],
+									"text" : "stgran~ staticbuf hanningtable 400"
 								}
 
 							}
@@ -1182,7 +1154,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 243.0, 93.0, 79.0, 22.0 ],
-									"text" : "trans -1 0 2 1"
+									"text" : "trans -1 1 2 8"
 								}
 
 							}
@@ -1205,8 +1177,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 243.0, 42.0, 159.0, 22.0 ],
-									"text" : "grainrate 0.001 0.004 0.01 1"
+									"patching_rect" : [ 243.0, 42.0, 173.0, 22.0 ],
+									"text" : "grainrate 0.0001 0.003 0.001 1"
 								}
 
 							}
@@ -1283,33 +1255,10 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-24", 0 ],
+									"destination" : [ "obj-19", 0 ],
 									"hidden" : 1,
 									"order" : 0,
 									"source" : [ "obj-20", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-21", 0 ],
-									"source" : [ "obj-22", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-19", 0 ],
-									"hidden" : 1,
-									"source" : [ "obj-24", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-22", 0 ],
-									"hidden" : 1,
-									"source" : [ "obj-24", 1 ]
 								}
 
 							}
@@ -1467,7 +1416,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1301.0, 737.0 ],
+						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
