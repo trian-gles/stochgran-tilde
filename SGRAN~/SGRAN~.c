@@ -16,6 +16,7 @@
 #define MAXGRAINS 1000
 #define MIDC_OFFSET (261.62556530059868 / 256.0)
 #define M_LN2	0.69314718055994529
+#define DEFAULT_TABLE_SIZE 1024
 
 
 
@@ -39,6 +40,8 @@ typedef struct _sgran {
 	t_symbol *w_envname;
 	
 	t_bool running;
+	t_bool extern_wave;
+	t_bool extern_env;
 	Grain grains[MAXGRAINS];
 	
 	long w_len;
@@ -63,6 +66,9 @@ typedef struct _sgran {
 	double grainRateVarMid;
 	double grainRateVarHigh;
 	double grainRateVarTight;
+	
+	float sineTable[DEFAULT_TABLE_SIZE];
+	float hanningTable[DEFAULT_TABLE_SIZE];
 	
 	int newGrainCounter;
 	float grainRate;
@@ -196,7 +202,36 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 	t_symbol *env=0;
 
 	dsp_setup((t_pxobject *)x,0);
-	buf = atom_getsymarg(0,argc,argv);
+	if (argc > 0){
+		buf = atom_getsymarg(0,argc,argv);
+		extern_wave = true;
+		x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
+		t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
+		x->w_len = buffer_getframecount(b);
+	}
+	else {
+		extern_wave = false;
+		for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
+			sineTable[i] = sin(3.141596 * 2 * ((float) i / tablelen));
+		}
+		x->w_len = DEFAULT_TABLE_SIZE;
+	}
+	
+	if (argc > 1){
+		buf = atom_getsymarg(0,argc,argv);
+		extern_env = true;
+		x->w_env = buffer_ref_new((t_object *)x, x->w_envname);
+		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
+		x->w_envlen = buffer_getframecount(e);
+	}
+	else {
+		extern_env = false;
+		for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
+			hanningTable[i] = 0.5 * (1 - cos(3.141596 * 2 * ((float) i / tablelen)));
+		}
+		x->w_envlen = DEFAULT_TABLE_SIZE;
+	}
+	
 	env = atom_getsymarg(1,argc,argv);
 
 	x->w_name = buf;
@@ -222,14 +257,10 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
     }
 
 	// create a new buffer reference, initially referencing a buffer with the provided name
-	x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
-	x->w_env = buffer_ref_new((t_object *)x, x->w_envname);
-
-	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
-	t_buffer_obj* e = buffer_ref_getobject(x->w_env);
 	
-	x->w_len = buffer_getframecount(b);
-	x->w_envlen = buffer_getframecount(e);
+	
+	
+	
 
 
 	return (x);
@@ -391,9 +422,15 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 	
 	t_buffer_obj	*buffer = buffer_ref_getobject(x->w_buf);
 	t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
-
-	b = buffer_locksamples(buffer);
-	e = buffer_locksamples(env);
+	if (extern_wave)
+		b = buffer_locksamples(buffer);
+	else
+		b = sineTable;
+	
+	if (extern_env)
+		e = buffer_locksamples(env);
+	else
+		b = hanningTable;
 	
 	if (!b ||!e|| !x->running)
 	{
