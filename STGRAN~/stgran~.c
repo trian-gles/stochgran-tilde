@@ -249,11 +249,12 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 	if (argc > 1)
 	{
 		env = atom_getsymarg(1,argc,argv);
+		x->w_envname = env;
 		x->w_env = buffer_ref_new((t_object *)x, x->w_envname);
 		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
-		x->w_envname = env;
+		
 		x->w_envlen = buffer_getframecount(e);
-		x->extern_env = false;
+		x->extern_env = true;
 		if (!buffer_ref_exists(x->w_env))
 			stgran_usehanning(x);
 	}
@@ -307,14 +308,15 @@ void stgran_usehanning(t_stgran* x){
 
 void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av) {
 
+	if (x->extern_env){
+		buffer_ref_set(x->w_env, x->w_envname);
+		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
+		x->w_envlen = buffer_getframecount(e);
+	}
+	
 	buffer_ref_set(x->w_buf, x->w_name);
-	buffer_ref_set(x->w_env, x->w_envname);
-
 	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
-	t_buffer_obj* e = buffer_ref_getobject(x->w_env);
-
 	x->w_len = buffer_getframecount(b);
-	x->w_envlen = buffer_getframecount(e);
 }
 
 void stgran_set(t_stgran* x, t_symbol* s, long argc, t_atom* argv) {
@@ -343,9 +345,9 @@ void stgran_assist(t_stgran *x, void *b, long m, long a, char *s)
 // START AND STOP MSGS
 ////
 void stgran_start(t_stgran *x){
-	if (!buffer_ref_exists(x->w_buf) || !buffer_ref_exists(x->w_env))
+	if (!buffer_ref_exists(x->w_buf) || (!buffer_ref_exists(x->w_env) && x->extern_env))
 	{
-		error("Make sure you've configured a wavetable buffer and envelope buffer!");
+		error("Make sure you've configured a sampling buffer and envelope!");
 		defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
 	}
 
@@ -363,16 +365,16 @@ void stgran_stop(t_stgran *x){
 ////
 
 void stgran_grainrate(t_stgran* x, double rl, double rm, double rh, double rt) {
-	x->grainRateVarLow = rl;
-	x->grainRateVarMid = fmax(rm, rl);
-	x->grainRateVarHigh = fmax(rh, rm);
+	x->grainRateVarLow = rl / 1000;
+	x->grainRateVarMid = fmax(rm, rl) / 1000;
+	x->grainRateVarHigh = fmax(rh, rm) / 1000;
 	x->grainRateVarTight = rt;
 }
 
 void stgran_graindur(t_stgran* x, double dl, double dm, double dh, double dt) {
-	x->grainDurLow = dl;
-	x->grainDurMid = fmax(dm, dl);
-	x->grainDurHigh = fmax(dh, dm);
+	x->grainDurLow = dl / 1000;
+	x->grainDurMid = fmax(dm, dl) / 1000;
+	x->grainDurHigh = fmax(dh, dm) / 1000;
 	x->grainDurTight = dt;
 }
 
@@ -490,7 +492,7 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	if (x->extern_env)
 		e = buffer_locksamples(env);
 	else
-		b = x->hanningTable;
+		e = x->hanningTable;
 	
 	
 	double head = 0;

@@ -284,6 +284,7 @@ void sgran_free(t_sgran *x)
 ////
 
 void sgran_usesine(t_sgran* x){
+	
 	x->extern_wave = false;
 	for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
 		x->sineTable[i] = sin(3.141596 * 2 * ((float) i / DEFAULT_TABLE_SIZE));
@@ -292,6 +293,7 @@ void sgran_usesine(t_sgran* x){
 }
 
 void sgran_usehanning(t_sgran* x){
+	
 	x->extern_env = false;
 	for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
 		x->hanningTable[i] = 0.5 * (1 - cos(3.141596 * 2 * ((float) i / DEFAULT_TABLE_SIZE)));
@@ -447,16 +449,14 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 	else
 		b = x->sineTable;
 	
+
 	if (x->extern_env)
 		e = buffer_locksamples(env);
 	else
-		b = x->hanningTable;
+		e = x->hanningTable;
 	
 	if (!b ||!e|| !x->running)
-	{
-		//post("DSP failure");
 		goto zero;
-	}
 		
 	
 	while (n--){
