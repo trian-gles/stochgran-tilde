@@ -301,14 +301,18 @@ void sgran_usehanning(t_sgran* x){
 
 void sgran_setbuffers(t_sgran* x, t_symbol* s, long ac, t_atom* av) {
 
-	buffer_ref_set(x->w_buf, x->w_name);
-	buffer_ref_set(x->w_env, x->w_envname);
-
-	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
-	t_buffer_obj* e = buffer_ref_getobject(x->w_env);
-
-	x->w_len = buffer_getframecount(b);
-	x->w_envlen = buffer_getframecount(e);
+	if (x->extern_wave)
+	{
+		buffer_ref_set(x->w_buf, x->w_name);
+		t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
+		x->w_len = buffer_getframecount(b);
+	}
+	
+	if (x->extern_env){
+		buffer_ref_set(x->w_env, x->w_envname);
+		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
+		x->w_envlen = buffer_getframecount(e);
+	}
 }
 
 void sgran_set(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
@@ -356,7 +360,7 @@ void sgran_assist(t_sgran *x, void *b, long m, long a, char *s)
 // START AND STOP MSGS
 ////
 void sgran_start(t_sgran *x){
-	if (!buffer_ref_exists(x->w_buf) || !buffer_ref_exists(x->w_env))
+	if ((!buffer_ref_exists(x->w_buf) && x->extern_wave) || (!buffer_ref_exists(x->w_env) && x->extern_env))
 	{
 		error("Make sure you've configured a wavetable buffer and envelope buffer!");
 		defer((t_object*)x, (method)sgran_setbuffers, NULL, 0, NULL);
@@ -376,16 +380,16 @@ void sgran_stop(t_sgran *x){
 ////
 
 void sgran_grainrate(t_sgran *x, double rl, double rm, double rh, double rt){
-	x->grainRateVarLow = rl;
-	x->grainRateVarMid = fmax(rm, rl);
-	x->grainRateVarHigh = fmax(rh, rm);
+	x->grainRateVarLow = rl / 1000;
+	x->grainRateVarMid = fmax(rm, rl) / 1000;
+	x->grainRateVarHigh = fmax(rh, rm) / 1000;
 	x->grainRateVarTight = rt;
 }
 
 void sgran_graindur(t_sgran *x, double dl, double dm, double dh, double dt){
-	x->grainDurLow = dl;
-	x->grainDurMid = fmax(dm, dl);
-	x->grainDurHigh = fmax(dh, dm);
+	x->grainDurLow = dl / 1000;
+	x->grainDurMid = fmax(dm, dl) / 1000;
+	x->grainDurHigh = fmax(dh, dm) / 1000;
 	x->grainDurTight = dt;
 }
 
@@ -438,12 +442,12 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 	
 	t_buffer_obj	*buffer = buffer_ref_getobject(x->w_buf);
 	t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
-	if (extern_wave)
+	if (x->extern_wave)
 		b = buffer_locksamples(buffer);
 	else
 		b = x->sineTable;
 	
-	if (extern_env)
+	if (x->extern_env)
 		e = buffer_locksamples(env);
 	else
 		b = x->hanningTable;
@@ -498,9 +502,9 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 	
 	
 	
-	if (extern_wave)
+	if (x->extern_wave)
 		buffer_unlocksamples(buffer);
-	if (extern_env)
+	if (x->extern_env)
 		buffer_unlocksamples(env);
 	return;
 zero:

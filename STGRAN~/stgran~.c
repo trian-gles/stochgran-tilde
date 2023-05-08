@@ -95,7 +95,7 @@ void stgran_start(t_stgran *x);
 void stgran_stop(t_stgran *x);
 void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
 void stgran_dsp64(t_stgran *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
-void stgran_usehanning(t_sgran* x);
+void stgran_usehanning(t_stgran* x);
 void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av);
 void stgran_set(t_stgran* x, t_symbol* s, long argc, t_atom* argv);
 void stgran_grainrate(t_stgran *x, double rl, double rm, double rh, double rt);
@@ -253,7 +253,7 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
 		x->w_envname = env;
 		x->w_envlen = buffer_getframecount(e);
-		x->external_env = false;
+		x->extern_env = false;
 		if (!buffer_ref_exists(x->w_env))
 			stgran_usehanning(x);
 	}
@@ -297,7 +297,7 @@ t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, v
 // SET BUFFER
 ////
 
-void stgran_usehanning(t_sgran* x){
+void stgran_usehanning(t_stgran* x){
 	x->extern_env = false;
 	for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
 		x->hanningTable[i] = 0.5 * (1 - cos(3.141596 * 2 * ((float) i / DEFAULT_TABLE_SIZE)));
@@ -487,7 +487,7 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
 
 	b = buffer_locksamples(buffer);
-	if (extern_env)
+	if (x->extern_env)
 		e = buffer_locksamples(env);
 	else
 		b = x->hanningTable;
@@ -552,7 +552,7 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	
 
 	buffer_unlocksamples(buffer);
-	if (extern_env)
+	if (x->extern_env)
 		buffer_unlocksamples(env);
 	return;
 zero:
