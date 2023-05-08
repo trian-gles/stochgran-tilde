@@ -18,7 +18,6 @@ if (jsarguments.length>2){
 	if (log){
 		minimum = log2(minimum);
 		maximum = log2(maximum);
-		post(minimum)
 	}
 }
 

@@ -20,6 +20,7 @@
 #define MAXGRAINS 1000
 #define MIDC_OFFSET (261.62556530059868 / 256.0)
 #define M_LN2	0.69314718055994529
+#define DEFAULT_TABLE_SIZE 1024
 
 
 
@@ -43,7 +44,9 @@ typedef struct _stgran {
 	
 	t_bool running;
 	t_bool w_buffer_modified;
+	t_bool extern_env;
 	Grain grains[MAXGRAINS];
+	float hanningTable[DEFAULT_TABLE_SIZE];
 	
 	long w_len;
 	long w_envlen;
@@ -92,6 +95,7 @@ void stgran_start(t_stgran *x);
 void stgran_stop(t_stgran *x);
 void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
 void stgran_dsp64(t_stgran *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
+void stgran_usehanning(t_stgran* x);
 void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av);
 void stgran_set(t_stgran* x, t_symbol* s, long argc, t_atom* argv);
 void stgran_grainrate(t_stgran *x, double rl, double rm, double rh, double rt);
@@ -213,10 +217,10 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 
 	dsp_setup((t_pxobject *)x,1); // inlet for the buffer head
 	buf = atom_getsymarg(0,argc,argv);
-	env = atom_getsymarg(1,argc,argv);
+	
 
 	x->w_name = buf;
-	x->w_envname = env;
+	
 	x->w_buffer_modified = false;
 	
 	
@@ -236,16 +240,27 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
         	.currTime=0, 
         	.isplaying=false };
     }
-
+	
 	// create a new buffer reference, initially referencing a buffer with the provided name
 	x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
-	x->w_env = buffer_ref_new((t_object *)x, x->w_envname);
-
 	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
-	t_buffer_obj* e = buffer_ref_getobject(x->w_env);
-	
 	x->w_len = buffer_getframecount(b);
-	x->w_envlen = buffer_getframecount(e);
+	
+	if (argc > 1)
+	{
+		env = atom_getsymarg(1,argc,argv);
+		x->w_envname = env;
+		x->w_env = buffer_ref_new((t_object *)x, x->w_envname);
+		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
+		
+		x->w_envlen = buffer_getframecount(e);
+		x->extern_env = true;
+		if (!buffer_ref_exists(x->w_env))
+			stgran_usehanning(x);
+	}
+	else
+		stgran_usehanning(x);
+	
 	
 	x->oneover_cpsoct10 = 1.0 / cpsoct(10.0);
 
@@ -259,14 +274,12 @@ void stgran_free(t_stgran *x)
 {
 	dsp_free((t_pxobject *)x);
 
-	// must free our buffer reference when we will no longer use it
 	object_free(x->w_buf);
-	object_free(x->w_env);
+	if (x->extern_env)
+		object_free(x->w_env);
 }
 
 
-// A notify method is required for our buffer reference
-// This handles notifications when the buffer appears, disappears, or is modified.
 t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
 {
 	if (!x->running)
@@ -285,16 +298,25 @@ t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, v
 // SET BUFFER
 ////
 
+void stgran_usehanning(t_stgran* x){
+	x->extern_env = false;
+	for (size_t i = 0; i < DEFAULT_TABLE_SIZE; i++){
+		x->hanningTable[i] = 0.5 * (1 - cos(3.141596 * 2 * ((float) i / DEFAULT_TABLE_SIZE)));
+		}
+	x->w_envlen = DEFAULT_TABLE_SIZE;
+}
+
 void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av) {
 
+	if (x->extern_env){
+		buffer_ref_set(x->w_env, x->w_envname);
+		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
+		x->w_envlen = buffer_getframecount(e);
+	}
+	
 	buffer_ref_set(x->w_buf, x->w_name);
-	buffer_ref_set(x->w_env, x->w_envname);
-
 	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
-	t_buffer_obj* e = buffer_ref_getobject(x->w_env);
-
 	x->w_len = buffer_getframecount(b);
-	x->w_envlen = buffer_getframecount(e);
 }
 
 void stgran_set(t_stgran* x, t_symbol* s, long argc, t_atom* argv) {
@@ -323,9 +345,9 @@ void stgran_assist(t_stgran *x, void *b, long m, long a, char *s)
 // START AND STOP MSGS
 ////
 void stgran_start(t_stgran *x){
-	if (!buffer_ref_exists(x->w_buf) || !buffer_ref_exists(x->w_env))
+	if (!buffer_ref_exists(x->w_buf) || (!buffer_ref_exists(x->w_env) && x->extern_env))
 	{
-		error("Make sure you've configured a wavetable buffer and envelope buffer!");
+		error("Make sure you've configured a sampling buffer and envelope!");
 		defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
 	}
 
@@ -343,16 +365,16 @@ void stgran_stop(t_stgran *x){
 ////
 
 void stgran_grainrate(t_stgran* x, double rl, double rm, double rh, double rt) {
-	x->grainRateVarLow = rl;
-	x->grainRateVarMid = fmax(rm, rl);
-	x->grainRateVarHigh = fmax(rh, rm);
+	x->grainRateVarLow = rl / 1000;
+	x->grainRateVarMid = fmax(rm, rl) / 1000;
+	x->grainRateVarHigh = fmax(rh, rm) / 1000;
 	x->grainRateVarTight = rt;
 }
 
 void stgran_graindur(t_stgran* x, double dl, double dm, double dh, double dt) {
-	x->grainDurLow = dl;
-	x->grainDurMid = fmax(dm, dl);
-	x->grainDurHigh = fmax(dh, dm);
+	x->grainDurLow = dl / 1000;
+	x->grainDurMid = fmax(dm, dl) / 1000;
+	x->grainDurHigh = fmax(dh, dm) / 1000;
 	x->grainDurTight = dt;
 }
 
@@ -467,7 +489,10 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
 
 	b = buffer_locksamples(buffer);
-	e = buffer_locksamples(env);
+	if (x->extern_env)
+		e = buffer_locksamples(env);
+	else
+		e = x->hanningTable;
 	
 	
 	double head = 0;
@@ -529,7 +554,8 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	
 
 	buffer_unlocksamples(buffer);
-	buffer_unlocksamples(env);
+	if (x->extern_env)
+		buffer_unlocksamples(env);
 	return;
 zero:
 	while (n--) {
