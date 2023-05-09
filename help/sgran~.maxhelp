@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 918.0, 159.0, 926.0, 750.0 ],
+		"rect" : [ 941.0, 170.0, 1219.0, 812.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 698.0 ],
+						"rect" : [ 0.0, 26.0, 1219.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -525,7 +525,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0.02", 0.2, "2.016", 0.4, "4.012", 0.6, "6.008", 0.8, "8.004", 1.0, "10" ],
 											"range_start" : 0.0,
-											"range_end" : 116.327070497288815,
+											"range_end" : 272.77214863778363,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -559,9 +559,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "48.863", 0.2, "58.645", 0.4, "68.426", 0.6, "78.208", 0.8, "87.99", 1.0, "97.772" ],
+											"domain_labels" : [ 0.0, "0.5", 0.2, "1", 0.4, "1.5", 0.6, "2", 0.8, "2.5", 1.0, "3" ],
 											"range_start" : 0.0,
-											"range_end" : 1.0,
+											"range_end" : 9.312628561447324,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1002,7 +1002,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 918.0, 211.0, 926.0, 698.0 ],
+						"rect" : [ 941.0, 222.0, 1219.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1077,7 +1077,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 37.0, 29.476202070713043, 182.0, 74.0 ],
-									"text" : "sgran~\nKieran McAuliffe\nDr. Mara Helmuth"
+									"text" : "sgran~\nKieran McAuliffe\nMara Helmuth"
 								}
 
 							}

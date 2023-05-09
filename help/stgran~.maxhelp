@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 200.0, 222.0, 926.0, 763.0 ],
+		"rect" : [ 922.0, 142.0, 926.0, 763.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 200.0, 274.0, 926.0, 711.0 ],
+						"rect" : [ 922.0, 168.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -170,7 +170,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 493.0, 593.0, 154.0, 23.0 ],
+									"patching_rect" : [ 477.0, 593.0, 154.0, 23.0 ],
 									"text" : "fill sin 150, apply hanning"
 								}
 
@@ -521,7 +521,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0", 0.2, "0.2", 0.4, "0.4", 0.6, "0.6", 0.8, "0.8", 1.0, "1" ],
 											"range_start" : 0.0,
-											"range_end" : 187.133127494252079,
+											"range_end" : 190.071295714725636,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -555,9 +555,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "41.18", 0.2, "83.224", 0.4, "125.269", 0.6, "167.313", 0.8, "209.357", 1.0, "251.401" ],
+											"domain_labels" : [ 0.0, "44.121", 0.2, "88.818", 0.4, "133.515", 0.6, "178.211", 0.8, "222.908", 1.0, "267.605" ],
 											"range_start" : 0.0,
-											"range_end" : 0.997437939728176,
+											"range_end" : 0.99610064400104,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -992,7 +992,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 711.0 ],
+						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1502,7 +1502,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 711.0 ],
+						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1913,7 +1913,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-21", 0 ],
-									"midpoints" : [ 128.5, 261.0, 150.0, 261.0, 150.0, 156.0, 246.5, 156.0 ],
+									"midpoints" : [ 128.5, 261.0, 150.0, 261.0, 150.0, 153.0, 246.5, 153.0 ],
 									"order" : 0,
 									"source" : [ "obj-7", 0 ]
 								}
