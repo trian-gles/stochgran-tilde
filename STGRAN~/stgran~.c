@@ -50,6 +50,8 @@ typedef struct _stgran {
 	
 	long w_len;
 	long w_envlen;
+
+	long grainLimit;
 	
 	double transLow;
 	double transMid;
@@ -148,7 +150,7 @@ double prob(double low,double mid,double high,double tight)
                       //              no negative allowed
 {
 	double range, num, sign;
-
+	tight = fmax(0.0001, tight);
 	range = (high-mid) > (mid-low) ? high-mid : mid-low;
 	do {
 	  	if (rrand() > 0.)
@@ -190,6 +192,9 @@ void ext_main(void *r)
 	
 	class_addmethod(c, (method)stgran_pan, "pan", 
 	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+
+	CLASS_ATTR_LONG(c, "grainlimit", 0, t_stgran, grainLimit);
+	CLASS_ATTR_FILTER_CLIP(c, "grainlimit", 1, 1500);
 
 	class_dspinit(c);
 	class_register(CLASS_BOX, c);
@@ -245,6 +250,8 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 	x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
 	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
 	x->w_len = buffer_getframecount(b);
+
+	x->grainLimit = MAXGRAINS;
 	
 	if (argc > 1)
 	{
@@ -263,7 +270,7 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 	
 	
 	x->oneover_cpsoct10 = 1.0 / cpsoct(10.0);
-
+	attr_args_process(x, argc, argv);
 	return (x);
 }
 
@@ -494,7 +501,7 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	else
 		e = x->hanningTable;
 	
-	
+	int maxgrains = fmin(MAXGRAINS, x->grainLimit);
 	double head = 0;
 	
 	if (!b || !e || !x->running)
@@ -508,7 +515,7 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 			head = *in++;
 		*r_out = 0; // r_out already stores the input signal for some reason?  so we have to set it to 0
 		*l_out = 0;
-		for (size_t j = 0; j < MAXGRAINS; j++){
+		for (size_t j = 0; j < maxgrains; j++){
 			Grain* currGrain = &x->grains[j];
 			if (currGrain->isplaying)
 			{
