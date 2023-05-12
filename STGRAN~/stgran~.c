@@ -202,18 +202,15 @@ void ext_main(void *r)
 
 	ps_buffer_modified = gensym("buffer_modified");
 }
-/*
-	Inlets:
-	0 : On/off, grainrate, graindur, trans, pan
-	
-*/
+
 
 /* Args:
-		p0: wavetable
+		p0: sourcetable
 		p1: grainEnv
+
+		attributes: grainlimit
 	*/
 	
-// will eventually need to handle for buffers with more than one channel
 void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 {
 	t_stgran *x = (t_stgran *)object_alloc(s_stgran_class);

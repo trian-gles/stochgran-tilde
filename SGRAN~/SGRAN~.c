@@ -191,18 +191,14 @@ void ext_main(void *r)
 	s_sgran_class = c;
 
 }
-/*
-	Inlets:
-	0 : start, stop, grainrate, graindur, freq, pan
-	
-*/
 
 /* Args:
 		p0: wavetable
 		p1: grainEnv
+
+		attributes: grainlimit
 	*/
 	
-// will eventually need to handle for buffers with more than one channel
 void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 {
 	t_sgran *x = (t_sgran *)object_alloc(s_sgran_class);
