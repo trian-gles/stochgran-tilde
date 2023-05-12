@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 200.0, 222.0, 926.0, 763.0 ],
+		"rect" : [ 100.0, 100.0, 926.0, 763.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 200.0, 274.0, 926.0, 711.0 ],
+						"rect" : [ 100.0, 126.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -88,13 +88,49 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-34",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 332.5, 305.0, 80.0, 22.0 ],
+									"text" : "grainlimit 200"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-30",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 332.5, 275.0, 73.0, 22.0 ],
+									"text" : "grainlimit 30"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-28",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 332.5, 242.5, 67.0, 22.0 ],
+									"text" : "grainlimit 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-25",
-									"linecount" : 3,
+									"linecount" : 7,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 210.5, 154.0, 209.0, 47.0 ],
-									"text" : "an optional positional argument specifies the source envelope (default is a hanning window)"
+									"patching_rect" : [ 218.0, 100.0, 209.0, 100.0 ],
+									"text" : "an optional positional argument specifies the source envelope (default is a hanning window)\n\nthe grainlimit attribute limits the maximum concurrent grains(default/maximum is 1000)"
 								}
 
 							}
@@ -170,7 +206,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 493.0, 593.0, 154.0, 23.0 ],
+									"patching_rect" : [ 477.0, 593.0, 154.0, 23.0 ],
 									"text" : "fill sin 150, apply hanning"
 								}
 
@@ -324,12 +360,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-37",
+									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1207.0, 189.0, 82.0, 22.0 ],
-									"text" : "50 80 300 0.6"
+									"patching_rect" : [ 1207.0, 189.0, 72.0, 35.0 ],
+									"text" : "50 200 300 0.6"
 								}
 
 							}
@@ -377,8 +414,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 113.0, 57.0, 103.0, 22.0 ],
-									"text" : "grainrate 2 8 10 5"
+									"patching_rect" : [ 113.0, 57.0, 116.0, 22.0 ],
+									"text" : "grainrate 0.2 2 2.5 5"
 								}
 
 							}
@@ -491,8 +528,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 113.0, 209.0, 169.0, 22.0 ],
-									"text" : "stgran~ staticbuf hanningtable"
+									"patching_rect" : [ 113.0, 209.0, 256.0, 22.0 ],
+									"text" : "stgran~ staticbuf hanningtable @grainlimit 200"
 								}
 
 							}
@@ -521,7 +558,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0", 0.2, "0.2", 0.4, "0.4", 0.6, "0.6", 0.8, "0.8", 1.0, "1" ],
 											"range_start" : 0.0,
-											"range_end" : 187.133127494252079,
+											"range_end" : 77.469040808106016,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -555,9 +592,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "41.18", 0.2, "83.224", 0.4, "125.269", 0.6, "167.313", 0.8, "209.357", 1.0, "251.401" ],
+											"domain_labels" : [ 0.0, "4.28", 0.2, "13.0", 0.4, "21.8", 0.6, "30.5", 0.8, "39.3", 1.0, "48.1" ],
 											"range_start" : 0.0,
-											"range_end" : 0.997437939728176,
+											"range_end" : 7.558942550060644,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -576,7 +613,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 263.0, 242.5, 40.0, 22.0 ],
-									"text" : "*~ 0.2"
+									"text" : "*~ 0.1"
 								}
 
 							}
@@ -588,7 +625,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 113.0, 245.5, 40.0, 22.0 ],
-									"text" : "*~ 0.2"
+									"text" : "*~ 0.1"
 								}
 
 							}
@@ -768,6 +805,14 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"midpoints" : [ 342.0, 267.0, 315.0, 267.0, 315.0, 279.0, 99.0, 279.0, 99.0, 204.0, 122.5, 204.0 ],
+									"source" : [ "obj-28", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-43", 0 ],
 									"source" : [ "obj-3", 0 ]
 								}
@@ -777,6 +822,22 @@
 								"patchline" : 								{
 									"destination" : [ "obj-44", 0 ],
 									"source" : [ "obj-3", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"midpoints" : [ 342.0, 300.0, 171.0, 300.0, 171.0, 279.0, 99.0, 279.0, 99.0, 204.0, 122.5, 204.0 ],
+									"source" : [ "obj-30", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"midpoints" : [ 342.0, 330.0, 171.0, 330.0, 171.0, 279.0, 99.0, 279.0, 99.0, 204.0, 122.5, 204.0 ],
+									"source" : [ "obj-34", 0 ]
 								}
 
 							}
@@ -992,7 +1053,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 711.0 ],
+						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1502,7 +1563,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 711.0 ],
+						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1913,7 +1974,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-21", 0 ],
-									"midpoints" : [ 128.5, 261.0, 150.0, 261.0, 150.0, 156.0, 246.5, 156.0 ],
+									"midpoints" : [ 128.5, 261.0, 150.0, 261.0, 150.0, 153.0, 246.5, 153.0 ],
 									"order" : 0,
 									"source" : [ "obj-7", 0 ]
 								}

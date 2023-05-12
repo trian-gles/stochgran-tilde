@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 918.0, 159.0, 926.0, 750.0 ],
+		"rect" : [ 100.0, 100.0, 1219.0, 812.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 698.0 ],
+						"rect" : [ 100.0, 152.0, 1219.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -88,13 +88,49 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-34",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 386.0, 242.0, 80.0, 22.0 ],
+									"text" : "grainlimit 200"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-30",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 386.0, 208.0, 87.0, 22.0 ],
+									"text" : "grainlimit 1000"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-28",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 386.0, 178.0, 67.0, 22.0 ],
+									"text" : "grainlimit 2"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-26",
 									"linecount" : 5,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 245.0, 95.0, 264.0, 74.0 ],
-									"text" : "two optional positional arguments specify buffer names containing the source wave and envelope.  An optional argument sets a hard limit on the number of simultaneous grains (default: 1500)"
+									"patching_rect" : [ 249.5, 103.5, 264.0, 74.0 ],
+									"text" : "two optional positional arguments specify buffer names containing the source wave and envelope.  the grainLimit attribute set a hard limit on the number of simultaneous grains (default: 1000, also the maximum)"
 								}
 
 							}
@@ -328,12 +364,13 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-37",
+									"linecount" : 2,
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 1240.0, 164.0, 82.0, 22.0 ],
-									"text" : "50 80 100 0.6"
+									"patching_rect" : [ 1240.0, 164.0, 79.0, 35.0 ],
+									"text" : "50 400 1200 0.6"
 								}
 
 							}
@@ -495,8 +532,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 121.0, 178.0, 169.0, 22.0 ],
-									"text" : "sgran~ sinetable hanningtable"
+									"patching_rect" : [ 121.0, 178.0, 256.0, 22.0 ],
+									"text" : "sgran~ sinetable hanningtable @grainlimit 200"
 								}
 
 							}
@@ -523,9 +560,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.02", 0.2, "2.016", 0.4, "4.012", 0.6, "6.008", 0.8, "8.004", 1.0, "10" ],
+											"domain_labels" : [ 0.0, "0.02", 0.2, "2.01", 0.4, "4.01", 0.6, "6.00", 0.8, "8.00", 1.0, "10" ],
 											"range_start" : 0.0,
-											"range_end" : 116.327070497288815,
+											"range_end" : 144.269990590721392,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -559,9 +596,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "48.863", 0.2, "58.645", 0.4, "68.426", 0.6, "78.208", 0.8, "87.99", 1.0, "97.772" ],
+											"domain_labels" : [ 0.0, "50", 0.2, "280", 0.4, "510", 0.6, "740", 0.8, "970", 1.0, "1200" ],
 											"range_start" : 0.0,
-											"range_end" : 1.0,
+											"range_end" : 0.990488899921136,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -579,8 +616,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 276.0, 214.5, 40.0, 22.0 ],
-									"text" : "*~ 0.1"
+									"patching_rect" : [ 276.0, 214.5, 47.0, 22.0 ],
+									"text" : "*~ 0.03"
 								}
 
 							}
@@ -591,8 +628,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
-									"patching_rect" : [ 121.0, 214.5, 40.0, 22.0 ],
-									"text" : "*~ 0.1"
+									"patching_rect" : [ 121.0, 214.5, 47.0, 22.0 ],
+									"text" : "*~ 0.03"
 								}
 
 							}
@@ -778,6 +815,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-28", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-43", 0 ],
 									"source" : [ "obj-3", 0 ]
 								}
@@ -787,6 +831,20 @@
 								"patchline" : 								{
 									"destination" : [ "obj-44", 0 ],
 									"source" : [ "obj-3", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-30", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-34", 0 ]
 								}
 
 							}
@@ -1002,7 +1060,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 918.0, 211.0, 926.0, 698.0 ],
+						"rect" : [ 0.0, 26.0, 1219.0, 760.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1077,7 +1135,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 37.0, 29.476202070713043, 182.0, 74.0 ],
-									"text" : "sgran~\nKieran McAuliffe\nDr. Mara Helmuth"
+									"text" : "sgran~\nKieran McAuliffe\nMara Helmuth"
 								}
 
 							}

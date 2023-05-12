@@ -36,7 +36,7 @@ function anything()
 		if (i % 20 == 0){
 			var perc = i / 100;
 			var val = perc * (high - low) + low;
-			var valStr = (Math.round(val * 1000) / 1000).toString();
+			var valStr = (Math.round(val * 1000) / 1000).toString().substring(0, 4);
 			xlabels.push(perc, valStr);
 		}
 		var val = probDist(x, tight)

@@ -44,6 +44,8 @@ typedef struct _sgran {
 	t_bool extern_env;
 	Grain grains[MAXGRAINS];
 	
+	long grainLimit;
+
 	long w_len;
 	long w_envlen;
 	
@@ -96,6 +98,8 @@ void sgran_graindur(t_sgran *x, double dl, double dm, double dh, double dt);
 void sgran_freq(t_sgran *x, double fl, double fm, double fh, double ft);
 void sgran_pan(t_sgran *x, double pl, double pm, double ph, double pt); 
 
+
+
 double rrand() 
 {
 	double min = -1;
@@ -140,7 +144,7 @@ double prob(double low,double mid,double high,double tight)
                       //              no negative allowed
 {
 	double range, num, sign;
-
+	tight = fmax(0.0001, tight);
 	range = (high-mid) > (mid-low) ? high-mid : mid-low;
 	do {
 	  	if (rrand() > 0.)
@@ -180,23 +184,21 @@ void ext_main(void *r)
 	class_addmethod(c, (method)sgran_pan, "pan", 
 	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
 
+	CLASS_ATTR_LONG(c, "grainlimit", 0, t_sgran, grainLimit);
+	CLASS_ATTR_FILTER_CLIP(c, "grainlimit", 1, 1500);
 	class_dspinit(c);
 	class_register(CLASS_BOX, c);
 	s_sgran_class = c;
 
 }
-/*
-	Inlets:
-	0 : start, stop, grainrate, graindur, freq, pan
-	
-*/
 
 /* Args:
 		p0: wavetable
 		p1: grainEnv
+
+		attributes: grainlimit
 	*/
 	
-// will eventually need to handle for buffers with more than one channel
 void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 {
 	t_sgran *x = (t_sgran *)object_alloc(s_sgran_class);
@@ -233,7 +235,7 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 	}
 	
 	
-
+	x->grainLimit = MAXGRAINS;
 	
 	
 	//outlets
@@ -253,13 +255,11 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
         	.currTime=0, 
         	.isplaying=false };
     }
-
-	// create a new buffer reference, initially referencing a buffer with the provided name
 	
 	
 	
 	
-
+	attr_args_process(x, argc, argv);
 
 	return (x);
 }
@@ -382,14 +382,14 @@ void sgran_stop(t_sgran *x){
 ////
 
 void sgran_grainrate(t_sgran *x, double rl, double rm, double rh, double rt){
-	x->grainRateVarLow = rl / 1000;
+	x->grainRateVarLow = fmax(rl, 0.01) / 1000;
 	x->grainRateVarMid = fmax(rm, rl) / 1000;
 	x->grainRateVarHigh = fmax(rh, rm) / 1000;
 	x->grainRateVarTight = rt;
 }
 
 void sgran_graindur(t_sgran *x, double dl, double dm, double dh, double dt){
-	x->grainDurLow = dl / 1000;
+	x->grainDurLow = fmax(dl, 0.01) / 1000;
 	x->grainDurMid = fmax(dm, dl) / 1000;
 	x->grainDurHigh = fmax(dh, dm) / 1000;
 	x->grainDurTight = dt;
@@ -448,6 +448,8 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 		b = buffer_locksamples(buffer);
 	else
 		b = x->sineTable;
+
+	int maxgrains = fmin(MAXGRAINS, x->grainLimit);
 	
 
 	if (x->extern_env)
@@ -460,7 +462,7 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 		
 	
 	while (n--){
-		for (size_t j = 0; j < MAXGRAINS; j++){
+		for (size_t j = 0; j < maxgrains; j++){
 			Grain* currGrain = &x->grains[j];
 			if (currGrain->isplaying)
 			{
