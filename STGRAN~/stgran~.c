@@ -243,7 +243,7 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
         	.isplaying=false };
     }
 	
-	// create a new buffer reference, initially referencing a buffer with the provided name
+	// buffer reference and length
 	x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
 	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
 	x->w_len = buffer_getframecount(b);
@@ -286,8 +286,7 @@ void stgran_free(t_stgran *x)
 
 t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, void *data)
 {
-	if (!x->running)
-		defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
+	defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
 	if (s == x->w_name) {
 		return buffer_ref_notify(x->w_buf, s, msg, sender, data);
 	}
@@ -556,7 +555,6 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	
 	
 	
-
 	buffer_unlocksamples(buffer);
 	if (x->extern_env)
 		buffer_unlocksamples(env);
@@ -566,6 +564,10 @@ zero:
 		*l_out++ = 0.;
 		*r_out++ = 0.;
 	}
+
+	buffer_unlocksamples(buffer);
+	if (x->extern_env)
+		buffer_unlocksamples(env);
 }
 
 // adjust for the appropriate number of inlets and outlets (2 out, one in)

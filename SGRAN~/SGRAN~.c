@@ -515,6 +515,11 @@ zero:
 		*l_out++ = 0.;
 		*r_out++ = 0.;
 	}
+
+	if (x->extern_wave)
+		buffer_unlocksamples(buffer);
+	if (x->extern_env)
+		buffer_unlocksamples(env);
 }
 
 // adjust for the appropriate number of inlets and outlets (2 out, no in)
