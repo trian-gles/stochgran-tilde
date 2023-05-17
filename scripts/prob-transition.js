@@ -44,7 +44,7 @@ function msg_float(f){
 		
 		else if (!dist1 || !dist2)
 		{
-			error("Distributions must be defined before indexing");
+			return; // distributions are not defined
 		}
 		else 
 		{
