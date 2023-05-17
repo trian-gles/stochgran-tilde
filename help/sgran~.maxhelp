@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 1219.0, 812.0 ],
+		"rect" : [ 111.0, 256.0, 1024.0, 659.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 152.0, 1219.0, 760.0 ],
+						"rect" : [ 111.0, 282.0, 1024.0, 633.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -284,8 +284,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 121.0, 147.0, 84.0, 22.0 ],
-									"text" : "r gran-params"
+									"patching_rect" : [ 121.0, 147.0, 90.0, 22.0 ],
+									"text" : "r sgran-params"
 								}
 
 							}
@@ -295,8 +295,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 121.0, 118.0, 86.0, 22.0 ],
-									"text" : "s gran-params"
+									"patching_rect" : [ 121.0, 118.0, 92.0, 22.0 ],
+									"text" : "s sgran-params"
 								}
 
 							}
@@ -306,8 +306,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1053.0, 250.0, 86.0, 22.0 ],
-									"text" : "s gran-params"
+									"patching_rect" : [ 1053.0, 250.0, 92.0, 22.0 ],
+									"text" : "s sgran-params"
 								}
 
 							}
@@ -317,8 +317,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 641.0, 247.5, 86.0, 22.0 ],
-									"text" : "s gran-params"
+									"patching_rect" : [ 641.0, 247.5, 92.0, 22.0 ],
+									"text" : "s sgran-params"
 								}
 
 							}
@@ -596,9 +596,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "50", 0.2, "280", 0.4, "510", 0.6, "740", 0.8, "970", 1.0, "1200" ],
+											"domain_labels" : [ 0.0, "0.5", 0.2, "1", 0.4, "1.5", 0.6, "2", 0.8, "2.5", 1.0, "3" ],
 											"range_start" : 0.0,
-											"range_end" : 0.990488899921136,
+											"range_end" : 9.312628561447324,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1060,7 +1060,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1219.0, 760.0 ],
+						"rect" : [ 0.0, 26.0, 1024.0, 633.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1210,7 +1210,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 111.25, 188.976202070713043, 108.0, 22.0 ],
-									"text" : "freq 110 440 880 3"
+									"text" : "freq 110 440 880 1"
 								}
 
 							}
@@ -1491,14 +1491,6 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "SGRAN~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "STGRAN~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "prob-transition.js",
 				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/scripts",
 				"patcherrelativepath" : "../scripts",
@@ -1518,6 +1510,14 @@
 				"patcherrelativepath" : ".",
 				"type" : "PNG",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "sgran~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "stgran~.mxo",
+				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0,

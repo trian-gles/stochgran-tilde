@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 926.0, 763.0 ],
+		"rect" : [ 100.0, 100.0, 1527.0, 813.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 926.0, 737.0 ],
+						"rect" : [ 0.0, 26.0, 1527.0, 787.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -558,7 +558,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0", 0.2, "0.2", 0.4, "0.4", 0.6, "0.6", 0.8, "0.8", 1.0, "1" ],
 											"range_start" : 0.0,
-											"range_end" : 77.469040808106016,
+											"range_end" : 544.372041729477019,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -592,9 +592,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "4.28", 0.2, "13.0", 0.4, "21.8", 0.6, "30.5", 0.8, "39.3", 1.0, "48.1" ],
+											"domain_labels" : [ 0.0, "1", 0.2, "6.8", 0.4, "12.6", 0.6, "18.4", 0.8, "24.2", 1.0, "30" ],
 											"range_start" : 0.0,
-											"range_end" : 7.558942550060644,
+											"range_end" : 10.5828004871675,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1053,7 +1053,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
+						"rect" : [ 100.0, 126.0, 1527.0, 787.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1141,7 +1141,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 115.0, 283.0, 40.0, 22.0 ],
-									"text" : "*~ 0.2"
+									"text" : "*~ 0.1"
 								}
 
 							}
@@ -1153,7 +1153,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "signal" ],
 									"patching_rect" : [ 48.0, 283.0, 40.0, 22.0 ],
-									"text" : "*~ 0.2"
+									"text" : "*~ 0.1"
 								}
 
 							}
@@ -1563,7 +1563,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 926.0, 737.0 ],
+						"rect" : [ 0.0, 26.0, 1527.0, 787.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -2082,14 +2082,6 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "SGRAN~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
-				"name" : "STGRAN~.mxo",
-				"type" : "iLaX"
-			}
-, 			{
 				"name" : "prob-transition.js",
 				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/scripts",
 				"patcherrelativepath" : "../scripts",
@@ -2104,11 +2096,19 @@
 				"implicit" : 1
 			}
 , 			{
+				"name" : "sgran~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
 				"name" : "stgran-algo.png",
 				"bootpath" : "~/Documents/Max 8/Library/max-sdk/source/stochgran-tilde/help",
 				"patcherrelativepath" : ".",
 				"type" : "PNG",
 				"implicit" : 1
+			}
+, 			{
+				"name" : "stgran~.mxo",
+				"type" : "iLaX"
 			}
  ],
 		"autosave" : 0
