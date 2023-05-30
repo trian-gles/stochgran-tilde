@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1527.0, 787.0 ],
+						"rect" : [ 100.0, 126.0, 1527.0, 787.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -129,7 +129,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 218.0, 100.0, 209.0, 100.0 ],
+									"patching_rect" : [ 237.0, 97.5, 209.0, 100.0 ],
 									"text" : "an optional positional argument specifies the source envelope (default is a hanning window)\n\nthe grainlimit attribute limits the maximum concurrent grains(default/maximum is 1000)"
 								}
 
@@ -280,8 +280,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 113.0, 178.0, 84.0, 22.0 ],
-									"text" : "r gran-params"
+									"patching_rect" : [ 113.0, 178.0, 120.0, 22.0 ],
+									"text" : "r stgran-help-params"
 								}
 
 							}
@@ -291,8 +291,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 113.0, 149.0, 86.0, 22.0 ],
-									"text" : "s gran-params"
+									"patching_rect" : [ 113.0, 149.0, 122.0, 22.0 ],
+									"text" : "s stgran-help-params"
 								}
 
 							}
@@ -302,8 +302,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1020.0, 275.0, 86.0, 22.0 ],
-									"text" : "s gran-params"
+									"patching_rect" : [ 1020.0, 275.0, 122.0, 22.0 ],
+									"text" : "s stgran-help-params"
 								}
 
 							}
@@ -313,8 +313,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 548.0, 272.5, 86.0, 22.0 ],
-									"text" : "s gran-params"
+									"patching_rect" : [ 548.0, 272.5, 122.0, 22.0 ],
+									"text" : "s stgran-help-params"
 								}
 
 							}
@@ -1053,7 +1053,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 100.0, 126.0, 1527.0, 787.0 ],
+						"rect" : [ 0.0, 26.0, 1527.0, 787.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,

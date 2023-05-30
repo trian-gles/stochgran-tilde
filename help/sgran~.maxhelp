@@ -284,8 +284,8 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 121.0, 147.0, 90.0, 22.0 ],
-									"text" : "r sgran-params"
+									"patching_rect" : [ 121.0, 147.0, 117.0, 22.0 ],
+									"text" : "r sgran-help-params"
 								}
 
 							}
@@ -295,8 +295,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 121.0, 118.0, 92.0, 22.0 ],
-									"text" : "s sgran-params"
+									"patching_rect" : [ 121.0, 118.0, 119.0, 22.0 ],
+									"text" : "s sgran-help-params"
 								}
 
 							}
@@ -306,8 +306,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 1053.0, 250.0, 92.0, 22.0 ],
-									"text" : "s sgran-params"
+									"patching_rect" : [ 1053.0, 250.0, 119.0, 22.0 ],
+									"text" : "s sgran-help-params"
 								}
 
 							}
@@ -317,8 +317,8 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 641.0, 247.5, 92.0, 22.0 ],
-									"text" : "s sgran-params"
+									"patching_rect" : [ 638.75, 247.5, 119.0, 22.0 ],
+									"text" : "s sgran-help-params"
 								}
 
 							}
@@ -406,7 +406,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 734.838734149932861, 242.0, 219.0, 33.0 ],
+									"patching_rect" : [ 720.0, 218.0, 219.0, 33.0 ],
 									"text" : "prob-visual connected to a plot~ as shown can visualize the distribution"
 								}
 
@@ -562,7 +562,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0.02", 0.2, "2.01", 0.4, "4.01", 0.6, "6.00", 0.8, "8.00", 1.0, "10" ],
 											"range_start" : 0.0,
-											"range_end" : 144.269990590721392,
+											"range_end" : 469.177134548157767,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -596,9 +596,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.5", 0.2, "1", 0.4, "1.5", 0.6, "2", 0.8, "2.5", 1.0, "3" ],
+											"domain_labels" : [ 0.0, "5.22", 0.2, "27.6", 0.4, "49.9", 0.6, "72.3", 0.8, "94.7", 1.0, "117." ],
 											"range_start" : 0.0,
-											"range_end" : 9.312628561447324,
+											"range_end" : 8.686816461108164,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
