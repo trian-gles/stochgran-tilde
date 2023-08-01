@@ -54,8 +54,9 @@ function anything()
 	outlet(1, ["definethickness", 3]);
 	outlet(1, ["defineline", "origin"]);
 	outlet(1, ["definerange", 0, Math.max.apply(null, ys)]);
-	outlet(1, ["rangelabel", "likelihood"]);
-	outlet(1, ["domainlabel", type]);
+	outlet(1, ["rangelabel", "prob"]);
+	if (type != "list")
+		outlet(1, ["domainlabel", type]);
 	outlet(0, ys);
 	
 	outlet(1, xlabels);
