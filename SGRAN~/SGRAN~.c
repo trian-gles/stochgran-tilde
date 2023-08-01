@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
 #define MAXGRAINS 1000
 #define MIDC_OFFSET (261.62556530059868 / 256.0)
 #define M_LN2	0.69314718055994529

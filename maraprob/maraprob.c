@@ -1,31 +1,36 @@
 /**
 	@file
-	prob.c - raw object of the prob function
+	maraprob.c - raw object of the maraprob function
 
 */
 
 #include "ext.h"				
 #include "ext_obex.h"
+#include <stdlib.h>
+#include "math.h"
 
-typedef struct _prob {		
+typedef struct _maraprob {		
 	t_object	ob;			
 	float lo;
 	float mid;
 	float hi;
 	float ti;
 	void		*outlet;	
-} t_prob;
+} t_maraprob;
 
 
-void *prob_new(long n);
-void prob_free(t_prob *x);
-void prob_assist(t_prob *x, void *b, long m, long a, char *s);
-void prob_bang(t_prob *x);
-void prob_int(t_prob *x, long n);
-void prob_float(t_prob *x, double f);
+void *maraprob_new(t_symbol *s, long argc, t_atom *argv);
+void maraprob_free(t_maraprob *x);
+void maraprob_assist(t_maraprob *x, void *b, long m, long a, char *s);
+void maraprob_bang(t_maraprob *x);
+
+void maraprob_float(t_maraprob *x, double f);
+void maraprob_ft2(t_maraprob *x, double f);
+void maraprob_ft3(t_maraprob *x, double f);
+void maraprob_ft4(t_maraprob *x, double f);
 
 
-t_class *prob_class;
+t_class *maraprob_class;
 
 
 //--------------------------------------------------------------------------
@@ -34,23 +39,30 @@ void ext_main(void *r)
 {
 	t_class *c;
 
-	c = class_new("prob", (method)prob_new, (method)prob_free, sizeof(t_prob), 0L, A_GIMME, 0);
+	c = class_new("maraprob", (method)maraprob_new, (method)maraprob_free, sizeof(t_maraprob), 0L, A_GIMME, 0);
 
-	class_addmethod(c, (method)prob_bang,	"bang",		0);				
-	class_addmethod(c, (method)prob_float,	"float",	A_FLOAT, 0);
-	class_addmethod(c, (method)prob_ft1, "ft1", A_FLOAT, 0);
-	class_addmethod(c, (method)prob_ft2, "ft2", A_FLOAT, 0);
-	class_addmethod(c, (method)prob_ft3, "ft3", A_FLOAT, 0);
-	class_addmethod(c, (method)prob_assist,	"assist",	A_CANT, 0);
+	class_addmethod(c, (method)maraprob_bang,	"bang",		0);
+	class_addmethod(c, (method)maraprob_float, "float", A_FLOAT, 0);
+	class_addmethod(c, (method)maraprob_ft2, "ft2", A_FLOAT, 0);
+	class_addmethod(c, (method)maraprob_ft3, "ft3", A_FLOAT, 0);
+	class_addmethod(c, (method)maraprob_ft4, "ft4", A_FLOAT, 0);
+	class_addmethod(c, (method)maraprob_assist,	"assist",	A_CANT, 0);
 
 	class_register(CLASS_BOX, c);
-	prob_class = c;
+	maraprob_class = c;
+}
 
-	post("prob object loaded...",0);	// post any important info to the max window when our class is loaded
+double rrand() 
+{
+	double min = -1;
+	double max = 1;
+    double range = (max - min); 
+    double div = RAND_MAX / range;
+    return min + (rand() / div);
 }
 
 // From Mara Helmuth
-double doprob(double low,double mid,double high,double tight)
+double domaraprob(double low,double mid,double high,double tight)
         // Returns a value within a range close to a preferred value
                     // tightness: 0 max away from mid
                      //               1 even distribution
@@ -72,11 +84,11 @@ double doprob(double low,double mid,double high,double tight)
 
 //--------------------------------------------------------------------------
 
-void *prob_new(t_symbol *s, long argc, t_atom *argv)
+void *maraprob_new(t_symbol *s, long argc, t_atom *argv)
 {
-	t_prob *x;
+	t_maraprob *x;
 
-	x = (t_prob *)object_alloc(prob_class);
+	x = (t_maraprob *)object_alloc(maraprob_class);
 	if(x) {
 		if (argc == 4){
 			x->lo = atom_getfloatarg(0,argc,argv);
@@ -91,11 +103,11 @@ void *prob_new(t_symbol *s, long argc, t_atom *argv)
 			x->ti = 0;
 		}
 		else {
-			error("Prob object must take 4 arguments (lo, mid, hi, tight) or no arguments to be set via inlets");
+			error("maraprob object must take 4 arguments (lo, mid, hi, tight) or no arguments to be set via inlets");
 			return (0);
 		}
 		
-		for (int i=3, i>1, i--)
+		for (int i=4; i>1; i--)
 			floatin(x, i);
 		
 		x->outlet = floatout((t_object *)x);
@@ -107,15 +119,17 @@ void *prob_new(t_symbol *s, long argc, t_atom *argv)
 }
 
 
-void prob_free(t_prob *x)
+void maraprob_free(t_maraprob *x)
 {
 	
 }
 
 
+
+
 //--------------------------------------------------------------------------
 
-void prob_assist(t_prob *x, void *b, long m, long a, char *s) 
+void maraprob_assist(t_maraprob *x, void *b, long m, long a, char *s) 
 {
 	if (m == ASSIST_INLET) {
 		switch (a) {
@@ -125,11 +139,9 @@ void prob_assist(t_prob *x, void *b, long m, long a, char *s)
 		case 1:
 			sprintf(s,"Inlet %ld: Mid value", a);
 			break;
-		}
 		case 2:
 			sprintf(s,"Inlet %ld: High value", a);
 			break;
-		}
 		case 3:
 			sprintf(s,"Inlet %ld: Tight value", a);
 			break;
@@ -138,23 +150,23 @@ void prob_assist(t_prob *x, void *b, long m, long a, char *s)
 		sprintf(s,"Generated float");
 }
 
-void prob_float(t_myobject *x, float n){
+void maraprob_float(t_maraprob *x, double n){
 	x->lo = n;
 }
 
-void prob_ft1(t_myobject *x, float n)
+void maraprob_ft2(t_maraprob *x, double n)
 {
     x->mid = n;
 }
 
-void prob_ft2(t_myobject *x, float n)
+void maraprob_ft3(t_maraprob *x, double n)
 {
     x->hi = n;
 }
 
-void prob_ft3(t_myobject *x, float n)
+void maraprob_ft4(t_maraprob *x, double n)
 {
-	if (n <= 0){
+	if (n <= 0){ 
 		error("Tightness must be above zero");
 		return;
 	}
@@ -162,12 +174,11 @@ void prob_ft3(t_myobject *x, float n)
 }
 
 
-void prob_bang(t_prob *x)
+void maraprob_bang(t_maraprob *x)
 {
-	float v = 0;
-	
+	double v = 0;
 	if (x->ti > 0){
-		v = prob(x->lo, x->mid, x->hi, x->ti);
+		v = domaraprob(x->lo, x->mid, x->hi, x->ti);
 	}
 	
 	outlet_float(x->outlet, v);
