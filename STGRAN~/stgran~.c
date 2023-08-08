@@ -14,6 +14,7 @@
 #include "ext_buffer.h"
 #include "ext_atomic.h"
 #include "ext_obex.h"
+#include "buffer.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -47,6 +48,8 @@ typedef struct _stgran {
 	t_bool extern_env;
 	Grain grains[MAXGRAINS];
 	float hanningTable[DEFAULT_TABLE_SIZE];
+
+	InternalBuffer* internalBuf;
 	
 	long w_len;
 	long w_envlen;
