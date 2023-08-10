@@ -11,10 +11,10 @@
 #include "ext.h"
 #include "z_dsp.h"
 #include "math.h"
+#include "stgran_buffer.h"
 #include "ext_buffer.h"
 #include "ext_atomic.h"
 #include "ext_obex.h"
-#include "buffer.h"
 #include <stdlib.h>
 #include <stdbool.h>
 
@@ -24,90 +24,7 @@
 #define DEFAULT_TABLE_SIZE 1024
 
 
-
-typedef struct Grain {
-	float waveSampInc; 
-	float ampSampInc; 
-	float ampPhase; 
-	float endTime; 
-	float panR; 
-	float panL; 
-	float currTime; 
-	bool isplaying;
-	} Grain;
-
-typedef struct _stgran {
-	t_pxobject w_obj;
-	t_buffer_ref *w_buf;
-	t_buffer_ref *w_env;
-	t_symbol *w_name;
-	t_symbol *w_envname;
-	
-	t_bool running;
-	t_bool w_buffer_modified;
-	t_bool extern_env;
-	Grain grains[MAXGRAINS];
-	float hanningTable[DEFAULT_TABLE_SIZE];
-
-	InternalBuffer* internalBuf;
-	
-	long w_len;
-	long w_envlen;
-
-	long grainLimit;
-	
-	double transLow;
-	double transMid;
-	double transHigh;
-	double transTight;
-
-	double grainDurLow;
-	double grainDurMid;
-	double grainDurHigh;
-	double grainDurTight;
-	
-	double grainHeadLow;
-	double grainHeadMid;
-	double grainHeadHigh;
-	double grainHeadTight;
-
-	double panLow;
-	double panMid;
-	double panHigh;
-	double panTight;
-	
-	double grainRateVarLow;
-	double grainRateVarMid;
-	double grainRateVarHigh;
-	double grainRateVarTight;
-	
-	int newGrainCounter;
-	float grainRate;
-	
-	double oneover_cpsoct10;
-	
-	short w_connected;
-} t_stgran;
-
-
-
-
-void *stgran_new(t_symbol *s,  long argc, t_atom *argv);
-void stgran_free(t_stgran *x);
-t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
-void stgran_assist(t_stgran *x, void *b, long m, long a, char *s);
-void stgran_start(t_stgran *x);
-void stgran_stop(t_stgran *x);
-void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
-void stgran_dsp64(t_stgran *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
-void stgran_usehanning(t_stgran* x);
-void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av);
-void stgran_set(t_stgran* x, t_symbol* s, long argc, t_atom* argv);
-void stgran_grainrate(t_stgran *x, double rl, double rm, double rh, double rt);
-void stgran_graindur(t_stgran *x, double dl, double dm, double dh, double dt);
-void stgran_grainhead(t_stgran *x, double hl, double hm, double hh, double ht);
-void stgran_trans(t_stgran *x, double fl, double fm, double fh, double ft);
-void stgran_pan(t_stgran *x, double pl, double pm, double ph, double pt); 
+/// Utility fns
 
 double rrand() 
 {
@@ -164,6 +81,88 @@ double prob(double low,double mid,double high,double tight)
 	return(num);
 }
 
+/// STGRAN~
+
+typedef struct Grain {
+	float waveSampInc; 
+	float ampSampInc; 
+	float ampPhase; 
+	float endTime; 
+	float panR; 
+	float panL; 
+	float currTime; 
+	bool isplaying;
+	} Grain;
+
+typedef struct _stgran {
+	t_pxobject w_obj;
+	t_buffer_ref *w_buf;
+	t_buffer_ref *w_env;
+	t_symbol *w_name;
+	t_symbol *w_envname;
+	
+	t_bool running;
+	t_bool w_buffer_modified;
+	t_bool extern_buf;
+	t_bool extern_env;
+	Grain grains[MAXGRAINS];
+	float hanningTable[DEFAULT_TABLE_SIZE];
+
+	InternalBuffer* internalBuf;
+	
+	long w_len;
+	long w_envlen;
+
+	long grainLimit;
+	
+	double transLow;
+	double transMid;
+	double transHigh;
+	double transTight;
+
+	double grainDurLow;
+	double grainDurMid;
+	double grainDurHigh;
+	double grainDurTight;
+	
+	double grainHeadLow;
+	double grainHeadMid;
+	double grainHeadHigh;
+	double grainHeadTight;
+
+	double panLow;
+	double panMid;
+	double panHigh;
+	double panTight;
+	
+	double grainRateVarLow;
+	double grainRateVarMid;
+	double grainRateVarHigh;
+	double grainRateVarTight;
+	
+	int newGrainCounter;
+	float grainRate;
+	
+	double oneover_cpsoct10;
+} t_stgran;
+
+void *stgran_new(t_symbol *s,  long argc, t_atom *argv);
+void stgran_free(t_stgran *x);
+t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
+void stgran_assist(t_stgran *x, void *b, long m, long a, char *s);
+void stgran_start(t_stgran *x);
+void stgran_stop(t_stgran *x);
+void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
+void stgran_dsp64(t_stgran *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags);
+void stgran_usehanning(t_stgran* x);
+void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av);
+void stgran_set(t_stgran* x, t_symbol* s, long argc, t_atom* argv);
+void stgran_grainrate(t_stgran *x, t_symbol* s, long argc, t_atom* argv);
+void stgran_graindur(t_stgran *x, t_symbol* s, long argc, t_atom* argv);
+void stgran_grainhead(t_stgran *x, t_symbol* s, long argc, t_atom* argv);
+void stgran_trans(t_stgran *x, t_symbol* s, long argc, t_atom* argv);
+void stgran_pan(t_stgran *x, t_symbol* s, long argc, t_atom* argv); 
+
 static t_symbol *ps_buffer_modified;
 static t_class *s_stgran_class;
 
@@ -182,19 +181,19 @@ void ext_main(void *r)
 	
 	// these float methods should be replaced with A_GIMME, see docs
 	class_addmethod(c, (method)stgran_grainrate, "grainrate", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 	
 	class_addmethod(c, (method)stgran_graindur, "graindur", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 	
 	class_addmethod(c, (method)stgran_grainhead, "grainhead", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 	
 	class_addmethod(c, (method)stgran_trans, "trans", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 	
 	class_addmethod(c, (method)stgran_pan, "pan", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 
 	CLASS_ATTR_LONG(c, "grainlimit", 0, t_stgran, grainLimit);
 	CLASS_ATTR_FILTER_CLIP(c, "grainlimit", 1, 1500);
@@ -220,11 +219,36 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 	t_symbol *buf=0;
 	t_symbol *env=0;
 
-	dsp_setup((t_pxobject *)x,1); // inlet for the buffer head
-	buf = atom_getsymarg(0,argc,argv);
+
+	// decide between type of sound buffer
+	if (argv[0].a_type == A_FLOAT){
+		x->w_len = floor(atom_getfloat(argv) * sys_getsr() / 1000);
+		x->internalBuf = intern_buffer_make((size_t) x->w_len);
+		x->extern_buf = false;
+	}
+	else if (argv[0].a_type == A_LONG){
+		x->w_len = floor(atom_getfloat(argv) * sys_getsr() / 1000);
+		x->internalBuf = intern_buffer_make((size_t) x->w_len);
+		x->extern_buf = false;
+	}
+	else
+	{
+		x->w_name = atom_getsymarg(0,argc,argv);
+		x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
+		t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
+		x->w_len = buffer_getframecount(b);
+		x->extern_buf = true;
+
+		if (!buffer_ref_exists(x->w_buf)){
+			error("Buffer '%s' does not exist", x->w_name);
+			return 0;
+		}
+	}
+	
+	dsp_setup((t_pxobject *)x,1); // inlet for potential input signal
 	
 
-	x->w_name = buf;
+	
 	
 	x->w_buffer_modified = false;
 	
@@ -246,10 +270,7 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
         	.isplaying=false };
     }
 	
-	// buffer reference and length
-	x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
-	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
-	x->w_len = buffer_getframecount(b);
+	
 
 	x->grainLimit = MAXGRAINS;
 	
@@ -262,8 +283,11 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 		
 		x->w_envlen = buffer_getframecount(e);
 		x->extern_env = true;
-		if (!buffer_ref_exists(x->w_env))
+		if (!buffer_ref_exists(x->w_env)){
+			error("Buffer '%s' does not exist, reverting to hanning envelope", x->w_envname);
 			stgran_usehanning(x);
+		}
+			
 	}
 	else
 		stgran_usehanning(x);
@@ -279,6 +303,8 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 
 void stgran_free(t_stgran *x)
 {
+	if (!x->extern_buf)
+		intern_buffer_free(x->internalBuf);
 	dsp_free((t_pxobject *)x);
 
 	object_free(x->w_buf);
@@ -351,7 +377,7 @@ void stgran_assist(t_stgran *x, void *b, long m, long a, char *s)
 // START AND STOP MSGS
 ////
 void stgran_start(t_stgran *x){
-	if (!buffer_ref_exists(x->w_buf) || (!buffer_ref_exists(x->w_env) && x->extern_env))
+	if ((!buffer_ref_exists(x->w_buf) && x->extern_buf) || (!buffer_ref_exists(x->w_env) && x->extern_env))
 	{
 		error("Make sure you've configured a sampling buffer and envelope!");
 		defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
@@ -370,45 +396,75 @@ void stgran_stop(t_stgran *x){
 // PARAMETER MESSAGES
 ////
 
-void stgran_grainrate(t_stgran* x, double rl, double rm, double rh, double rt) {
-	x->grainRateVarLow = rl / 1000;
-	x->grainRateVarMid = fmax(rm, rl) / 1000;
-	x->grainRateVarHigh = fmax(rh, rm) / 1000;
-	x->grainRateVarTight = rt;
+void stgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, double min, double max, const char* name){
+	if (argc == 1 && argv[0].a_type == A_FLOAT){
+		*lo = atom_getfloatarg(0, argc, argv);
+		*mid = *lo;
+		*hi = *lo;
+		*ti = 1;
+	}
+	else if (argc == 2){
+		*lo = atom_getfloatarg(0, argc, argv);
+		*hi = fmax(*lo, atom_getfloatarg(1, argc, argv));
+		*mid = *lo;
+		*ti = 1;
+	}
+	else if (argc == 4){
+		*lo = atom_getfloatarg(0, argc, argv);
+		*mid = fmax(*lo, atom_getfloatarg(1, argc, argv));
+		*hi =fmax(*mid, atom_getfloatarg(2, argc, argv));
+		*ti = atom_getfloatarg(3, argc, argv);
+	}
+	else {
+		error("Incorrect format for parameter message for %s.  Must be `value (float)` or `low (float), high (float)` or `low, mid, high, tight (all float)`", name);
+		return;
+	}
+
+	if (*ti <= 0) {
+		error("Tightness must be greater than zero");
+		*ti = 1;
+	}
+
+	double args[3] = {*lo, *mid, *hi};
+
+	for (size_t i=0; i<3; i++){
+		if (args[i] < min || args[i] > max){
+			error("%s must be between %f and %f", name, min, max);
+			args[i] = max;
+		}
+	}
+
 }
 
-void stgran_graindur(t_stgran* x, double dl, double dm, double dh, double dt) {
-	x->grainDurLow = dl / 1000;
-	x->grainDurMid = fmax(dm, dl) / 1000;
-	x->grainDurHigh = fmax(dh, dm) / 1000;
-	x->grainDurTight = dt;
+void stgran_grainrate(t_stgran* x, t_symbol* s, long argc, t_atom* argv) {
+	stgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate");
+	x->grainRateVarLow = x->grainRateVarLow / 1000;
+	x->grainRateVarMid = x->grainRateVarMid / 1000;
+	x->grainRateVarHigh = x->grainRateVarHigh / 1000;
 }
 
-void stgran_grainhead(t_stgran *x, double hl, double hm, double hh, double ht){
-	x->grainHeadLow = fmax(0, hl);
-	x->grainHeadMid = fmax(hm, hl);
-	x->grainHeadHigh = fmin(fmax(hh, hm), 1);
-	x->grainHeadTight = ht;
+void stgran_graindur(t_stgran* x, t_symbol* s, long argc, t_atom* argv) {
+	stgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur");
+	x->grainDurLow = x->grainDurLow / 1000;
+	x->grainDurMid = x->grainDurMid / 1000;
+	x->grainDurHigh = x->grainDurHigh / 1000;
 }
 
-void stgran_trans(t_stgran *x, double fl, double fm, double fh, double ft){
-	x->transLow = fl;
-	x->transMid = fmax(fm, fl);
-	x->transHigh = fmax(fh, fm);
-	x->transTight = ft;
+void stgran_grainhead(t_stgran *x, t_symbol* s, long argc, t_atom* argv){
+	stgran_handle_probargs(argc, argv, &(x->grainHeadLow), &(x->grainHeadMid), &(x->grainHeadHigh), &(x->grainHeadTight), 0, 1, "head");
 }
 
-void stgran_pan(t_stgran *x, double pl, double pm, double ph, double pt) {
-	x->panLow = fmax(0, pl);
-	x->panMid = fmax(pm, pl);
-	x->panHigh = fmin(fmax(ph, pm), 1);
-	x->panTight = pt;
+void stgran_trans(t_stgran *x, t_symbol* s, long argc, t_atom* argv){
+	stgran_handle_probargs(argc, argv, &(x->transLow), &(x->transMid), &(x->transHigh), &(x->transTight), -4, 4, "trans");
 }
 
-void stgran_new_grain(t_stgran *x, Grain *grain, double sync){
+void stgran_pan(t_stgran *x, t_symbol* s, long argc, t_atom* argv) {
+	stgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan");
+}
+
+void stgran_new_grain(t_stgran *x, Grain *grain, int head){
 	//post("New grain!");
 	int sr = sys_getsr();
-	int head = floor(sync * x->w_len);
 	
 	double floatShift =  prob(x->grainHeadLow, x->grainHeadMid, x->grainHeadHigh, x->grainHeadTight);
 	int idealShift = floor(floatShift * (float)x->w_len);
@@ -419,7 +475,7 @@ void stgran_new_grain(t_stgran *x, Grain *grain, double sync){
 	double increment = cpsoct(10.0 + trans) * x->oneover_cpsoct10;
 	float offset; // deviation every sample versus the head
 	//post("3");
-	if (x->w_connected)
+	if (!x->extern_buf)
 		offset = increment - 1; // moving buffer
 	else
 		offset = increment; // static buffer 
@@ -493,25 +549,26 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	
 	t_buffer_obj	*buffer = buffer_ref_getobject(x->w_buf);
 	t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
-
-	b = buffer_locksamples(buffer);
-	if (x->extern_env)
+	if (buffer)
+		b = buffer_locksamples(buffer);
+	if (env)
 		e = buffer_locksamples(env);
 	else
 		e = x->hanningTable;
 	
 	int maxgrains = fmin(MAXGRAINS, x->grainLimit);
-	double head = 0;
-	
+	int head = 0;
 	if (!b || !e || !x->running)
 	{
-		//post("DSP failure");
 		goto zero;
 	}
-	//post("Running DSP loop");
+
 	while (n--){
-		if (x->w_connected) // check if the inlet is connected
-			head = *in++;
+		if (!x->extern_buf){
+			head = intern_buffer_append(x->internalBuf, *in++);
+			
+		}
+		
 		*r_out = 0; // r_out already stores the input signal for some reason?  so we have to set it to 0
 		*l_out = 0;
 		for (size_t j = 0; j < maxgrains; j++){
@@ -521,13 +578,29 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 				if ((*currGrain).currTime > currGrain->endTime)
 				{
 					currGrain->isplaying = false;
-					//post("Deleting grain with amp phase %f", currGrain->ampPhase);
 				}
 				else
 				{
-					int currTimeInBuffer = (int)floor(currGrain->currTime) % x->w_len;
 					float grainAmp = oscili(1, currGrain->ampSampInc, e, x->w_envlen, &((*currGrain).ampPhase));
-					float grainOut = grainAmp * b[currTimeInBuffer]; // should include an interpolation option at some point
+					float grainOut;
+					if (x->extern_buf) {
+						int currTimeInBuffer = (int)floor(currGrain->currTime) % x->w_len;
+						grainOut = grainAmp * b[currTimeInBuffer]; // should include an interpolation option at some point
+					}
+						
+					else{
+						if (!x->internalBuf->full){
+							grainOut = 0;
+						}
+							
+						else{
+							grainOut = grainAmp * intern_buffer_get(x->internalBuf, currGrain->currTime);
+						}
+							
+					}
+
+						
+						
 					currGrain->currTime += currGrain->waveSampInc;
 					*l_out += (grainOut * (double)currGrain->panL);
 					*r_out += (grainOut * (double)currGrain->panR);
@@ -557,8 +630,8 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	}
 	
 	
-	
-	buffer_unlocksamples(buffer);
+	if (x->extern_buf)
+		buffer_unlocksamples(buffer);
 	if (x->extern_env)
 		buffer_unlocksamples(env);
 	return;
@@ -576,6 +649,5 @@ zero:
 // adjust for the appropriate number of inlets and outlets (2 out, one in)
 void stgran_dsp64(t_stgran *x, t_object *dsp64, short *count, double samplerate, long maxvectorsize, long flags)
 {
-	x->w_connected = count[1];
 	object_method(dsp64, gensym("dsp_add64"), x, stgran_perform64, 0, NULL);
 }

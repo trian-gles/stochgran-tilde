@@ -94,10 +94,10 @@ void sgran_dsp64(t_sgran *x, t_object *dsp64, short *count, double samplerate, l
 void sgran_usesine(t_sgran* x);
 void sgran_usehanning(t_sgran* x);
 void sgran_set(t_sgran* x, t_symbol* s, long argc, t_atom* argv);
-void sgran_grainrate(t_sgran *x, double rl, double rm, double rh, double rt);
-void sgran_graindur(t_sgran *x, double dl, double dm, double dh, double dt);
-void sgran_freq(t_sgran *x, double fl, double fm, double fh, double ft);
-void sgran_pan(t_sgran *x, double pl, double pm, double ph, double pt); 
+void sgran_grainrate(t_sgran* x, t_symbol* s, long argc, t_atom* argv);
+void sgran_graindur(t_sgran* x, t_symbol* s, long argc, t_atom* argv);
+void sgran_freq(t_sgran* x, t_symbol* s, long argc, t_atom* argv);
+void sgran_pan(t_sgran* x, t_symbol* s, long argc, t_atom* argv); 
 
 
 
@@ -174,16 +174,16 @@ void ext_main(void *r)
 	
 	// these float methods should be replaced with A_GIMME, see docs
 	class_addmethod(c, (method)sgran_grainrate, "grainrate", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 	
 	class_addmethod(c, (method)sgran_graindur, "graindur", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 	
 	class_addmethod(c, (method)sgran_freq, "freq", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 	
 	class_addmethod(c, (method)sgran_pan, "pan", 
-	A_FLOAT, A_FLOAT, A_FLOAT, A_FLOAT, 0);
+	A_GIMME, 0);
 
 	CLASS_ATTR_LONG(c, "grainlimit", 0, t_sgran, grainLimit);
 	CLASS_ATTR_FILTER_CLIP(c, "grainlimit", 1, 1500);
@@ -271,8 +271,6 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 void sgran_free(t_sgran *x)
 {
 	dsp_free((t_pxobject *)x);
-
-	// must free our buffer reference when we will no longer use it
 	if (x->extern_wave)
 		object_free(x->w_buf);
 	if (x->extern_env)
@@ -382,33 +380,71 @@ void sgran_stop(t_sgran *x){
 // PARAMETER MESSAGES
 ////
 
-void sgran_grainrate(t_sgran *x, double rl, double rm, double rh, double rt){
-	x->grainRateVarLow = fmax(rl, 0.01) / 1000;
-	x->grainRateVarMid = fmax(rm, rl) / 1000;
-	x->grainRateVarHigh = fmax(rh, rm) / 1000;
-	x->grainRateVarTight = rt;
+void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, double min, double max, const char* name){
+	if (argc == 1 && argv[0].a_type == A_FLOAT){
+		*lo = atom_getfloatarg(0, argc, argv);
+		*mid = *lo;
+		*hi = *lo;
+		*ti = 1;
+	}
+	else if (argc == 2){
+		*lo = atom_getfloatarg(0, argc, argv);
+		*hi = fmax(*lo, atom_getfloatarg(1, argc, argv));
+		*mid = *lo;
+		*ti = 1;
+	}
+	else if (argc == 4){
+		*lo = atom_getfloatarg(0, argc, argv);
+		*mid = fmax(*lo, atom_getfloatarg(1, argc, argv));
+		*hi =fmax(*mid, atom_getfloatarg(2, argc, argv));
+		*ti = atom_getfloatarg(3, argc, argv);
+	}
+	else {
+		error("Incorrect format for parameter message for %s.  Must be `value (float)` or `low (float), high (float)` or `low, mid, high, tight (all float)`", name);
+		return;
+	}
+
+	if (*ti <= 0) {
+		error("Tightness must be greater than zero");
+		*ti = 1;
+	}
+
+	double args[3] = {*lo, *mid, *hi};
+
+	for (size_t i=0; i<3; i++){
+		if (args[i] < min || args[i] > max){
+			error("%s must be between %f and %f", name, min, max);
+			args[i] = max;
+		}
+	}
+
 }
 
-void sgran_graindur(t_sgran *x, double dl, double dm, double dh, double dt){
-	x->grainDurLow = fmax(dl, 0.01) / 1000;
-	x->grainDurMid = fmax(dm, dl) / 1000;
-	x->grainDurHigh = fmax(dh, dm) / 1000;
-	x->grainDurTight = dt;
+void sgran_grainrate(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
+	sgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate");
+	x->grainRateVarLow = x->grainRateVarLow / 1000;
+	x->grainRateVarMid = x->grainRateVarMid / 1000;
+	x->grainRateVarHigh = x->grainRateVarHigh / 1000;
 }
 
-void sgran_freq(t_sgran *x, double fl, double fm, double fh, double ft){
-	x->freqLow = fmax(fl, 20.);
-	x->freqMid = fmax(fm, fl);
-	x->freqHigh = fmax(fh, fm);
-	x->freqTight = ft;
+void sgran_graindur(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
+	sgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur");
+	x->grainDurLow = x->grainDurLow / 1000;
+	x->grainDurMid = x->grainDurMid / 1000;
+	x->grainDurHigh = x->grainDurHigh / 1000;
 }
 
-void sgran_pan(t_sgran *x, double pl, double pm, double ph, double pt) {
-	x->panLow = fmax(0, pl);
-	x->panMid = fmax(pm, pl);
-	x->panHigh = fmin(fmax(ph, pm), 1);
-	x->panTight = pt;
+void sgran_freq(t_sgran* x, t_symbol* s, long argc, t_atom* argv){
+	sgran_handle_probargs(argc, argv, &(x->freqLow), &(x->freqMid), &(x->freqHigh), &(x->freqTight), 20, 1000000, "freq"); // allowing aliasing because I LOVE IT
 }
+
+void sgran_pan(t_sgran *x, t_symbol* s, long argc, t_atom* argv) {
+	sgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan");
+}
+
+/////
+/// GRAIN HANDLING
+/////
 
 void sgran_new_grain(t_sgran *x, Grain *grain){
 	float sr = sys_getsr();
@@ -432,7 +468,8 @@ void sgran_reset_grain_rate(t_sgran *x){
 }
 
 
-// rewrite
+/// PERFORM ROUTINE
+
 void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam)
 {
 	t_double		*r_out = outs[0];

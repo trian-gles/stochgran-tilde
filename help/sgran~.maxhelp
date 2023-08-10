@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 111.0, 282.0, 1024.0, 633.0 ],
+						"rect" : [ 0.0, 26.0, 1024.0, 633.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -508,8 +508,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 121.0, 57.0, 109.0, 22.0 ],
-									"text" : "freq 220 440 880 1"
+									"patching_rect" : [ 121.0, 57.0, 76.0, 22.0 ],
+									"text" : "freq 220 880"
 								}
 
 							}
@@ -520,8 +520,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 121.0, 86.0, 79.0, 22.0 ],
-									"text" : "pan 0 0.5 1 1"
+									"patching_rect" : [ 121.0, 86.0, 49.0, 22.0 ],
+									"text" : "pan 0 1"
 								}
 
 							}
@@ -548,7 +548,7 @@
 									"numpoints" : 100,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 536.0, 287.898019671440125, 383.838734149932861, 196.793153405189514 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -562,7 +562,7 @@
 											"domain_markers" : [  ],
 											"domain_labels" : [ 0.0, "0.02", 0.2, "2.01", 0.4, "4.01", 0.6, "6.00", 0.8, "8.00", 1.0, "10" ],
 											"range_start" : 0.0,
-											"range_end" : 469.177134548157767,
+											"range_end" : 144.269990590721392,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -584,7 +584,7 @@
 									"numpoints" : 100,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 941.0, 287.898019671440125, 383.838734149932861, 196.793153405189514 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -596,9 +596,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "5.22", 0.2, "27.6", 0.4, "49.9", 0.6, "72.3", 0.8, "94.7", 1.0, "117." ],
+											"domain_labels" : [ 0.0, "1.81", 0.2, "8.39", 0.4, "14.9", 0.6, "21.5", 0.8, "28.1", 1.0, "34.7" ],
 											"range_start" : 0.0,
-											"range_end" : 8.686816461108164,
+											"range_end" : 22.651150257392317,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1060,7 +1060,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1024.0, 633.0 ],
+						"rect" : [ 111.0, 282.0, 1024.0, 633.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -1096,7 +1096,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 306.25, 346.476202070713043, 150.0, 47.0 ],
+									"patching_rect" : [ 213.25, 399.476202070713043, 150.0, 47.0 ],
 									"text" : "Beware of the volume produced by high densities!"
 								}
 
@@ -1120,8 +1120,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 546.253340482711792, 547.5, 49.0, 22.0 ],
-									"text" : "stgran~"
+									"patching_rect" : [ 546.253340482711792, 547.5, 59.0, 22.0 ],
+									"text" : "stgran~ 1"
 								}
 
 							}
@@ -1156,12 +1156,12 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-6",
-									"linecount" : 20,
+									"linecount" : 25,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 306.25, 34.476202070713043, 469.0, 275.0 ],
-									"text" : "This granular synthesis external samples user defined distributions when sampling parameters for each grain.  These parameters are:\n\ngrainrate - the time to wait before creating a new grain (ms)\ngraindur - the duration of this grain (ms)\nfreq - self explanatory\npan - self explanatory, must between 0 and 1\n\nA distribution is set by putting in the name of the parameter in a message box followed by four numbers:\n\nThe lowest possible value\nThe midpoint which the distribution will center around\nThe highest possible value\nA tightness value.  1 will be uniform, less than 1 will spread towards the low and high points, and more than 1 will cluster around the midpoint\n\nAll four distributions must be set.\n\nBy default, all grains will be sine waves with a hanning envelope"
+									"patching_rect" : [ 306.25, 34.476202070713043, 469.0, 342.0 ],
+									"text" : "This granular synthesis external samples user defined distributions when sampling parameters for each grain.  These parameters are:\n\ngrainrate - the time to wait before creating a new grain (ms)\ngraindur - the duration of this grain (ms)\nfreq - self explanatory\npan - self explanatory, must between 0 and 1\n\nA distribution can be set by putting in the name of the parameter followed by a set of numbers in one of the folowing configurations:\n\nOPTION 1 - A single value chosen every time\n(float) Value\n\nOPTION 2 - A uniform distribution with equal probability for all values between the low and high bounds\n(float) Lowest possible value\n(float) Highest possible value\n\nOPTION 3  -  The \"prob\" function from Mara Helmuth's original cmix instrument\n(float) Lowest possible value\n(float) Midpoint which sampled values will either cluster around or avoid\n(float) Highest possible value\n(float) tightness value.  1 will be uniform, less than 1 will spread towards the low and high points, and more than 1 will cluster around the midpoint.  Must be greater than 0."
 								}
 
 							}
@@ -1184,8 +1184,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 111.25, 160.976202070713043, 133.0, 22.0 ],
-									"text" : "grainrate 0.03 0.1 0.6 1"
+									"patching_rect" : [ 111.25, 160.976202070713043, 76.0, 22.0 ],
+									"text" : "grainrate 0.3"
 								}
 
 							}
@@ -1209,8 +1209,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 111.25, 188.976202070713043, 108.0, 22.0 ],
-									"text" : "freq 110 440 880 1"
+									"patching_rect" : [ 111.25, 188.976202070713043, 75.0, 22.0 ],
+									"text" : "freq 110 880"
 								}
 
 							}
@@ -1221,8 +1221,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 111.25, 217.976202070713043, 79.0, 22.0 ],
-									"text" : "pan 0 0.5 1 1"
+									"patching_rect" : [ 111.25, 217.976202070713043, 49.0, 22.0 ],
+									"text" : "pan 0 1"
 								}
 
 							}
