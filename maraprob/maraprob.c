@@ -92,8 +92,8 @@ void *maraprob_new(t_symbol *s, long argc, t_atom *argv)
 	if(x) {
 		if (argc == 4){
 			x->lo = atom_getfloatarg(0,argc,argv);
-			x->mid = atom_getfloatarg(1,argc,argv);
-			x->hi = atom_getfloatarg(2,argc,argv);
+			x->mid = fmax(x->lo, atom_getfloatarg(1, argc, argv));
+			x->hi = fmax(x->mid, atom_getfloatarg(2, argc, argv));
 			x->ti = atom_getfloatarg(3,argc,argv);
 		}
 		else if (argc == 0) {
