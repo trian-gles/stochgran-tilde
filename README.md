@@ -1,4 +1,7 @@
 # stochgran-tilde
+
+![Stochgran logo](resource/logo.png)
+
 Max externals based on SGRAN2 and STGRAN2 RTcmix stochastic granular instruments
 
 To use, simply place this entire repo somewhere in the Max `Library` folder.
