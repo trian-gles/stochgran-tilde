@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 654.0, 127.0, 970.0, 639.0 ],
+		"rect" : [ 100.0, 100.0, 970.0, 639.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,18 +46,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"patching_rect" : [ 130.0, 235.0, 33.0, 22.0 ],
-					"text" : "% 1."
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-6",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"patching_rect" : [ 462.0, 342.0, 33.0, 22.0 ],
 					"text" : "% 1."
 				}
 
@@ -140,12 +128,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-36",
-					"linecount" : 2,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 612.0, 114.0, 150.0, 33.0 ],
-					"text" : "prob-visual.js does what its name suggests:"
+					"patching_rect" : [ 612.0, 114.0, 150.0, 47.0 ],
+					"text" : "prob-visual.js shows us the relative probability for all possible values"
 				}
 
 			}
@@ -1037,9 +1025,9 @@
 							"domain_end" : 1.0,
 							"domain_style" : "linear",
 							"domain_markers" : [  ],
-							"domain_labels" : [ 0.0, "0.02", 0.2, "0.47", 0.4, "0.93", 0.6, "1.38", 0.8, "1.84", 1.0, "2.3" ],
+							"domain_labels" : [ 0.0, "0.94", 0.2, "1.89", 0.4, "2.84", 0.6, "3.79", 0.8, "4.74", 1.0, "5.7" ],
 							"range_start" : 0.0,
-							"range_end" : 66.588496473069611,
+							"range_end" : 121.969542919204486,
 							"range_style" : "linear",
 							"range_markers" : [  ],
 							"range_labels" : [  ],

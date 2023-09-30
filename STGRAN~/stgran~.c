@@ -150,6 +150,7 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv);
 void stgran_free(t_stgran *x);
 t_max_err stgran_notify(t_stgran *x, t_symbol *s, t_symbol *msg, void *sender, void *data);
 void stgran_assist(t_stgran *x, void *b, long m, long a, char *s);
+void stgran_int(t_stgran*x, long i);
 void stgran_start(t_stgran *x);
 void stgran_stop(t_stgran *x);
 void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, double **outs, long numouts, long sampleframes, long flags, void *userparam);
@@ -172,6 +173,7 @@ void ext_main(void *r)
 	t_class *c = class_new("stgran~", (method)stgran_new, (method)stgran_free, sizeof(t_stgran), NULL, A_GIMME, 0);
 
 	class_addmethod(c, (method)stgran_dsp64,		"dsp64",	A_CANT, 0);
+	class_addmethod(c, (method)stgran_int, "int", A_LONG, 0);
 	class_addmethod(c, (method)stgran_start,		"start", 0);
 	class_addmethod(c, (method)stgran_stop,		"stop", 0);
 	
@@ -376,6 +378,13 @@ void stgran_assist(t_stgran *x, void *b, long m, long a, char *s)
 ////
 // START AND STOP MSGS
 ////
+void stgran_int(t_stgran*x, long i){
+	if (i != 0)
+		stgran_start(x);
+	else
+		stgran_stop(x);
+}
+
 void stgran_start(t_stgran *x){
 	if ((!buffer_ref_exists(x->w_buf) && x->extern_buf) || (!buffer_ref_exists(x->w_env) && x->extern_env))
 	{

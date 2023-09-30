@@ -91,10 +91,10 @@ void *maraprob_new(t_symbol *s, long argc, t_atom *argv)
 	x = (t_maraprob *)object_alloc(maraprob_class);
 	if(x) {
 		if (argc == 4){
-			x->lo = atom_getfloatarg(0,argc,argv);
-			x->mid = fmax(x->lo, atom_getfloatarg(1, argc, argv));
-			x->hi = fmax(x->mid, atom_getfloatarg(2, argc, argv));
-			x->ti = atom_getfloatarg(3,argc,argv);
+			x->lo = atom_getfloat(argv + 0);
+			x->mid = fmax(x->lo, atom_getfloat(argv + 1));
+			x->hi = fmax(x->mid, atom_getfloat(argv + 2));
+			x->ti = atom_getfloat(argv + 3);
 		}
 		else if (argc == 0) {
 			x->lo = 0;
@@ -150,18 +150,26 @@ void maraprob_assist(t_maraprob *x, void *b, long m, long a, char *s)
 		sprintf(s,"Generated float");
 }
 
+void maraprob_checkargs(t_maraprob *x){
+	x->mid = fmax(x->lo, x->mid);
+	x->hi = fmax(x->mid, x->hi);
+}
+
 void maraprob_float(t_maraprob *x, double n){
 	x->lo = n;
+	maraprob_checkargs(x);
 }
 
 void maraprob_ft2(t_maraprob *x, double n)
 {
     x->mid = n;
+	maraprob_checkargs(x);
 }
 
 void maraprob_ft3(t_maraprob *x, double n)
 {
     x->hi = n;
+	maraprob_checkargs(x);
 }
 
 void maraprob_ft4(t_maraprob *x, double n)

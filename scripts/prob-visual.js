@@ -7,9 +7,9 @@ function anything()
 	var type = messagename;
 	
 	var low = a[0];
-	var mid = a[1];
-	var high = a[2];
-	var tight = a[3];
+	var mid = Math.max(low, a[1]);
+	var high = Math.max(mid, a[2]);
+	var tight = Math.max(a[3], 0.00000001);
 	var xs = [];
 	var ys = [];
 	
