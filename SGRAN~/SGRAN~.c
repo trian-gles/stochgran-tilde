@@ -505,11 +505,13 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 	else
 		e = x->hanningTable;
 	
-	if (!b ||!e|| !x->running)
+	if (!b ||!e)
 		goto zero;
 		
 	
 	while (n--){
+		*l_out = 0;
+		*r_out = 0;
 		for (size_t j = 0; j < maxgrains; j++){
 			Grain* currGrain = &x->grains[j];
 			if (currGrain->isplaying)
@@ -532,7 +534,7 @@ void sgran_perform64(t_sgran *x, t_object *dsp64, double **ins, long numins, dou
 			if ((x->newGrainCounter <= 0) && !currGrain->isplaying)
 			{
 				sgran_reset_grain_rate(x);
-				if (x->newGrainCounter > 0) // we don't allow two grains to be create on the same frame
+				if (x->newGrainCounter > 0 && x->running) // we don't allow two grains to be create on the same frame
 					{sgran_new_grain(x, currGrain);}
 				else
 					{x->newGrainCounter = 1;}

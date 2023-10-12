@@ -567,7 +567,7 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	
 	int maxgrains = fmin(MAXGRAINS, x->grainLimit);
 	int head = 0;
-	if (!b || !e || !x->running)
+	if (!b || !e)
 	{
 		goto zero;
 	}
@@ -578,7 +578,7 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 			
 		}
 		
-		*r_out = 0; // r_out already stores the input signal for some reason?  so we have to set it to 0
+		*r_out = 0;
 		*l_out = 0;
 		for (size_t j = 0; j < maxgrains; j++){
 			Grain* currGrain = &x->grains[j];
@@ -615,12 +615,12 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 					*r_out += (grainOut * (double)currGrain->panR);
 				}
 			}
-			// this is not an else statement so a grain can be potentially stopped and restarted on the same frame
 
-			if ((x->newGrainCounter <= 0) && !currGrain->isplaying)
+			// this is not an else statement so a grain can be potentially stopped and restarted on the same frame
+			if (x->newGrainCounter <= 0 && !currGrain->isplaying)
 			{
 				stgran_reset_grain_rate(x);
-				if (x->newGrainCounter > 0) // we don't allow two grains to be create on the same frame
+				if (x->newGrainCounter > 0 && x->running) // we don't allow two grains to be create on the same frame
 					{stgran_new_grain(x, currGrain, head);}
 				else
 					{x->newGrainCounter = 1;}
