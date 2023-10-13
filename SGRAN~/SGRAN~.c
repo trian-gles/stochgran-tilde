@@ -445,7 +445,7 @@ void sgran_graindur(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
 }
 
 void sgran_freq(t_sgran* x, t_symbol* s, long argc, t_atom* argv){
-	sgran_handle_probargs(argc, argv, &(x->freqLow), &(x->freqMid), &(x->freqHigh), &(x->freqTight), 20, 1000000, "freq"); // allowing aliasing because I LOVE IT
+	sgran_handle_probargs(argc, argv, &(x->freqLow), &(x->freqMid), &(x->freqHigh), &(x->freqTight), 0, 1000000, "freq"); // allowing aliasing because I LOVE IT
 }
 
 void sgran_pan(t_sgran *x, t_symbol* s, long argc, t_atom* argv) {

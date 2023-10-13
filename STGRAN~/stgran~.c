@@ -221,6 +221,12 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 	t_symbol *buf=0;
 	t_symbol *env=0;
 
+	if (argc == 0){
+		error("stgran~ requires either a buffer name or circular buffer size as an argument");
+		return 0;
+	}
+			
+
 
 	// decide between type of sound buffer
 	if (argv[0].a_type == A_FLOAT){
