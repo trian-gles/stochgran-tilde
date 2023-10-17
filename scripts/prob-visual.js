@@ -7,9 +7,9 @@ function anything()
 	var type = messagename;
 	
 	var low = a[0];
-	var mid = a[1];
-	var high = a[2];
-	var tight = a[3];
+	var mid = Math.max(low, a[1]);
+	var high = Math.max(mid, a[2]);
+	var tight = Math.max(a[3], 0.00000001);
 	var xs = [];
 	var ys = [];
 	
@@ -54,8 +54,9 @@ function anything()
 	outlet(1, ["definethickness", 3]);
 	outlet(1, ["defineline", "origin"]);
 	outlet(1, ["definerange", 0, Math.max.apply(null, ys)]);
-	outlet(1, ["rangelabel", "likelihood"]);
-	outlet(1, ["domainlabel", type]);
+	outlet(1, ["rangelabel", "prob"]);
+	if (type != "list")
+		outlet(1, ["domainlabel", type]);
 	outlet(0, ys);
 	
 	outlet(1, xlabels);

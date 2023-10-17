@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 68.0, 120.0, 2011.0, 1130.0 ],
+		"rect" : [ 40.0, 82.0, 1992.0, 953.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 68.0, 172.0, 2011.0, 1078.0 ],
+						"rect" : [ 40.0, 108.0, 1992.0, 927.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -87,6 +87,220 @@
 						"showontab" : 2,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-254",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "bang", "bang" ],
+									"patching_rect" : [ 7.991877138614655, 48.396114468574524, 41.0, 22.0 ],
+									"text" : "t s b b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-255",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 72.729741096496582, -31.761778950691223, 29.5, 22.0 ],
+									"text" : "1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-256",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 110.389609336853027, 36.000001549720764, 32.0, 22.0 ],
+									"text" : "gate"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-257",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 162.229741096496582, 6.796116411685944, 97.0, 22.0 ],
+									"text" : "s send-stparams"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-230",
+									"linecount" : 5,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 388.0, 409.0, 150.0, 74.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 3,
+									"presentation_rect" : [ 33.220870137214661, 480.241253852844238, 245.0, 47.0 ],
+									"text" : "Shift-click in a square to store\nclick on square to recall shift-(option|alt)-click on square to delete"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-228",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1284.0, 702.0, 150.0, 33.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 1538.070176839828491, 16.513783037662506, 189.0, 20.0 ],
+									"text" : "current interpolated distribution"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 13.0,
+									"id" : "obj-161",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 1890.918926537036896, 162.721623361110687, 174.0, 36.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 3,
+									"presentation_rect" : [ 1371.89074844121933, 91.153680443763733, 87.0, 50.0 ],
+									"text" : "<- generate two random distributions"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-160",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 865.0, 997.706846594810486, 150.0, 33.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 2,
+									"presentation_rect" : [ 1433.89074844121933, 38.368831813335419, 75.0, 33.0 ],
+									"text" : "low      mid\nhigh     tight"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-159",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 2050.712705373764038, 897.54544734954834, 150.0, 47.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 2,
+									"presentation_rect" : [ 1306.989169239997864, 3.513783037662506, 218.831168174743652, 33.0 ],
+									"text" : "Adjust these message boxes to manually set the two distributions"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-158",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 858.0, 265.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 985.389694690704346, 195.31082010269165, 150.0, 20.0 ],
+									"text" : "manually interpolate"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"fontsize" : 14.0,
+									"id" : "obj-157",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 2000.468082427978516, 530.447124719619751, 174.0, 22.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 947.481835961341858, 14.368831813335419, 174.0, 22.0 ],
+									"text" : "Rand pts"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-156",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 564.0, 111.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 672.0, 22.123319208621979, 150.0, 20.0 ],
+									"text" : "(ms)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-155",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 564.0, 111.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 668.0, 220.368831813335419, 150.0, 20.0 ],
+									"text" : "(ms)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-229",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 529.0, 238.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 562.128789782524109, 32.019895732402802, 76.0, 20.0 ],
+									"text" : "upper dist"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-227",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 514.0, 223.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 556.394653797149658, 174.837099760770798, 76.0, 20.0 ],
+									"text" : "lower dist"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-154",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 499.0, 208.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 556.394653797149658, 108.916472256183624, 76.0, 20.0 ],
+									"text" : "interpolation"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-148",
 									"maxclass" : "newobj",
@@ -644,7 +858,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 198.389609336853027, 134.200001776218414, 94.0, 23.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 503.133237034082413, 74.019895732402802, 94.0, 23.0 ],
+									"presentation_rect" : [ 456.133237034082413, 74.019895732402802, 94.0, 23.0 ],
 									"text" : "normalize 1."
 								}
 
@@ -728,7 +942,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 1875.334019303321838, 158.40000194311142, 178.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 378.0928815305233, 524.703306257724762, 178.0, 24.0 ],
+									"presentation_rect" : [ 331.0928815305233, 524.703306257724762, 178.0, 24.0 ],
 									"text" : "enlarge spectrogram"
 								}
 
@@ -769,7 +983,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 75.229741096496582, 1322.085099101066589, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 378.0928815305233, 550.935624927282333, 70.320512413978577, 70.320512413978577 ]
+									"presentation_rect" : [ 331.0928815305233, 550.935624927282333, 70.320512413978577, 70.320512413978577 ]
 								}
 
 							}
@@ -817,13 +1031,14 @@
 , 							{
 								"box" : 								{
 									"id" : "obj-98",
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 301.739120543003082, 300.869555354118347, 150.0, 20.0 ],
+									"patching_rect" : [ 301.739120543003082, 300.869555354118347, 150.0, 33.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 382.753137737512589, 413.156125485897064, 150.0, 20.0 ],
-									"text" : "breakpoint func duration"
+									"presentation_rect" : [ 335.753137737512589, 413.156125485897064, 173.0, 20.0 ],
+									"text" : "breakpoint func duration (ms)"
 								}
 
 							}
@@ -838,7 +1053,7 @@
 									"patching_rect" : [ 1830.334019303321838, 113.40000194311142, 178.0, 42.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 2,
-									"presentation_rect" : [ 382.753137737512589, 302.704686403274536, 200.0, 42.0 ],
+									"presentation_rect" : [ 335.753137737512589, 302.704686403274536, 200.0, 42.0 ],
 									"text" : "trigger moving through the breakpoint functions"
 								}
 
@@ -852,7 +1067,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 291.262131929397583, 150.485434830188751, 243.0, 29.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 379.5928815305233, 32.019895732402802, 227.535908252000809, 29.0 ],
+									"presentation_rect" : [ 332.5928815305233, 32.019895732402802, 227.535908252000809, 29.0 ],
 									"text" : "choose a source sound"
 								}
 
@@ -867,7 +1082,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 192.233007073402405, 42.718446016311646, 74.0, 31.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 379.5928815305233, 66.019895732402802, 82.0, 31.0 ],
+									"presentation_rect" : [ 332.5928815305233, 66.019895732402802, 82.0, 31.0 ],
 									"text" : "replace"
 								}
 
@@ -981,7 +1196,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 810.818926811218262, 227.987010955810547, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 382.753137737512589, 349.497839450836182, 49.0, 49.0 ]
+									"presentation_rect" : [ 335.753137737512589, 349.497839450836182, 49.0, 49.0 ]
 								}
 
 							}
@@ -1007,7 +1222,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 449.918926537036896, 114.346998870372772, 61.0, 26.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 382.753137737512589, 437.304398089647293, 61.0, 26.0 ]
+									"presentation_rect" : [ 335.753137737512589, 437.304398089647293, 61.0, 26.0 ]
 								}
 
 							}
@@ -1100,7 +1315,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-248",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1111,7 +1326,7 @@
 									"patching_rect" : [ 2057.109443753957748, 879.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 850.986334800720215, 211.450972080230713, 96.793153047561646 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1123,9 +1338,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.48", 0.2, "0.58", 0.4, "0.68", 0.6, "0.79", 0.8, "0.89", 1.0, "0.99" ],
+											"domain_labels" : [ 0.0, "0.11", 0.2, "0.20", 0.4, "0.30", 0.6, "0.39", 0.8, "0.49", 1.0, "0.58" ],
 											"range_start" : 0.0,
-											"range_end" : 8.844969589608381,
+											"range_end" : 39.780159295661484,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1155,7 +1370,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-250",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1166,7 +1381,7 @@
 									"patching_rect" : [ 1838.318907022476196, 879.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 951.011755466461182, 210.995139956474304, 95.501344203948975 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1178,9 +1393,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.57", 0.2, "0.64", 0.4, "0.71", 0.6, "0.78", 0.8, "0.85", 1.0, "0.92" ],
+											"domain_labels" : [ 0.0, "0.42", 0.2, "0.45", 0.4, "0.48", 0.6, "0.51", 0.8, "0.54", 1.0, "0.57" ],
 											"range_start" : 0.0,
-											"range_end" : 1.0,
+											"range_end" : 94.17235286039886,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1210,7 +1425,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-244",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1221,7 +1436,7 @@
 									"patching_rect" : [ 1621.393236428499222, 887.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 644.741253852844238, 211.450972080230713, 95.793153047561646 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1233,9 +1448,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0", 0.2, "0.15", 0.4, "0.30", 0.6, "0.46", 0.8, "0.61", 1.0, "0.76" ],
+											"domain_labels" : [ 0.0, "0.00", 0.2, "0.07", 0.4, "0.13", 0.6, "0.20", 0.8, "0.26", 1.0, "0.33" ],
 											"range_start" : 0.0,
-											"range_end" : 0.996110785815922,
+											"range_end" : 37.040357909811483,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1265,7 +1480,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-246",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1276,7 +1491,7 @@
 									"patching_rect" : [ 1402.60269969701767, 887.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 743.916472256183624, 210.995139956474304, 95.501344203948975 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1288,9 +1503,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.14", 0.2, "0.24", 0.4, "0.33", 0.6, "0.42", 0.8, "0.52", 1.0, "0.61" ],
+											"domain_labels" : [ 0.0, "0.02", 0.2, "0.19", 0.4, "0.36", 0.6, "0.53", 0.8, "0.70", 1.0, "0.87" ],
 											"range_start" : 0.0,
-											"range_end" : 10.036700556127668,
+											"range_end" : 0.977275753602357,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1320,7 +1535,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-240",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1331,7 +1546,7 @@
 									"patching_rect" : [ 1194.212164670228958, 887.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 437.304398089647293, 211.450972080230713, 97.787631928920746 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1343,9 +1558,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "-0.8", 0.2, "-0.6", 0.4, "-0.4", 0.6, "-0.3", 0.8, "-0.1", 1.0, "0.04" ],
+											"domain_labels" : [ 0.0, "-0.7", 0.2, "-0.3", 0.4, "0.10", 0.6, "0.51", 0.8, "0.92", 1.0, "1.33" ],
 											"range_start" : 0.0,
-											"range_end" : 51.080961855331957,
+											"range_end" : 43.450213288751556,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1375,7 +1590,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-242",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1386,7 +1601,7 @@
 									"patching_rect" : [ 975.421627938747406, 887.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 537.808197140693665, 210.995139956474304, 96.575367987155914 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1398,7 +1613,7 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.55", 0.2, "0.80", 0.4, "1.04", 0.6, "1.29", 0.8, "1.53", 1.0, "1.78" ],
+											"domain_labels" : [ 0.0, "0.49", 0.2, "0.79", 0.4, "1.08", 0.6, "1.38", 0.8, "1.67", 1.0, "1.97" ],
 											"range_start" : 0.0,
 											"range_end" : 1.0,
 											"range_style" : "linear",
@@ -1430,7 +1645,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-236",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1441,7 +1656,7 @@
 									"patching_rect" : [ 719.810814559459686, 891.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 224.812945276498795, 211.450972080230713, 95.793153047561646 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1453,9 +1668,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "8.31", 0.2, "14.3", 0.4, "20.3", 0.6, "26.4", 0.8, "32.4", 1.0, "38.5" ],
+											"domain_labels" : [ 0.0, "1.43", 0.2, "9.84", 0.4, "18.2", 0.6, "26.6", 0.8, "35.0", 1.0, "43.4" ],
 											"range_start" : 0.0,
-											"range_end" : 1.0,
+											"range_end" : 17.925586766821954,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1485,7 +1700,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-238",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1496,7 +1711,7 @@
 									"patching_rect" : [ 501.020277827978134, 891.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 324.161984860897064, 210.995139956474304, 96.501344203948975 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1508,9 +1723,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "10.8", 0.2, "12.9", 0.4, "15.1", 0.6, "17.3", 0.8, "19.4", 1.0, "21.6" ],
+											"domain_labels" : [ 0.0, "9.00", 0.2, "15.2", 0.4, "21.5", 0.6, "27.8", 0.8, "34.0", 1.0, "40.3" ],
 											"range_start" : 0.0,
-											"range_end" : 0.97951184890296,
+											"range_end" : 6.367779720747717,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1540,7 +1755,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-232",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1551,7 +1766,7 @@
 									"patching_rect" : [ 311.520277827978134, 891.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 10.123319208621979, 211.450972080230713, 96.793153047561646 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1563,9 +1778,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.10", 0.2, "1.33", 0.4, "2.55", 0.6, "3.78", 0.8, "5.00", 1.0, "6.23" ],
+											"domain_labels" : [ 0.0, "0.10", 0.2, "5.36", 0.4, "10.6", 0.6, "15.8", 0.8, "21.1", 1.0, "26.3" ],
 											"range_start" : 0.0,
-											"range_end" : 14.216865415093455,
+											"range_end" : 28.668499364194659,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1595,7 +1810,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-234",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -1606,7 +1821,7 @@
 									"patching_rect" : [ 92.729741096496582, 891.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1090.538197159767151, 108.916472256183624, 210.995139956474304, 97.501344203948975 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -1618,9 +1833,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.11", 0.2, "1.88", 0.4, "3.65", 0.6, "5.42", 0.8, "7.19", 1.0, "8.97" ],
+											"domain_labels" : [ 0.0, "0.14", 0.2, "5.3", 0.4, "10.4", 0.6, "15.6", 0.8, "20.7", 1.0, "25.9" ],
 											"range_start" : 0.0,
-											"range_end" : 0.942161192704502,
+											"range_end" : 1.0,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -1660,6 +1875,7 @@
 									"format" : 6,
 									"id" : "obj-215",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1675,6 +1891,8 @@
 									"format" : 6,
 									"id" : "obj-216",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1690,6 +1908,8 @@
 									"format" : 6,
 									"id" : "obj-217",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1705,6 +1925,8 @@
 									"format" : 6,
 									"id" : "obj-218",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1744,6 +1966,7 @@
 									"format" : 6,
 									"id" : "obj-221",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1759,6 +1982,8 @@
 									"format" : 6,
 									"id" : "obj-222",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1774,6 +1999,8 @@
 									"format" : 6,
 									"id" : "obj-223",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1789,6 +2016,8 @@
 									"format" : 6,
 									"id" : "obj-224",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1828,6 +2057,7 @@
 									"format" : 6,
 									"id" : "obj-203",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1843,6 +2073,8 @@
 									"format" : 6,
 									"id" : "obj-204",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1858,6 +2090,8 @@
 									"format" : 6,
 									"id" : "obj-205",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1873,6 +2107,8 @@
 									"format" : 6,
 									"id" : "obj-206",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1912,6 +2148,7 @@
 									"format" : 6,
 									"id" : "obj-209",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1927,6 +2164,8 @@
 									"format" : 6,
 									"id" : "obj-210",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1942,6 +2181,8 @@
 									"format" : 6,
 									"id" : "obj-211",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -1957,6 +2198,8 @@
 									"format" : 6,
 									"id" : "obj-212",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2020,6 +2263,7 @@
 									"format" : 6,
 									"id" : "obj-189",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2035,6 +2279,8 @@
 									"format" : 6,
 									"id" : "obj-190",
 									"maxclass" : "flonum",
+									"maximum" : 2.0,
+									"minimum" : -2.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2050,6 +2296,8 @@
 									"format" : 6,
 									"id" : "obj-191",
 									"maxclass" : "flonum",
+									"maximum" : 2.0,
+									"minimum" : -2.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2065,6 +2313,8 @@
 									"format" : 6,
 									"id" : "obj-192",
 									"maxclass" : "flonum",
+									"maximum" : 2.0,
+									"minimum" : -2.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2104,6 +2354,7 @@
 									"format" : 6,
 									"id" : "obj-195",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2119,6 +2370,8 @@
 									"format" : 6,
 									"id" : "obj-196",
 									"maxclass" : "flonum",
+									"maximum" : 2.0,
+									"minimum" : -2.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2134,6 +2387,8 @@
 									"format" : 6,
 									"id" : "obj-197",
 									"maxclass" : "flonum",
+									"maximum" : 2.0,
+									"minimum" : -2.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2149,6 +2404,8 @@
 									"format" : 6,
 									"id" : "obj-198",
 									"maxclass" : "flonum",
+									"maximum" : 2.0,
+									"minimum" : -2.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2200,6 +2457,7 @@
 									"format" : 6,
 									"id" : "obj-176",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2215,6 +2473,7 @@
 									"format" : 6,
 									"id" : "obj-177",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2230,6 +2489,7 @@
 									"format" : 6,
 									"id" : "obj-178",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2245,6 +2505,7 @@
 									"format" : 6,
 									"id" : "obj-179",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2284,6 +2545,7 @@
 									"format" : 6,
 									"id" : "obj-182",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2299,6 +2561,7 @@
 									"format" : 6,
 									"id" : "obj-183",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2314,6 +2577,7 @@
 									"format" : 6,
 									"id" : "obj-184",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2329,6 +2593,7 @@
 									"format" : 6,
 									"id" : "obj-185",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2380,6 +2645,7 @@
 									"format" : 6,
 									"id" : "obj-163",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2395,6 +2661,7 @@
 									"format" : 6,
 									"id" : "obj-164",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2410,6 +2677,7 @@
 									"format" : 6,
 									"id" : "obj-165",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2425,6 +2693,7 @@
 									"format" : 6,
 									"id" : "obj-166",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2464,6 +2733,7 @@
 									"format" : 6,
 									"id" : "obj-169",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2479,6 +2749,7 @@
 									"format" : 6,
 									"id" : "obj-170",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2494,6 +2765,7 @@
 									"format" : 6,
 									"id" : "obj-171",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2509,6 +2781,7 @@
 									"format" : 6,
 									"id" : "obj-172",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -2540,7 +2813,7 @@
 									"patching_rect" : [ 170.389609336853027, 272.987010955810547, 150.0, 20.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 634.394653797149658, 846.506213963031769, 150.0, 20.0 ],
-									"text" : "HEAD"
+									"text" : "HEAD (0-1)"
 								}
 
 							}
@@ -2553,7 +2826,7 @@
 									"patching_rect" : [ 155.389609336853027, 257.987010955810547, 150.0, 20.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 634.394653797149658, 639.651165187358856, 150.0, 20.0 ],
-									"text" : "PAN"
+									"text" : "PAN (0-1)"
 								}
 
 							}
@@ -2566,7 +2839,7 @@
 									"patching_rect" : [ 140.389609336853027, 242.987010955810547, 150.0, 20.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 634.394653797149658, 433.223880589008331, 150.0, 20.0 ],
-									"text" : "TRANS"
+									"text" : "TRANS (semitones)"
 								}
 
 							}
@@ -2760,7 +3033,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 961.718921482563019, 6.796116411685944, 197.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 379.5928815305233, 114.823921799659729, 197.0, 24.0 ],
+									"presentation_rect" : [ 332.5928815305233, 114.823921799659729, 197.0, 24.0 ],
 									"text" : "randomize all distributions"
 								}
 
@@ -2776,7 +3049,7 @@
 									"parameter_enable" : 0,
 									"patching_rect" : [ 924.27183198928833, 6.796116411685944, 24.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 379.5928815305233, 150.837099760770798, 54.769233703613281, 54.769233703613281 ]
+									"presentation_rect" : [ 332.5928815305233, 150.837099760770798, 54.769233703613281, 54.769233703613281 ]
 								}
 
 							}
@@ -3401,11 +3674,11 @@
 									"hidden" : 1,
 									"id" : "obj-54",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 1838.318907022476196, 476.677741587162018, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1838.318907022476196, 476.677741587162018, 95.0, 22.0 ],
+									"text" : "r send-stparams"
 								}
 
 							}
@@ -3484,7 +3757,7 @@
 									"patching_rect" : [ 1838.318907022476196, 684.575761258602142, 226.0, 87.193151772022247 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1452.389909029006958, 860.82642650604248, 322.129014909267426, 176.703733444213867 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -3496,9 +3769,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.48", 0.2, "0.58", 0.4, "0.68", 0.6, "0.79", 0.8, "0.89", 1.0, "0.99" ],
+											"domain_labels" : [ 0.0, "NaN", 0.2, "NaN", 0.4, "NaN", 0.6, "NaN", 0.8, "NaN", 1.0, "NaN" ],
 											"range_start" : 0.0,
-											"range_end" : 8.844969589608386,
+											"range_end" : 0.0,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -3700,11 +3973,11 @@
 									"hidden" : 1,
 									"id" : "obj-19",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 1409.021626234054565, 495.486568510532379, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1409.021626234054565, 495.486568510532379, 95.0, 22.0 ],
+									"text" : "r send-stparams"
 								}
 
 							}
@@ -3783,7 +4056,7 @@
 									"patching_rect" : [ 1409.021626234054565, 703.384588181972504, 226.0, 87.193151772022247 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1452.389909029006958, 650.0500807762146, 322.129014909267426, 180.394906520843506 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -3795,9 +4068,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.06", 0.2, "0.19", 0.4, "0.31", 0.6, "0.44", 0.8, "0.57", 1.0, "0.69" ],
+											"domain_labels" : [ 0.0, "0.02", 0.2, "0.19", 0.4, "0.36", 0.6, "0.53", 0.8, "0.70", 1.0, "0.87" ],
 											"range_start" : 0.0,
-											"range_end" : 1.605360494755524,
+											"range_end" : 0.977275753602357,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -3813,11 +4086,11 @@
 									"hidden" : 1,
 									"id" : "obj-30",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 975.421627938747406, 495.486568510532379, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 975.421627938747406, 495.486568510532379, 95.0, 22.0 ],
+									"text" : "r send-stparams"
 								}
 
 							}
@@ -3896,7 +4169,7 @@
 									"patching_rect" : [ 975.421627938747406, 703.384588181972504, 319.038733184337616, 87.193151772022247 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1452.389909029006958, 448.389387130737305, 322.129014909267426, 173.703733444213867 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -3908,9 +4181,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "-0.8", 0.2, "-0.6", 0.4, "-0.4", 0.6, "-0.2", 0.8, "-0.1", 1.0, "0.07" ],
+											"domain_labels" : [ 0.0, "0.49", 0.2, "0.79", 0.4, "1.08", 0.6, "1.38", 0.8, "1.67", 1.0, "1.97" ],
 											"range_start" : 0.0,
-											"range_end" : 27.26745384882377,
+											"range_end" : 1.0,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -3926,11 +4199,11 @@
 									"hidden" : 1,
 									"id" : "obj-6",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 529.061277329921722, 495.18720006942749, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 490.061277329921722, 495.18720006942749, 95.0, 22.0 ],
+									"text" : "r send-stparams"
 								}
 
 							}
@@ -4009,7 +4282,7 @@
 									"patching_rect" : [ 545.061277568340302, 695.885219633579254, 297.438732862472534, 94.393151879310608 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1444.913304507732391, 238.518348723649979, 329.605619430541992, 166.746035635471344 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -4021,9 +4294,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "10.7", 0.2, "13.0", 0.4, "15.3", 0.6, "17.6", 0.8, "19.8", 1.0, "22.1" ],
+											"domain_labels" : [ 0.0, "9.00", 0.2, "15.2", 0.4, "21.5", 0.6, "27.8", 0.8, "34.0", 1.0, "40.3" ],
 											"range_start" : 0.0,
-											"range_end" : 0.977998467719553,
+											"range_end" : 6.367779720747717,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -4039,11 +4312,11 @@
 									"hidden" : 1,
 									"id" : "obj-8",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 92.729741096496582, 499.241253852844238, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 54.729741096496582, 499.241253852844238, 95.0, 22.0 ],
+									"text" : "r send-stparams"
 								}
 
 							}
@@ -4054,7 +4327,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 92.48648738861084, 105.31082010269165, 93.0, 22.0 ],
+									"patching_rect" : [ 126.729741096496582, -21.653001129627228, 93.0, 22.0 ],
 									"text" : "r stgran-params"
 								}
 
@@ -4137,7 +4410,7 @@
 									"patching_rect" : [ 92.729741096496582, 695.885219633579254, 223.270275592803955, 102.191888868808746 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1444.913304507732391, 35.470261126756668, 329.605619430541992, 161.36683863401413 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -4149,9 +4422,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.10", 0.2, "1.47", 0.4, "2.83", 0.6, "4.19", 0.8, "5.55", 1.0, "6.91" ],
+											"domain_labels" : [ 0.0, "0.14", 0.2, "5.3", 0.4, "10.4", 0.6, "15.6", 0.8, "20.7", 1.0, "25.9" ],
 											"range_start" : 0.0,
-											"range_end" : 1.457644012583446,
+											"range_end" : 1.0,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -4268,7 +4541,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 40.48648738861084, 61.31082010269165, 79.0, 49.0 ],
+									"patching_rect" : [ -30.008122861385345, -31.761778950691223, 79.0, 49.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 40.48648738861084, 112.31082010269165, 79.0, 49.0 ],
 									"text" : "start"
@@ -5851,6 +6124,41 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-255", 0 ],
+									"source" : [ "obj-254", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-257", 0 ],
+									"source" : [ "obj-254", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-254", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-256", 0 ],
+									"source" : [ "obj-255", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-256", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-22", 0 ],
 									"order" : 0,
 									"source" : [ "obj-26", 0 ]
@@ -6052,7 +6360,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-3", 0 ],
+									"destination" : [ "obj-254", 0 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
@@ -6073,7 +6381,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-3", 0 ],
+									"destination" : [ "obj-256", 1 ],
 									"source" : [ "obj-52", 0 ]
 								}
 
@@ -6508,7 +6816,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 2011.0, 1078.0 ],
+						"rect" : [ 0.0, 26.0, 1992.0, 927.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 1,
 						"default_fontsize" : 12.0,
@@ -6538,6 +6846,159 @@
 						"showontab" : 2,
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-236",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 3,
+									"outlettype" : [ "", "bang", "bang" ],
+									"patching_rect" : [ 67.0, 155.0, 41.0, 22.0 ],
+									"text" : "t s b b"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-232",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 131.737863957881927, 74.842106580734253, 29.5, 22.0 ],
+									"text" : "1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-212",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 25.0, 155.0, 32.0, 22.0 ],
+									"text" : "gate"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-138",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 221.237863957881927, 113.40000194311142, 88.0, 22.0 ],
+									"text" : "s send-params"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-233",
+									"linecount" : 5,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 388.0, 409.0, 150.0, 74.0 ],
+									"presentation" : 1,
+									"presentation_linecount" : 3,
+									"presentation_rect" : [ 285.723316341638565, 417.550843596458435, 245.0, 47.0 ],
+									"text" : "Shift-click in a square to store\nclick on square to recall shift-(option|alt)-click on square to delete"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-230",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 579.0, 126.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 721.310309410095215, 489.755952477455139, 150.0, 20.0 ],
+									"text" : "(Hz.)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-225",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 564.0, 111.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 717.0, 726.483332514762878, 150.0, 20.0 ],
+									"text" : "(0-1)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-229",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 529.0, 238.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 488.0, 80.63417774438858, 76.0, 20.0 ],
+									"text" : "upper dist"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-227",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 514.0, 223.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 488.0, 222.417816460132599, 76.0, 20.0 ],
+									"text" : "lower dist"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-226",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 499.0, 208.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 488.0, 156.50944995880127, 76.0, 20.0 ],
+									"text" : "interpolation"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-222",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 549.0, 96.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 717.0, 258.627567917108536, 150.0, 20.0 ],
+									"text" : "(ms)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-216",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 534.0, 81.0, 150.0, 20.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 721.310309410095215, 35.66954106092453, 150.0, 20.0 ],
+									"text" : "(ms)"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-61",
 									"maxclass" : "newobj",
@@ -7092,7 +7553,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 92.0, 150.0, 212.0, 67.0 ],
+									"patching_rect" : [ 263.0, 155.0, 212.0, 67.0 ],
 									"presentation" : 1,
 									"presentation_linecount" : 3,
 									"presentation_rect" : [ 22.105263948440552, 102.0, 212.0, 67.0 ],
@@ -7109,7 +7570,7 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 1860.334019303321838, 143.40000194311142, 178.0, 24.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 275.128789782524109, 568.619822919368744, 178.0, 24.0 ],
+									"presentation_rect" : [ 285.723316341638565, 625.498827636241913, 178.0, 24.0 ],
 									"text" : "source waveform"
 								}
 
@@ -7135,7 +7596,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1289.0, 1118.0, 45.0, 22.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 366.128789782524109, 628.173181533813477, 45.0, 22.0 ],
+									"presentation_rect" : [ 376.723316341638565, 685.052186250686646, 45.0, 22.0 ],
 									"text" : "square"
 								}
 
@@ -7201,7 +7662,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 1118.0, 1129.0, 48.0, 22.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 275.128789782524109, 628.173181533813477, 48.0, 22.0 ],
+									"presentation_rect" : [ 285.723316341638565, 685.052186250686646, 48.0, 22.0 ],
 									"text" : "triangle"
 								}
 
@@ -7228,7 +7689,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 832.0, 1091.0, 30.0, 22.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 366.128789782524109, 597.0, 30.0, 22.0 ],
+									"presentation_rect" : [ 376.723316341638565, 653.879004716873169, 30.0, 22.0 ],
 									"text" : "saw"
 								}
 
@@ -7242,7 +7703,7 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 747.0, 1091.0, 31.0, 22.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 275.234053730964661, 597.14879834651947, 31.0, 22.0 ],
+									"presentation_rect" : [ 285.828580290079117, 654.027803063392639, 31.0, 22.0 ],
 									"text" : "sine"
 								}
 
@@ -7588,7 +8049,7 @@
 									"outlettype" : [ "preset", "int", "preset", "int" ],
 									"patching_rect" : [ 806.382972955703735, 1018.085099101066589, 100.0, 40.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 275.128789782524109, 397.971125543117523, 224.904196381568909, 150.526319742202759 ],
+									"presentation_rect" : [ 285.723316341638565, 466.550843596458435, 224.904196381568909, 150.526319742202759 ],
 									"preset_data" : [ 										{
 											"number" : 1,
 											"data" : [ 5, "obj-45", "live.gain~", "float", 0.0, 5, "obj-27", "slider", "float", 1.0, 5, "obj-11", "slider", "float", 1.0, 5, "obj-33", "slider", "float", 1.0, 5, "obj-23", "slider", "float", 0.248270809650421, 4, "obj-47", "function", "clear", 7, "obj-47", "function", "add", 0.0, 0.266044233877763, 0, 7, "obj-47", "function", "add", 500.000000000000114, 0.314423228313712, 0, 7, "obj-47", "function", "add", 1000.000000000000227, 0.237036241224524, 0, 7, "obj-47", "function", "add", 1500.0, 0.454894171180246, 0, 7, "obj-47", "function", "add", 1927.281655812508006, 1.0, 0, 7, "obj-47", "function", "add", 2499.999999999999545, 0.431922008841777, 0, 7, "obj-47", "function", "add", 2999.999999999999545, 0.318506530255088, 0, 7, "obj-47", "function", "add", 3211.79043572995397, 0.171203344785981, 0, 7, "obj-47", "function", "add", 3782.683226804375408, 0.120027633526047, 0, 7, "obj-47", "function", "add", 4000.000000000000455, 0.01767621100618, 0, 7, "obj-47", "function", "add", 5095.736646275544445, 0.0, 0, 7, "obj-47", "function", "add", 5499.999999999996362, 0.382643252163365, 0, 7, "obj-47", "function", "add", 5999.999999999999091, 0.756997778750951, 0, 7, "obj-47", "function", "add", 6500.0, 0.802660811588947, 0, 7, "obj-47", "function", "add", 6922.593577713694685, 1.0, 0, 7, "obj-47", "function", "add", 7093.861415036020844, 1.0, 0, 7, "obj-47", "function", "add", 7499.999999999999091, 1.0, 0, 7, "obj-47", "function", "add", 7864.566682986489468, 1.0, 0, 7, "obj-47", "function", "add", 8499.999999999992724, 1.0, 0, 7, "obj-47", "function", "add", 9520.155777102318098, 1.0, 0, 7, "obj-47", "function", "add", 9999.999999999998181, 0.0, 0, 5, "obj-47", "function", "domain", 10000.0, 6, "obj-47", "function", "range", 0.0, 1.0, 5, "obj-47", "function", "mode", 0, 4, "obj-66", "function", "clear", 7, "obj-66", "function", "add", 0.0, 0.830514939669643, 0, 7, "obj-66", "function", "add", 500.000000000000114, 0.401699627210084, 0, 7, "obj-66", "function", "add", 1000.000000000000227, 0.214762381132403, 0, 7, "obj-66", "function", "add", 1500.0, 0.063520228439207, 0, 7, "obj-66", "function", "add", 2000.000000000000455, 0.401637420637068, 0, 7, "obj-66", "function", "add", 2499.999999999999545, 0.235660337006425, 0, 7, "obj-66", "function", "add", 2999.999999999999545, 0.139376065827951, 0, 7, "obj-66", "function", "add", 3440.147552159722181, 1.0, 0, 7, "obj-66", "function", "add", 4410.6652969862389, 1.0, 0, 7, "obj-66", "function", "add", 4500.000000000005457, 0.890131863659153, 0, 7, "obj-66", "function", "add", 4500.000000000005457, 0.860963623588817, 0, 7, "obj-66", "function", "add", 4500.000000000005457, 0.440590025427441, 0, 7, "obj-66", "function", "add", 4999.999999999998181, 0.475767318067596, 0, 7, "obj-66", "function", "add", 5499.999999999996362, 0.003094928876051, 0, 7, "obj-66", "function", "add", 5999.999999999999091, 0.191951306415172, 0, 7, "obj-66", "function", "add", 6500.0, 0.535869190775861, 0, 7, "obj-66", "function", "add", 7000.000000000004547, 0.548693630953149, 0, 7, "obj-66", "function", "add", 7499.999999999999091, 0.544763792875612, 0, 7, "obj-66", "function", "add", 8000.000000000003638, 0.399522070886067, 0, 7, "obj-66", "function", "add", 8499.999999999992724, 0.14897649265651, 0, 7, "obj-66", "function", "add", 9000.000000000012733, 0.004362893624192, 0, 7, "obj-66", "function", "add", 9976.870009961854521, 1.0, 0, 5, "obj-66", "function", "domain", 10000.0, 6, "obj-66", "function", "range", 0.0, 1.0, 5, "obj-66", "function", "mode", 0, 4, "obj-69", "function", "clear", 7, "obj-69", "function", "add", 0.0, 0.394870500189864, 0, 7, "obj-69", "function", "add", 500.000000000000114, 0.066396081841091, 0, 7, "obj-69", "function", "add", 1000.000000000000227, 0.482130249368443, 0, 7, "obj-69", "function", "add", 1500.0, 0.474796767413863, 0, 7, "obj-69", "function", "add", 2000.000000000000455, 0.386874207868895, 0, 7, "obj-69", "function", "add", 2322.639382677698904, 1.0, 0, 7, "obj-69", "function", "add", 2999.999999999999545, 0.546917224688564, 0, 7, "obj-69", "function", "add", 3500.000000000001819, 0.777004018518137, 0, 7, "obj-69", "function", "add", 4284.177874119884109, 1.0, 0, 7, "obj-69", "function", "add", 4500.000000000005457, 0.634580307181355, 0, 7, "obj-69", "function", "add", 4999.999999999998181, 0.229875017946656, 0, 7, "obj-69", "function", "add", 4999.999999999998181, 0.0, 0, 7, "obj-69", "function", "add", 5999.999999999999091, 0.022522647462715, 0, 7, "obj-69", "function", "add", 6500.0, 0.500853912347443, 0, 7, "obj-69", "function", "add", 7000.000000000004547, 0.694065992214911, 0, 7, "obj-69", "function", "add", 7255.331765569073468, 1.0, 0, 7, "obj-69", "function", "add", 8000.000000000003638, 0.647705869442791, 0, 7, "obj-69", "function", "add", 8499.999999999992724, 0.549313516941813, 0, 7, "obj-69", "function", "add", 9000.000000000012733, 0.138115869302519, 0, 7, "obj-69", "function", "add", 9499.999999999994543, 0.191811301682578, 0, 5, "obj-69", "function", "domain", 10000.0, 6, "obj-69", "function", "range", 0.0, 1.0, 5, "obj-69", "function", "mode", 0, 4, "obj-72", "function", "clear", 7, "obj-72", "function", "add", 0.0, 0.498437004842175, 0, 7, "obj-72", "function", "add", 500.000000000000114, 0.710774356318945, 0, 7, "obj-72", "function", "add", 1000.000000000000227, 0.715744409338034, 0, 7, "obj-72", "function", "add", 1500.0, 0.379543198868324, 0, 7, "obj-72", "function", "add", 2000.000000000000455, 0.302663649534228, 0, 7, "obj-72", "function", "add", 2499.999999999999545, 0.291366043282324, 0, 7, "obj-72", "function", "add", 2999.999999999999545, 0.074429509136326, 0, 7, "obj-72", "function", "add", 3500.000000000001819, 0.307714724896476, 0, 7, "obj-72", "function", "add", 4000.000000000000455, 0.779629977253977, 0, 7, "obj-72", "function", "add", 4500.000000000005457, 0.789138317282758, 0, 7, "obj-72", "function", "add", 4999.999999999998181, 0.923088188389989, 0, 7, "obj-72", "function", "add", 5999.999999999999091, 1.0, 0, 7, "obj-72", "function", "add", 6095.173778703610878, 1.0, 0, 7, "obj-72", "function", "add", 6440.969543700301983, 1.0, 0, 7, "obj-72", "function", "add", 6815.581622446715301, 1.0, 0, 7, "obj-72", "function", "add", 7000.000000000004547, 0.863197333297375, 0, 7, "obj-72", "function", "add", 7499.999999999999091, 0.834091048310512, 0, 7, "obj-72", "function", "add", 8000.000000000003638, 0.467292285933539, 0, 7, "obj-72", "function", "add", 8499.999999999992724, 0.394803217477154, 0, 7, "obj-72", "function", "add", 9000.000000000012733, 0.248779195177691, 0, 7, "obj-72", "function", "add", 9499.999999999994543, 0.248270804147705, 0, 5, "obj-72", "function", "domain", 10000.0, 6, "obj-72", "function", "range", 0.0, 1.0, 5, "obj-72", "function", "mode", 0, 5, "obj-79", "number", "int", 10000, 5, "obj-137", "flonum", "float", 0.007000000216067, 5, "obj-140", "flonum", "float", 3.539999961853027, 5, "obj-142", "flonum", "float", 5.275000095367432, 5, "obj-144", "flonum", "float", 0.469999998807907, 5, "obj-150", "flonum", "float", 1.591637134552002, 5, "obj-149", "flonum", "float", 1.870000004768372, 5, "obj-148", "flonum", "float", 6.849582195281982, 5, "obj-147", "flonum", "float", 9.0, 5, "obj-162", "flonum", "float", 2.982537269592285, 5, "obj-161", "flonum", "float", 9.739999771118164, 5, "obj-160", "flonum", "float", 20.989999771118164, 5, "obj-159", "flonum", "float", 4.369999885559082, 5, "obj-156", "flonum", "float", 0.104169927537441, 5, "obj-155", "flonum", "float", 0.397486954927444, 5, "obj-154", "flonum", "float", 26.889999389648438, 5, "obj-153", "flonum", "float", 10.899999618530273, 5, "obj-174", "flonum", "float", 23.256227493286133, 5, "obj-173", "flonum", "float", 96.235076904296875, 5, "obj-172", "flonum", "float", 3695.901123046875, 5, "obj-171", "flonum", "float", 0.542434811592102, 5, "obj-168", "flonum", "float", 41.635292053222656, 5, "obj-167", "flonum", "float", 89.0, 5, "obj-166", "flonum", "float", 956.0, 5, "obj-165", "flonum", "float", 1.401089668273926, 5, "obj-186", "flonum", "float", 0.316402703523636, 5, "obj-185", "flonum", "float", 0.420757591724396, 5, "obj-184", "flonum", "float", 0.692942976951599, 5, "obj-183", "flonum", "float", 0.360511153936386, 5, "obj-180", "flonum", "float", 0.154583290219307, 5, "obj-179", "flonum", "float", 0.150000005960464, 5, "obj-178", "flonum", "float", 0.999960243701935, 5, "obj-177", "flonum", "float", 3.373382091522217, 5, "obj-55", "toggle", "int", 0, 5, "obj-192", "toggle", "int", 0, 5, "obj-85", "slider", "float", 127.0 ]
@@ -7723,7 +8184,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-199",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -7734,7 +8195,7 @@
 									"patching_rect" : [ 1759.790536731481552, 939.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 717.922324120998383, 210.995139956474304, 117.30889356136322 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -7746,9 +8207,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.15", 0.2, "0.32", 0.4, "0.49", 0.6, "0.66", 0.8, "0.83", 1.0, "1" ],
+											"domain_labels" : [ 0.0, "0.34", 0.2, "0.46", 0.4, "0.57", 0.6, "0.68", 0.8, "0.80", 1.0, "0.91" ],
 											"range_start" : 0.0,
-											"range_end" : 39.430634276066932,
+											"range_end" : 2.373914393704447,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -7761,7 +8222,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-200",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -7772,7 +8233,7 @@
 									"patching_rect" : [ 1541.0, 939.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 838.692624151706696, 210.995139956474304, 115.40353125333786 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -7784,9 +8245,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.31", 0.2, "0.39", 0.4, "0.46", 0.6, "0.54", 0.8, "0.61", 1.0, "0.69" ],
+											"domain_labels" : [ 0.0, "0.26", 0.2, "0.39", 0.4, "0.51", 0.6, "0.63", 0.8, "0.76", 1.0, "0.88" ],
 											"range_start" : 0.0,
-											"range_end" : 0.975832629341826,
+											"range_end" : 0.983551356098254,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -7799,7 +8260,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-197",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -7810,7 +8271,7 @@
 									"patching_rect" : [ 1301.081073462963104, 991.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 479.777372896671295, 211.029919147491455, 112.842450022697449 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -7822,9 +8283,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "41.6", 0.2, "224.", 0.4, "407.", 0.6, "590.", 0.8, "773.", 1.0, "956" ],
+											"domain_labels" : [ 0.0, "23.6", 0.2, "1174", 0.4, "2324", 0.6, "3474", 0.8, "4625", 1.0, "5775" ],
 											"range_start" : 0.0,
-											"range_end" : 5.608879610399285,
+											"range_end" : 117.852941566382597,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -7837,7 +8298,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-198",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -7848,7 +8309,7 @@
 									"patching_rect" : [ 1082.290536731481552, 991.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 597.14879834651947, 210.995139956474304, 109.793152332305908 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -7860,9 +8321,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "23.2", 0.2, "757.", 0.4, "1492", 0.6, "2226", 0.8, "2961", 1.0, "3695" ],
+											"domain_labels" : [ 0.0, "864.", 0.2, "1304", 0.4, "1744", 0.6, "2184", 0.8, "2624", 1.0, "3064" ],
 											"range_start" : 0.0,
-											"range_end" : 0.991472039327021,
+											"range_end" : 1.0,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -7892,7 +8353,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-194",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -7903,7 +8364,7 @@
 									"patching_rect" : [ 928.790536731481552, 883.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 252.627567917108536, 210.995139956474304, 109.793153047561646 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -7915,9 +8376,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.10", 0.2, "5.46", 0.4, "10.8", 0.6, "16.1", 0.8, "21.5", 1.0, "26.8" ],
+											"domain_labels" : [ 0.0, "4.11", 0.2, "5.17", 0.4, "6.22", 0.6, "7.28", 0.8, "8.33", 1.0, "9.39" ],
 											"range_start" : 0.0,
-											"range_end" : 502.785834968437484,
+											"range_end" : 10.713268183886084,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -7947,7 +8408,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-196",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -7958,7 +8419,7 @@
 									"patching_rect" : [ 710.0, 883.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 364.420720964670181, 210.995139956474304, 107.647921025753021 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -7970,9 +8431,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "2.98", 0.2, "6.58", 0.4, "10.1", 0.6, "13.7", 0.8, "17.3", 1.0, "20.9" ],
+											"domain_labels" : [ 0.0, "1.96", 0.2, "3.86", 0.4, "5.76", 0.6, "7.66", 0.8, "9.56", 1.0, "11.4" ],
 											"range_start" : 0.0,
-											"range_end" : 145.609933799769067,
+											"range_end" : 19.75264962444064,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -8002,7 +8463,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-191",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -8013,7 +8474,7 @@
 									"patching_rect" : [ 481.790536731481552, 883.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 26.123319208621979, 211.450972080230713, 106.793153047561646 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -8025,9 +8486,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "1.59", 0.2, "2.64", 0.4, "3.69", 0.6, "4.74", 0.8, "5.79", 1.0, "6.85" ],
+											"domain_labels" : [ 0.0, "0.57", 0.2, "3.20", 0.4, "5.83", 0.6, "8.45", 0.8, "11.0", 1.0, "13.7" ],
 											"range_start" : 0.0,
-											"range_end" : 147.614260952749504,
+											"range_end" : 49.57308148136331,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -8057,7 +8518,7 @@
 							}
 , 							{
 								"box" : 								{
-									"domainlabel" : "list",
+									"domainlabel" : "_",
 									"id" : "obj-189",
 									"margins" : [ 16.0, 16.0, 32.0, 32.0 ],
 									"maxclass" : "plot~",
@@ -8068,7 +8529,7 @@
 									"patching_rect" : [ 263.0, 883.706846594810486, 206.418926537036896, 92.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1043.538197159767151, 134.916472256183624, 210.995139956474304, 107.501344203948975 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -8080,9 +8541,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.00", 0.2, "1.06", 0.4, "2.11", 0.6, "3.16", 0.8, "4.22", 1.0, "5.27" ],
+											"domain_labels" : [ 0.0, "0.10", 0.2, "0.40", 0.4, "0.70", 0.6, "1.00", 0.8, "1.29", 1.0, "1.59" ],
 											"range_start" : 0.0,
-											"range_end" : 1.0,
+											"range_end" : 1.663477069905841,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -8125,6 +8586,8 @@
 									"format" : 6,
 									"id" : "obj-178",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8140,6 +8603,8 @@
 									"format" : 6,
 									"id" : "obj-179",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8155,6 +8620,8 @@
 									"format" : 6,
 									"id" : "obj-180",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8194,6 +8661,7 @@
 									"format" : 6,
 									"id" : "obj-183",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8209,6 +8677,8 @@
 									"format" : 6,
 									"id" : "obj-184",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8224,6 +8694,8 @@
 									"format" : 6,
 									"id" : "obj-185",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8239,6 +8711,8 @@
 									"format" : 6,
 									"id" : "obj-186",
 									"maxclass" : "flonum",
+									"maximum" : 1.0,
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8278,6 +8752,7 @@
 									"format" : 6,
 									"id" : "obj-165",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8293,6 +8768,7 @@
 									"format" : 6,
 									"id" : "obj-166",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8308,6 +8784,7 @@
 									"format" : 6,
 									"id" : "obj-167",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8323,6 +8800,7 @@
 									"format" : 6,
 									"id" : "obj-168",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8362,6 +8840,7 @@
 									"format" : 6,
 									"id" : "obj-171",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8377,6 +8856,7 @@
 									"format" : 6,
 									"id" : "obj-172",
 									"maxclass" : "flonum",
+									"minimum" : 1.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8392,6 +8872,7 @@
 									"format" : 6,
 									"id" : "obj-173",
 									"maxclass" : "flonum",
+									"minimum" : 1.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8407,6 +8888,7 @@
 									"format" : 6,
 									"id" : "obj-174",
 									"maxclass" : "flonum",
+									"minimum" : 1.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8446,6 +8928,7 @@
 									"format" : 6,
 									"id" : "obj-153",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8461,6 +8944,7 @@
 									"format" : 6,
 									"id" : "obj-154",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8476,6 +8960,7 @@
 									"format" : 6,
 									"id" : "obj-155",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8491,6 +8976,7 @@
 									"format" : 6,
 									"id" : "obj-156",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8545,6 +9031,7 @@
 									"format" : 6,
 									"id" : "obj-160",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8560,6 +9047,7 @@
 									"format" : 6,
 									"id" : "obj-161",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8575,6 +9063,7 @@
 									"format" : 6,
 									"id" : "obj-162",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8614,6 +9103,7 @@
 									"format" : 6,
 									"id" : "obj-147",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8629,6 +9119,7 @@
 									"format" : 6,
 									"id" : "obj-148",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8644,6 +9135,7 @@
 									"format" : 6,
 									"id" : "obj-149",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8659,6 +9151,7 @@
 									"format" : 6,
 									"id" : "obj-150",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8698,6 +9191,7 @@
 									"format" : 6,
 									"id" : "obj-144",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8713,6 +9207,7 @@
 									"format" : 6,
 									"id" : "obj-142",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8728,6 +9223,7 @@
 									"format" : 6,
 									"id" : "obj-140",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8743,6 +9239,7 @@
 									"format" : 6,
 									"id" : "obj-137",
 									"maxclass" : "flonum",
+									"minimum" : 0.0,
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
@@ -8762,17 +9259,6 @@
 									"outlettype" : [ "float", "float", "float", "float" ],
 									"patching_rect" : [ 440.169367074966431, 486.808826923370361, 74.0, 22.0 ],
 									"text" : "unpack f f f f"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-138",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 1660.0, 58.0, 100.0, 22.0 ]
 								}
 
 							}
@@ -8964,8 +9450,8 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 1955.468082427978516, 485.447124719619751, 174.0, 22.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 709.310309410095215, 57.123319208621979, 174.0, 22.0 ],
-									"text" : "Randomize breakpoints ->"
+									"presentation_rect" : [ 800.481835961341858, 35.66954106092453, 174.0, 22.0 ],
+									"text" : "Rand pts ->"
 								}
 
 							}
@@ -9656,7 +10142,7 @@
 							}
 , 							{
 								"box" : 								{
-									"addpoints" : [ 0.0, 0.498437004842175, 0, 500.000000000000114, 0.710774356318945, 0, 1000.000000000000227, 0.715744409338034, 0, 1500.0, 0.379543198868324, 0, 2000.000000000000455, 0.302663649534228, 0, 2499.999999999999545, 0.291366043282324, 0, 2999.999999999999545, 0.074429509136326, 0, 3500.000000000001819, 0.307714724896476, 0, 4000.000000000000455, 0.779629977253977, 0, 4500.000000000005457, 0.789138317282758, 0, 4999.999999999998181, 0.923088188389989, 0, 5999.999999999999091, 1.0, 0, 6095.173778703610878, 1.0, 0, 6440.969543700301983, 1.0, 0, 6815.581622446715301, 1.0, 0, 7000.000000000004547, 0.863197333297375, 0, 7499.999999999999091, 0.834091048310512, 0, 8000.000000000003638, 0.467292285933539, 0, 8499.999999999992724, 0.394803217477154, 0, 9000.000000000012733, 0.248779195177691, 0, 9499.999999999994543, 0.248270804147705, 0 ],
+									"addpoints" : [ 0.0, 0.0, 0, 500.0, 0.071142613349756, 0, 1000.0, 0.34157500837454, 0, 1500.000000000000227, 0.492964478967812, 0, 2000.0, 0.323889678191039, 0, 2500.0, 0.768849893513375, 0, 3000.0, 1.0, 0, 3500.0, 1.0, 0, 3999.999999999999545, 0.980191271086778, 0, 4500.0, 0.462420879477906, 0, 4999.999999999999091, 0.0, 0, 5499.999999999999091, 0.0, 0, 6000.0, 0.473303070306452, 0, 6500.0, 0.624922956123693, 0, 7000.000000000000909, 0.817564113049347, 0, 7500.000000000000909, 0.892820357005868, 0, 8000.000000000001819, 1.0, 0, 8500.000000000001819, 0.906335905544875, 0, 9000.000000000001819, 0.811969597266932, 0, 9500.000000000003638, 0.74443214228441, 0 ],
 									"domain" : 10000.0,
 									"hint" : "Breakpoint function controlling interpolation between distributions",
 									"id" : "obj-72",
@@ -9697,7 +10183,7 @@
 							}
 , 							{
 								"box" : 								{
-									"addpoints" : [ 0.0, 0.394870500189864, 0, 500.000000000000114, 0.066396081841091, 0, 1000.000000000000227, 0.482130249368443, 0, 1500.0, 0.474796767413863, 0, 2000.000000000000455, 0.386874207868895, 0, 2322.639382677698904, 1.0, 0, 2999.999999999999545, 0.546917224688564, 0, 3500.000000000001819, 0.777004018518137, 0, 4284.177874119884109, 1.0, 0, 4500.000000000005457, 0.634580307181355, 0, 4999.999999999998181, 0.229875017946656, 0, 4999.999999999998181, 0.0, 0, 5999.999999999999091, 0.022522647462715, 0, 6500.0, 0.500853912347443, 0, 7000.000000000004547, 0.694065992214911, 0, 7255.331765569073468, 1.0, 0, 8000.000000000003638, 0.647705869442791, 0, 8499.999999999992724, 0.549313516941813, 0, 9000.000000000012733, 0.138115869302519, 0, 9499.999999999994543, 0.191811301682578, 0 ],
+									"addpoints" : [ 0.0, 0.172113281417354, 0, 500.0, 0.027240697511165, 0, 1000.0, 0.0, 0, 1500.000000000000227, 0.0, 0, 2000.0, 0.0, 0, 2500.0, 0.234410328066214, 0, 3000.0, 0.554600041393517, 0, 3500.0, 0.747030644506244, 0, 3999.999999999999545, 0.593036176851882, 0, 4500.0, 0.375835360110609, 0, 4999.999999999999091, 0.143226658698824, 0, 5499.999999999999091, 0.03085991062526, 0, 6000.0, 0.0, 0, 6500.0, 0.361879973052391, 0, 7000.000000000000909, 0.5988521082515, 0, 7500.000000000000909, 0.649375886947584, 0, 8000.000000000001819, 1.0, 0, 8500.000000000001819, 0.747514296980702, 0, 9000.000000000001819, 0.262638011708479, 0, 9500.000000000003638, 0.0, 0 ],
 									"domain" : 10000.0,
 									"hint" : "Breakpoint function controlling interpolation between distributions",
 									"id" : "obj-69",
@@ -9738,7 +10224,7 @@
 							}
 , 							{
 								"box" : 								{
-									"addpoints" : [ 0.0, 0.830514939669643, 0, 500.000000000000114, 0.401699627210084, 0, 1000.000000000000227, 0.214762381132403, 0, 1500.0, 0.063520228439207, 0, 2000.000000000000455, 0.401637420637068, 0, 2499.999999999999545, 0.235660337006425, 0, 2999.999999999999545, 0.139376065827951, 0, 3440.147552159722181, 1.0, 0, 4410.6652969862389, 1.0, 0, 4500.000000000005457, 0.890131863659153, 0, 4500.000000000005457, 0.860963623588817, 0, 4500.000000000005457, 0.440590025427441, 0, 4999.999999999998181, 0.475767318067596, 0, 5499.999999999996362, 0.003094928876051, 0, 5999.999999999999091, 0.191951306415172, 0, 6500.0, 0.535869190775861, 0, 7000.000000000004547, 0.548693630953149, 0, 7499.999999999999091, 0.544763792875612, 0, 8000.000000000003638, 0.399522070886067, 0, 8499.999999999992724, 0.14897649265651, 0, 9000.000000000012733, 0.004362893624192, 0, 9976.870009961854521, 1.0, 0 ],
+									"addpoints" : [ 0.0, 0.546695109561697, 0, 500.0, 1.0, 0, 1000.0, 1.0, 0, 1500.000000000000227, 1.0, 0, 2000.0, 0.900460042246435, 0, 2500.0, 1.0, 0, 3000.0, 0.694014528355772, 0, 3500.0, 0.663597960551755, 0, 3999.999999999999545, 1.0, 0, 4500.0, 1.0, 0, 4999.999999999999091, 0.629203970885661, 0, 5499.999999999999091, 0.13640707166293, 0, 6000.0, 0.0, 0, 6500.0, 0.0, 0, 7000.000000000000909, 0.241035450747036, 0, 7500.000000000000909, 0.402058302746991, 0, 8000.000000000001819, 0.455410375210562, 0, 8500.000000000001819, 0.867460137186301, 0, 9000.000000000001819, 1.0, 0, 9500.000000000003638, 0.842270277876247, 0 ],
 									"domain" : 10000.0,
 									"hint" : "Breakpoint function controlling interpolation between distributions",
 									"id" : "obj-66",
@@ -9817,7 +10303,7 @@
 							}
 , 							{
 								"box" : 								{
-									"addpoints" : [ 0.0, 0.266044233877763, 0, 500.000000000000114, 0.314423228313712, 0, 1000.000000000000227, 0.237036241224524, 0, 1500.0, 0.454894171180246, 0, 1927.281655812508006, 1.0, 0, 2499.999999999999545, 0.431922008841777, 0, 2999.999999999999545, 0.318506530255088, 0, 3211.79043572995397, 0.171203344785981, 0, 3782.683226804375408, 0.120027633526047, 0, 4000.000000000000455, 0.01767621100618, 0, 5095.736646275544445, 0.0, 0, 5499.999999999996362, 0.382643252163365, 0, 5999.999999999999091, 0.756997778750951, 0, 6500.0, 0.802660811588947, 0, 6922.593577713694685, 1.0, 0, 7093.861415036020844, 1.0, 0, 7499.999999999999091, 1.0, 0, 7864.566682986489468, 1.0, 0, 8499.999999999992724, 1.0, 0, 9520.155777102318098, 1.0, 0, 9999.999999999998181, 0.0, 0 ],
+									"addpoints" : [ 0.0, 0.404326798620653, 0, 500.0, 0.0, 0, 1000.0, 0.0, 0, 1500.000000000000227, 0.567730009935972, 0, 2000.0, 1.0, 0, 2500.0, 1.0, 0, 3000.0, 0.781234605567269, 0, 3500.0, 0.608778321402077, 0, 3999.999999999999545, 0.454404216552493, 0, 4500.0, 0.266306580987484, 0, 4999.999999999999091, 0.356997334565806, 0, 5499.999999999999091, 0.20098284811824, 0, 6000.0, 0.356925200003487, 0, 6500.0, 0.870838269051151, 0, 7000.000000000000909, 1.0, 0, 7500.000000000000909, 0.951278084464449, 0, 8000.000000000001819, 0.556142549245761, 0, 8500.000000000001819, 0.055328698818485, 0, 9000.000000000001819, 0.0, 0, 9500.000000000003638, 0.108672227080741, 0 ],
 									"domain" : 10000.0,
 									"hint" : "Breakpoint function controlling interpolation between distributions",
 									"id" : "obj-47",
@@ -9837,11 +10323,11 @@
 									"hidden" : 1,
 									"id" : "obj-19",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 1511.0, 420.808826923370361, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1511.0, 420.808826923370361, 86.0, 22.0 ],
+									"text" : "r send-params"
 								}
 
 							}
@@ -9921,7 +10407,7 @@
 									"patching_rect" : [ 1511.0, 628.706846594810486, 383.838734149932861, 196.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1437.572606861591339, 726.483332514762878, 371.995139956474304, 215.385052502155304 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -9933,9 +10419,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.27", 0.2, "0.37", 0.4, "0.47", 0.6, "0.57", 0.8, "0.67", 1.0, "0.76" ],
+											"domain_labels" : [ 0.0, "0.26", 0.2, "0.39", 0.4, "0.51", 0.6, "0.63", 0.8, "0.76", 1.0, "0.88" ],
 											"range_start" : 0.0,
-											"range_end" : 1.848805807392381,
+											"range_end" : 0.983551356098254,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -9951,11 +10437,11 @@
 									"hidden" : 1,
 									"id" : "obj-30",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 1105.0, 420.808826923370361, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 1105.0, 420.808826923370361, 86.0, 22.0 ],
+									"text" : "r send-params"
 								}
 
 							}
@@ -10035,7 +10521,7 @@
 									"patching_rect" : [ 1105.0, 628.706846594810486, 383.838734149932861, 196.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1437.572606861591339, 487.73271644115448, 371.995139956474304, 209.354557394981384 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -10047,9 +10533,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "41.6", 0.2, "224.", 0.4, "407.", 0.6, "590.", 0.8, "773.", 1.0, "956" ],
+											"domain_labels" : [ 0.0, "864.", 0.2, "1304", 0.4, "1744", 0.6, "2184", 0.8, "2624", 1.0, "3064" ],
 											"range_start" : 0.0,
-											"range_end" : 5.608879610399285,
+											"range_end" : 1.0,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -10065,11 +10551,11 @@
 									"hidden" : 1,
 									"id" : "obj-6",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 701.0, 422.541246056556702, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 701.0, 422.541246056556702, 86.0, 22.0 ],
+									"text" : "r send-params"
 								}
 
 							}
@@ -10149,7 +10635,7 @@
 									"patching_rect" : [ 701.0, 624.706846594810486, 383.838734149932861, 196.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1437.572606861591339, 252.627567917108536, 371.995139956474304, 219.441074073314667 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -10161,9 +10647,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "0.10", 0.2, "5.46", 0.4, "10.8", 0.6, "16.1", 0.8, "21.5", 1.0, "26.8" ],
+											"domain_labels" : [ 0.0, "1.96", 0.2, "3.86", 0.4, "5.76", 0.6, "7.66", 0.8, "9.56", 1.0, "11.4" ],
 											"range_start" : 0.0,
-											"range_end" : 502.785834968426286,
+											"range_end" : 19.75264962444064,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -10179,11 +10665,11 @@
 									"hidden" : 1,
 									"id" : "obj-8",
 									"maxclass" : "newobj",
-									"numinlets" : 1,
+									"numinlets" : 0,
 									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 263.0, 416.808826923370361, 58.0, 22.0 ],
-									"text" : "loadbang"
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 263.0, 422.541246056556702, 86.0, 22.0 ],
+									"text" : "r send-params"
 								}
 
 							}
@@ -10194,7 +10680,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 252.5, 84.0, 22.0 ],
+									"patching_rect" : [ 25.0, 36.842106580734253, 84.0, 22.0 ],
 									"text" : "r gran-params"
 								}
 
@@ -10289,7 +10775,7 @@
 									"patching_rect" : [ 263.0, 624.706846594810486, 383.838734149932861, 196.793153405189514 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 1437.572606861591339, 26.123319208621979, 371.995139956474304, 215.169833838939667 ],
-									"rangelabel" : "likelihood",
+									"rangelabel" : "prob",
 									"subplots" : [ 										{
 											"color" : [ 0.4, 0.4, 0.75, 1.0 ],
 											"thickness" : 3.0,
@@ -10301,9 +10787,9 @@
 											"domain_end" : 1.0,
 											"domain_style" : "linear",
 											"domain_markers" : [  ],
-											"domain_labels" : [ 0.0, "1.59", 0.2, "2.64", 0.4, "3.69", 0.6, "4.74", 0.8, "5.79", 1.0, "6.85" ],
+											"domain_labels" : [ 0.0, "0.10", 0.2, "0.40", 0.4, "0.70", 0.6, "1.00", 0.8, "1.29", 1.0, "1.59" ],
 											"range_start" : 0.0,
-											"range_end" : 147.614260952749504,
+											"range_end" : 1.663477069905841,
 											"range_style" : "linear",
 											"range_markers" : [  ],
 											"range_labels" : [  ],
@@ -11670,6 +12156,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-212", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-100", 0 ],
 									"source" : [ "obj-213", 0 ]
 								}
@@ -11735,6 +12228,34 @@
 								"patchline" : 								{
 									"destination" : [ "obj-26", 0 ],
 									"source" : [ "obj-23", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-212", 0 ],
+									"source" : [ "obj-232", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-138", 0 ],
+									"source" : [ "obj-236", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-232", 0 ],
+									"source" : [ "obj-236", 2 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-3", 0 ],
+									"source" : [ "obj-236", 0 ]
 								}
 
 							}
@@ -11937,14 +12458,14 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-3", 0 ],
+									"destination" : [ "obj-236", 0 ],
 									"source" : [ "obj-5", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-3", 0 ],
+									"destination" : [ "obj-212", 1 ],
 									"source" : [ "obj-52", 0 ]
 								}
 

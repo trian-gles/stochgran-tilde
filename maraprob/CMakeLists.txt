@@ -11,15 +11,14 @@ include_directories(
 )
 
 file(GLOB PROJECT_SRC
-     "*.c"
-	 "*.h"
+     "*.h"
+	 "*.c"
+     "*.cpp"
 )
-
 add_library( 
 	${PROJECT_NAME} 
 	MODULE
 	${PROJECT_SRC}
 )
-
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-posttarget.cmake)
