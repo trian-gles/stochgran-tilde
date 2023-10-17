@@ -12,3 +12,15 @@ See the help files for usage, or see the below videos:
 
 
 [StochGran Display](https://www.youtube.com/watch?v=me6kD1mZGR4)
+
+
+
+## 1.1 release features :
+
+- Internal circular buffer in stgran~
+- maraprob object
+- additional error handling
+- stopping objects allows current grains to finish
+- stochgran-display function randomization
+- stochgran-display UI tweaks
+- toggle switch OR start/stop messages for on/off
