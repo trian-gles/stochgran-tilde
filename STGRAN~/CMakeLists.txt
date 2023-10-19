@@ -8,11 +8,14 @@ include_directories(
 	"${MAX_SDK_INCLUDES}"
 	"${MAX_SDK_MSP_INCLUDES}"
 	"${MAX_SDK_JIT_INCLUDES}"
+	"${CMAKE_CURRENT_SOURCE_DIR}/../include"
 )
 
-file(GLOB PROJECT_SRC
-     "*.c"
-	 "*.h"
+set(PROJECT_SRC
+	"${CMAKE_CURRENT_SOURCE_DIR}/../include/prob.c"
+	"stgran_buffer.c"
+	"stgran_buffer.h"
+     "STGRAN~.c"
 )
 
 add_library( 
