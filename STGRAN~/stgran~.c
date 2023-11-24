@@ -562,8 +562,11 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	float			*b;
 	float			*e;
 
+	t_buffer_obj* buffer;
+	t_buffer_obj* env;
+
 	if (x->extern_buf){
-		t_buffer_obj	*buffer = buffer_ref_getobject(x->w_buf);
+		buffer = buffer_ref_getobject(x->w_buf);
 		if (buffer){
 			b = buffer_locksamples(buffer);
 		}
@@ -572,14 +575,14 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 		}
 	}
 	if (x->extern_env){
-		t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
+		env = buffer_ref_getobject(x->w_env);
 	
-	if (env)
-		e = buffer_locksamples(env);
-	else
-		e = x->hanningTable;
-	}
-	else{
+		if (env)
+			e = buffer_locksamples(env);
+		else
+			e = x->hanningTable;
+		}
+	else {
 		e = x->hanningTable;
 	}
 
