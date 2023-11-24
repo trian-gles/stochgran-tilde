@@ -558,25 +558,37 @@ void stgran_perform64(t_stgran *x, t_object *dsp64, double **ins, long numins, d
 	t_double		*l_out = outs[1];
 	
 	
-	int				n = sampleframes;
+	int			n = sampleframes;
 	float			*b;
 	float			*e;
+
+	if (x->extern_buf){
+		t_buffer_obj	*buffer = buffer_ref_getobject(x->w_buf);
+		if (buffer){
+			b = buffer_locksamples(buffer);
+		}
+		if (!b) {
+			goto zero;
+		}
+	}
+	if (x->extern_env){
+		t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
 	
-	t_buffer_obj	*buffer = buffer_ref_getobject(x->w_buf);
-	t_buffer_obj	*env = buffer_ref_getobject(x->w_env);
-	if (buffer)
-		b = buffer_locksamples(buffer);
 	if (env)
 		e = buffer_locksamples(env);
 	else
 		e = x->hanningTable;
+	}
+	else{
+		e = x->hanningTable;
+	}
+
+	if (!e){
+		goto zero;
+	}
 	
 	int maxgrains = fmin(MAXGRAINS, x->grainLimit);
 	int head = 0;
-	if (!b || !e)
-	{
-		goto zero;
-	}
 
 	while (n--){
 		if (!x->extern_buf){
