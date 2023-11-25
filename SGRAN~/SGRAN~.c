@@ -49,6 +49,8 @@ typedef struct _sgran {
 
 	long w_len;
 	long w_envlen;
+
+short argset;
 	
 	double freqLow;
 	double freqMid;
@@ -239,7 +241,7 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 	
 	
 	x->grainLimit = MAXGRAINS;
-	
+	x->argset = 0;
 	
 	//outlets
 	outlet_new((t_object *)x, "signal");		// audio outlet l
@@ -390,7 +392,8 @@ void sgran_stop(t_sgran *x){
 // PARAMETER MESSAGES
 ////
 
-void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, double min, double max, const char* name){
+void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, 
+double min, double max, const char* name, short argpos, short* argset){
 	if (argc == 1 && argv[0].a_type == A_FLOAT){
 		*lo = atom_getfloatarg(0, argc, argv);
 		*mid = *lo;
@@ -418,6 +421,7 @@ void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, dou
 		error("Tightness must be greater than zero");
 		*ti = 1;
 	}
+	*argset |= 1 << argpos;
 
 	double args[3] = {*lo, *mid, *hi};
 
