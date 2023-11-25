@@ -435,25 +435,25 @@ double min, double max, const char* name, short argpos, short* argset){
 }
 
 void sgran_grainrate(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
-	sgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate");
+	sgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate", 0, &(x->argset));
 	x->grainRateVarLow = x->grainRateVarLow / 1000;
 	x->grainRateVarMid = x->grainRateVarMid / 1000;
 	x->grainRateVarHigh = x->grainRateVarHigh / 1000;
 }
 
 void sgran_graindur(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
-	sgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur");
+	sgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur", 1, &(x->argset));
 	x->grainDurLow = x->grainDurLow / 1000;
 	x->grainDurMid = x->grainDurMid / 1000;
 	x->grainDurHigh = x->grainDurHigh / 1000;
 }
 
 void sgran_freq(t_sgran* x, t_symbol* s, long argc, t_atom* argv){
-	sgran_handle_probargs(argc, argv, &(x->freqLow), &(x->freqMid), &(x->freqHigh), &(x->freqTight), 0, 1000000, "freq"); // allowing aliasing because I LOVE IT
+	sgran_handle_probargs(argc, argv, &(x->freqLow), &(x->freqMid), &(x->freqHigh), &(x->freqTight), 0, 1000000, "freq", 2, &(x->argset)); // allowing aliasing because I LOVE IT
 }
 
 void sgran_pan(t_sgran *x, t_symbol* s, long argc, t_atom* argv) {
-	sgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan");
+	sgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan", 4, &(x->argset));
 }
 
 /////
