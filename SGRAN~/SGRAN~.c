@@ -378,6 +378,9 @@ void sgran_start(t_sgran *x){
 		error("Make sure you've configured a wavetable buffer and envelope buffer!");
 		defer((t_object*)x, (method)sgran_setbuffers, NULL, 0, NULL);
 	}
+	else if (x->argset!=15) {
+		error("All distributions must be configured before running.  See the help patch for details.");
+	}
 		
 	else
 		x->running = true;
