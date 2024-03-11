@@ -49,6 +49,8 @@ typedef struct _sgran {
 
 	long w_len;
 	long w_envlen;
+
+short argset;
 	
 	double freqLow;
 	double freqMid;
@@ -239,7 +241,7 @@ void *sgran_new(t_symbol *s,  long argc, t_atom *argv)
 	
 	
 	x->grainLimit = MAXGRAINS;
-	
+	x->argset = 0;
 	
 	//outlets
 	outlet_new((t_object *)x, "signal");		// audio outlet l
@@ -376,6 +378,9 @@ void sgran_start(t_sgran *x){
 		error("Make sure you've configured a wavetable buffer and envelope buffer!");
 		defer((t_object*)x, (method)sgran_setbuffers, NULL, 0, NULL);
 	}
+	else if (x->argset!=15) {
+		error("All distributions must be configured before running.  See the help patch for details.");
+	}
 		
 	else
 		x->running = true;
@@ -390,7 +395,8 @@ void sgran_stop(t_sgran *x){
 // PARAMETER MESSAGES
 ////
 
-void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, double min, double max, const char* name){
+void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, 
+double min, double max, const char* name, short argpos, short* argset){
 	if (argc == 1 && argv[0].a_type == A_FLOAT){
 		*lo = atom_getfloatarg(0, argc, argv);
 		*mid = *lo;
@@ -418,6 +424,7 @@ void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, dou
 		error("Tightness must be greater than zero");
 		*ti = 1;
 	}
+	*argset |= 1 << argpos;
 
 	double args[3] = {*lo, *mid, *hi};
 
@@ -431,25 +438,25 @@ void sgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, dou
 }
 
 void sgran_grainrate(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
-	sgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate");
+	sgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate", 0, &(x->argset));
 	x->grainRateVarLow = x->grainRateVarLow / 1000;
 	x->grainRateVarMid = x->grainRateVarMid / 1000;
 	x->grainRateVarHigh = x->grainRateVarHigh / 1000;
 }
 
 void sgran_graindur(t_sgran* x, t_symbol* s, long argc, t_atom* argv) {
-	sgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur");
+	sgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur", 1, &(x->argset));
 	x->grainDurLow = x->grainDurLow / 1000;
 	x->grainDurMid = x->grainDurMid / 1000;
 	x->grainDurHigh = x->grainDurHigh / 1000;
 }
 
 void sgran_freq(t_sgran* x, t_symbol* s, long argc, t_atom* argv){
-	sgran_handle_probargs(argc, argv, &(x->freqLow), &(x->freqMid), &(x->freqHigh), &(x->freqTight), 0, 1000000, "freq"); // allowing aliasing because I LOVE IT
+	sgran_handle_probargs(argc, argv, &(x->freqLow), &(x->freqMid), &(x->freqHigh), &(x->freqTight), 0, 1000000, "freq", 2, &(x->argset)); // allowing aliasing because I LOVE IT
 }
 
 void sgran_pan(t_sgran *x, t_symbol* s, long argc, t_atom* argv) {
-	sgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan");
+	sgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan", 4, &(x->argset));
 }
 
 /////
