@@ -379,7 +379,7 @@ void sgran_start(t_sgran *x){
 		defer((t_object*)x, (method)sgran_setbuffers, NULL, 0, NULL);
 	}
 	else if (x->argset!=15) {
-		error("All distributions must be configured before running.  See the help patch for details.");
+		error("All distributions must be configured before running.  See the help patch for details. %d", x->argset);
 	}
 		
 	else
@@ -424,7 +424,7 @@ double min, double max, const char* name, short argpos, short* argset){
 		error("Tightness must be greater than zero");
 		*ti = 1;
 	}
-	*argset |= 1 << argpos;
+	*argset |= (1 << argpos);
 
 	double args[3] = {*lo, *mid, *hi};
 
@@ -456,7 +456,7 @@ void sgran_freq(t_sgran* x, t_symbol* s, long argc, t_atom* argv){
 }
 
 void sgran_pan(t_sgran *x, t_symbol* s, long argc, t_atom* argv) {
-	sgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan", 4, &(x->argset));
+	sgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan", 3, &(x->argset));
 }
 
 /////
