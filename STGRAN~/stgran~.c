@@ -142,6 +142,8 @@ typedef struct _stgran {
 	
 	int newGrainCounter;
 	float grainRate;
+
+	short argset;
 	
 	double oneover_cpsoct10;
 } t_stgran;
@@ -397,7 +399,9 @@ void stgran_start(t_stgran *x){
 		error("Make sure you've configured a sampling buffer and envelope!");
 		defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
 	}
-
+	else if (x->argset != 31) {
+		error("All distributions must be configured before running.  See the help patch for details. %d", x->argset);
+	}
 	else
 		x->running = true;
 }
@@ -411,7 +415,7 @@ void stgran_stop(t_stgran *x){
 // PARAMETER MESSAGES
 ////
 
-void stgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, double min, double max, const char* name){
+void stgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, double* hi, double* ti, double min, double max, const char* name, short argpos, short* argset){
 	if (argc == 1 && argv[0].a_type == A_FLOAT){
 		*lo = atom_getfloatarg(0, argc, argv);
 		*mid = *lo;
@@ -435,10 +439,12 @@ void stgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, do
 		return;
 	}
 
-	if (*ti <= 0) {
+	if (*ti <= 0) { 
 		error("Tightness must be greater than zero");
 		*ti = 1;
 	}
+
+	*argset |= (1 << argpos);
 
 	double args[3] = {*lo, *mid, *hi};
 
@@ -452,29 +458,29 @@ void stgran_handle_probargs(long argc, t_atom* argv, double* lo, double* mid, do
 }
 
 void stgran_grainrate(t_stgran* x, t_symbol* s, long argc, t_atom* argv) {
-	stgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate");
+	stgran_handle_probargs(argc, argv, &(x->grainRateVarLow), &(x->grainRateVarMid), &(x->grainRateVarHigh), &(x->grainRateVarTight), 0.01, 1000, "rate", 0, &x->argset);
 	x->grainRateVarLow = x->grainRateVarLow / 1000;
 	x->grainRateVarMid = x->grainRateVarMid / 1000;
 	x->grainRateVarHigh = x->grainRateVarHigh / 1000;
 }
 
 void stgran_graindur(t_stgran* x, t_symbol* s, long argc, t_atom* argv) {
-	stgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur");
+	stgran_handle_probargs(argc, argv, &(x->grainDurLow), &(x->grainDurMid), &(x->grainDurHigh), &(x->grainDurTight), 0.0001, 100000, "dur", 1, &x->argset);
 	x->grainDurLow = x->grainDurLow / 1000;
 	x->grainDurMid = x->grainDurMid / 1000;
 	x->grainDurHigh = x->grainDurHigh / 1000;
 }
 
 void stgran_grainhead(t_stgran *x, t_symbol* s, long argc, t_atom* argv){
-	stgran_handle_probargs(argc, argv, &(x->grainHeadLow), &(x->grainHeadMid), &(x->grainHeadHigh), &(x->grainHeadTight), 0, 1, "head");
+	stgran_handle_probargs(argc, argv, &(x->grainHeadLow), &(x->grainHeadMid), &(x->grainHeadHigh), &(x->grainHeadTight), 0, 1, "head", 2, &x->argset);
 }
 
 void stgran_trans(t_stgran *x, t_symbol* s, long argc, t_atom* argv){
-	stgran_handle_probargs(argc, argv, &(x->transLow), &(x->transMid), &(x->transHigh), &(x->transTight), -4, 4, "trans");
+	stgran_handle_probargs(argc, argv, &(x->transLow), &(x->transMid), &(x->transHigh), &(x->transTight), -4, 4, "trans", 3, &x->argset);
 }
 
 void stgran_pan(t_stgran *x, t_symbol* s, long argc, t_atom* argv) {
-	stgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan");
+	stgran_handle_probargs(argc, argv, &(x->panLow), &(x->panMid), &(x->panHigh), &(x->panTight), 0, 1, "pan", 4, &x->argset);
 }
 
 void stgran_new_grain(t_stgran *x, Grain *grain, int head){
