@@ -229,7 +229,6 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 	}
 			
 
-
 	// decide between type of sound buffer
 	if (argv[0].a_type == A_FLOAT){
 		x->w_len = floor(atom_getfloat(argv) * sys_getsr() / 1000);
@@ -243,16 +242,11 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 	}
 	else
 	{
-		x->w_name = atom_getsymarg(0,argc,argv);
+		atom_arg_getsym(&x->w_name, 0,argc,argv);
 		x->w_buf = buffer_ref_new((t_object *)x, x->w_name);
 		t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
 		x->w_len = buffer_getframecount(b);
 		x->extern_buf = true;
-
-		if (!buffer_ref_exists(x->w_buf)){
-			error("Buffer '%s' does not exist", x->w_name);
-			return 0;
-		}
 	}
 	
 	dsp_setup((t_pxobject *)x,1); // inlet for potential input signal
@@ -293,10 +287,6 @@ void *stgran_new(t_symbol *s,  long argc, t_atom *argv)
 		
 		x->w_envlen = buffer_getframecount(e);
 		x->extern_env = true;
-		if (!buffer_ref_exists(x->w_env)){
-			error("Buffer '%s' does not exist, reverting to hanning envelope", x->w_envname);
-			stgran_usehanning(x);
-		}
 			
 	}
 	else
@@ -355,10 +345,13 @@ void stgran_setbuffers(t_stgran* x, t_symbol* s, long ac, t_atom* av) {
 		t_buffer_obj* e = buffer_ref_getobject(x->w_env);
 		x->w_envlen = buffer_getframecount(e);
 	}
-	
-	buffer_ref_set(x->w_buf, x->w_name);
-	t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
-	x->w_len = buffer_getframecount(b);
+	if (x->extern_buf){
+		if (buffer_ref_exists(x->w_buf))
+			object_free(x->w_buf);
+		x->w_buf = buffer_ref_new((t_object*)x, x->w_name);
+		t_buffer_obj* b = buffer_ref_getobject(x->w_buf);
+		x->w_len = buffer_getframecount(b);
+	}
 }
 
 void stgran_set(t_stgran* x, t_symbol* s, long argc, t_atom* argv) {
@@ -394,16 +387,22 @@ void stgran_int(t_stgran*x, long i){
 }
 
 void stgran_start(t_stgran *x){
-	if ((!buffer_ref_exists(x->w_buf) && x->extern_buf) || (!buffer_ref_exists(x->w_env) && x->extern_env))
-	{
-		error("Make sure you've configured a sampling buffer and envelope!");
-		defer((t_object*)x, (method)stgran_setbuffers, NULL, 0, NULL);
+	stgran_setbuffers(x, NULL, 0, NULL);
+	if (!buffer_ref_exists(x->w_buf) && x->extern_buf){
+		error("Invalid sampling buffer");
+		return;
 	}
-	else if (x->argset != 31) {
+
+	if (!buffer_ref_exists(x->w_env) && x->extern_env){
+		error("Invalid env  buffer");
+		return;
+	}	
+	if (x->argset != 31) {
 		error("All distributions must be configured before running.  See the help patch for details. %d", x->argset);
+		return;
 	}
-	else
-		x->running = true;
+
+	x->running = true;
 }
 
 void stgran_stop(t_stgran *x){
